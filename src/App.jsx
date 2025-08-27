@@ -5,7 +5,8 @@ import AnimatedChart from './components/HomePage/AnimatedChart'
 import ContactForm from './components/HomePage/ContactForm'
 import TeamSection from './components/HomePage/TeamSection'
 import ServicesSection from './components/HomePage/ServicesSection'
-import AboutSection from './components/HomePage/AboutSection' // NEW: Import AboutSection
+import AboutSection from './components/HomePage/AboutSection'
+import PodcastSection from './components/HomePage/PodcastSection' // NEW: Import PodcastSection
 import Footer from './components/HomePage/Footer'
 import beactiveImg from './assets/img/BeActive.png';
 import busuuImg from './assets/img/Busuu.png';
@@ -161,12 +162,12 @@ function App() {
           </div>
         </div>
       </main>
-      
-      {/* NEW: About Section */}
-      <AboutSection />
-      
-      {/* Services Section */}
+
+      {/* NEW: Services Section */}
       <ServicesSection />
+      
+      {/* About Section */}
+      <AboutSection />
 
       {/* Partners Section */}
       <div style={{
@@ -233,6 +234,9 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* NEW: Podcast Section */}
+      <PodcastSection />
 
       {/* Contact Section */}
       <ContactForm />
