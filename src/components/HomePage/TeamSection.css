@@ -1,0 +1,97 @@
+/* src/components/HomePage/TeamSection.css */
+
+.team-section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-title {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #ff6b35 50%, #f7931e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Grilaj de 3 coloane */
+  gap: 32px;
+  justify-items: center;
+}
+
+.team-member-card {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.team-member-card:hover {
+  transform: translateY(-8px);
+}
+
+.member-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+}
+
+.team-member-card:hover .member-photo {
+  filter: grayscale(0%);
+}
+
+.member-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  color: white;
+  padding: 20px;
+  padding-bottom: 40px;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.team-member-card:hover .member-overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.member-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+}
+
+.member-title {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* Ajustări responsive pentru ecrane mai mici */
+@media (max-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 coloane pe tablete */
+  }
+}
+
+@media (max-width: 600px) {
+  .team-grid {
+    grid-template-columns: 1fr; /* 1 coloană pe telefoane */
+  }
+}

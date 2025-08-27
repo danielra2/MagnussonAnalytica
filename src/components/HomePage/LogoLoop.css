@@ -133,3 +133,32 @@
     transition: none !important;
   }
 }
+.logoloop__item img {
+  height: var(--logoloop-logoHeight);
+  width: auto;
+  display: block;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  filter: grayscale(100%) brightness(0.5); /* Applies the greyed-out effect */
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoloop__node {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.3); /* Greyed-out color for text */
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoloop--scale-hover .logoloop__item:hover img {
+  transform: scale(1.2);
+  transform-origin: center center;
+  filter: grayscale(0%) brightness(1); /* Removes the filter on hover */
+}
+
+.logoloop--scale-hover .logoloop__item:hover .logoloop__node {
+  transform: scale(1.2);
+  color: #ffffff; /* Turns text bright white on hover */
+}
