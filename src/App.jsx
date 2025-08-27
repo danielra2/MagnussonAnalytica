@@ -6,7 +6,8 @@ import ContactForm from './components/HomePage/ContactForm'
 import TeamSection from './components/HomePage/TeamSection'
 import ServicesSection from './components/HomePage/ServicesSection'
 import AboutSection from './components/HomePage/AboutSection'
-import PodcastSection from './components/HomePage/PodcastSection' // NEW: Import PodcastSection
+import PodcastSection from './components/HomePage/PodcastSection'
+import ReviewsCarousel from './components/HomePage/ReviewsCarousel' // NEW: Import ReviewsCarousel
 import Footer from './components/HomePage/Footer'
 import beactiveImg from './assets/img/BeActive.png';
 import busuuImg from './assets/img/Busuu.png';
@@ -18,6 +19,7 @@ import superBetImg from './assets/img/superbet.png';
 import szallasImg from './assets/img/szallas.png';
 import tbiImg from './assets/img/tbi.jpg';
 import newLogo from './assets/img/Magnusson-Analytica-Logo (1).webp';
+
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -190,7 +192,7 @@ function App() {
             logos={partnerLogos}
             speed={20}
             direction="left"
-            logoHeight={24}
+            logoHeight={130}
             gap={48}
             pauseOnHover
             scaleOnHover
@@ -235,11 +237,14 @@ function App() {
         </div>
       </section>
 
-      {/* NEW: Podcast Section */}
+      {/* Podcast Section */}
       <PodcastSection />
 
       {/* Contact Section */}
       <ContactForm />
+
+      {/* Reviews Section */}
+      <ReviewsCarousel />
 
       {/* Team Section */}
       <TeamSection />

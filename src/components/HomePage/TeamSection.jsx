@@ -3,6 +3,7 @@
 import React from 'react';
 import './TeamSection.css';
 import newTeamPhoto from 'C:/mycode/Website/WebsiteMagnusson/src/assets/img/daniphoto.jpg'; // Importă noua imagine  
+import horatiuPhoto from 'C:/mycode/Website/WebsiteMagnusson/src/assets/img/Horatiu.jpg'
 
 const teamMembers = [
   {
@@ -11,9 +12,9 @@ const teamMembers = [
     imgUrl: newTeamPhoto, // Am înlocuit URL-ul placeholder cu imaginea importată
   },
   {
-    name: 'John Doe',
-    title: 'Lead Data Scientist',
-    imgUrl: 'https://via.placeholder.com/400x400.png?text=Team+Member+2',
+    name: 'Horatiu Cretu',
+    title: 'Product Analyst',
+    imgUrl: horatiuPhoto,
   },
   {
     name: 'Robert Brown',
