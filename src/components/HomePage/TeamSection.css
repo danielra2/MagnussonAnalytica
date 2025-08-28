@@ -20,7 +20,7 @@
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Grilaj de 3 coloane */
+  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
   justify-items: center;
 }
@@ -30,10 +30,11 @@
   width: 100%;
   max-width: 300px;
   border-radius: 12px;
-  overflow: hidden;
+  /* overflow: hidden;  Am eliminat această proprietate */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: transform 0.3s ease;
+  background-color: #1a1a1a; /* Adăugăm un fundal pentru card în cazul în care imaginea nu îl acoperă complet */
 }
 
 .team-member-card:hover {
@@ -42,10 +43,13 @@
 
 .member-photo {
   width: 100%;
-  height: auto;
+  height: 300px; /* Am mărit puțin înălțimea fixă pentru a oferi mai mult spațiu */
+  object-fit: cover; /* Asigură că imaginea umple spațiul, decupând excesul */
+  object-position: center top; /* Aceasta va ridica imaginea, centrând-o pe verticală în partea de sus */
   display: block;
   filter: grayscale(100%);
   transition: filter 0.5s ease;
+  border-radius: 12px 12px 0 0; /* Rotunjim doar colțurile de sus ale imaginii */
 }
 
 .team-member-card:hover .member-photo {
@@ -86,12 +90,12 @@
 /* Ajustări responsive pentru ecrane mai mici */
 @media (max-width: 1024px) {
   .team-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 coloane pe tablete */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
   .team-grid {
-    grid-template-columns: 1fr; /* 1 coloană pe telefoane */
+    grid-template-columns: 1fr;
   }
 }

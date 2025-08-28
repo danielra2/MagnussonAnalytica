@@ -34,13 +34,13 @@ export default function Footer() {
         </div>
 
         <div className="footer-socials">
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a href="https://www.instagram.com/magnussonanalytica_hq/" target="_blank" rel="noopener noreferrer" className="social-icon">
             <FaInstagram />
           </a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a href="https://www.linkedin.com/company/magnusson-analytica/?originalSubdomain=uk" target="_blank" rel="noopener noreferrer" className="social-icon">
             <FaLinkedin />
           </a>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a href="https://www.facebook.com/people/Magnusson-Analytica/61556230900777/" target="_blank" rel="noopener noreferrer" className="social-icon">
             <FaFacebook />
           </a>
         </div>

@@ -4,12 +4,16 @@ import React from 'react';
 import './TeamSection.css';
 import newTeamPhoto from 'C:/mycode/Website/WebsiteMagnusson/src/assets/img/daniphoto.jpg'; // Importă noua imagine  
 import horatiuPhoto from 'C:/mycode/Website/WebsiteMagnusson/src/assets/img/Horatiu.jpg'
+import alexPhoto from '../../assets/img/alexphoto.jpg'; // Import the new photos
+import evertonPhoto from '../../assets/img/evertonphoto.jpg';
+import lukaPhoto from '../../assets/img/lukaphoto.jpg';
 
 const teamMembers = [
   {
-    name: 'Daniel Radoi', // Am actualizat numele pentru noua imagine
-    title: 'Product Analyst',
-    imgUrl: newTeamPhoto, // Am înlocuit URL-ul placeholder cu imaginea importată
+     name: 'Alexander Magnusson',
+    title: 'Founder & CEO',
+    imgUrl: alexPhoto,
+    
   },
   {
     name: 'Horatiu Cretu',
@@ -17,19 +21,20 @@ const teamMembers = [
     imgUrl: horatiuPhoto,
   },
   {
-    name: 'Robert Brown',
-    title: 'Data Analyst',
-    imgUrl: 'https://via.placeholder.com/400x400.png?text=Team+Member+3',
+    name: 'Daniel Radoi', // Am actualizat numele pentru noua imagine
+    title: 'Product Analyst',
+    imgUrl: newTeamPhoto, // Am înlocuit URL-ul placeholder cu imaginea importată
+   
   },
   {
-    name: 'Emily Davis',
-    title: 'Business Intelligence',
-    imgUrl: 'https://via.placeholder.com/400x400.png?text=Team+Member+4',
+    name: 'Everton Scaciota',
+    title: 'Senior Data Engineer',
+    imgUrl: evertonPhoto,
   },
   {
-    name: 'Michael Clark',
-    title: 'Senior Consultant',
-    imgUrl: 'https://via.placeholder.com/400x400.png?text=Team+Member+5',
+    name: 'Luka Kniewald',
+    title: 'Head of Marketing',
+    imgUrl: lukaPhoto,
   },
   {
     name: 'Laura White',

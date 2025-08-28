@@ -9,6 +9,12 @@ export default function AboutSection() {
     <section className="about-section">
       <div className="about-content-container">
         <h2 className="about-main-title">Product Growth, Simplified.</h2>
+        <div className="about-partner-text">
+          <p>
+            We are proud to be an **official Amplitude Partner**, specializing in a wide range of
+            services including implementation, strategic support, and optimization.
+          </p>
+        </div>
         <div className="about-text-container">
           <p className="about-text">
             Finding the right partner for your analytics and marketing needs can be overwhelming.
