@@ -41,7 +41,7 @@ function App() {
 
   const HomePageContent = () => (
     <>
-      <main className="hero">
+      <main className="hero" id="top">
         <div className="particles">
           {[...Array(50)].map((_, i) => (
             <div key={i} className="particle" style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 3}s`, animationDuration: `${3 + Math.random() * 4}s` }}></div>
@@ -101,13 +101,13 @@ function App() {
       <nav className="navbar">
         <div className="nav-container">
           <div className="logo">
-            <Link to="/"><img src={newLogo} alt="Magnusson Analytica Logo" style={{ height: '40px' }} /></Link>
+            <a href="/#" className="nav-link"><img src={newLogo} alt="Magnusson Analytica Logo" style={{ height: '40px' }} /></a>
           </div>
           <ul className="nav-menu">
-            <li className="nav-item"><Link to="/" className="nav-link">Home</Link></li>
+            <li className="nav-item"><a href="/#" className="nav-link">Home</a></li>
             <li className="nav-item"><a href="/#about-section" className="nav-link">About us</a></li>
             <li className="nav-item"><a href="/#podcast-section" className="nav-link">Podcasts</a></li>
-            <li className="nav-item"><Link to="/blog" className="nav-link">Blog</Link></li>
+            <li className="nav-item"><a href="/#blog-section" className="nav-link">Blog</a></li>
             <li className="nav-item"><a href="/#contact-form" className="nav-link">Contact Us</a></li>
           </ul>
           <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}><span></span><span></span><span></span></div>
@@ -116,7 +116,7 @@ function App() {
           <a href="/#services-section" className="mobile-link" onClick={() => setIsMenuOpen(false)}>What we do</a>
           <a href="/#about-section" className="mobile-link" onClick={() => setIsMenuOpen(false)}>About us</a>
           <a href="/#podcast-section" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Podcasts</a>
-          <Link to="/blog" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Blog</Link>
+          <a href="/#blog-section" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Blog</a>
           <a href="/#contact-form" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Contact Us</a>
         </div>
       </nav>

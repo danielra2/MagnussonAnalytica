@@ -7,7 +7,7 @@ import './BlogSection.css';
 
 export default function BlogSection() {
   return (
-    <section className="blog-section">
+    <section className="blog-section" id="blog-section">
       <div className="blog-card">
         <div className="blog-icon">
           <FaFileAlt />

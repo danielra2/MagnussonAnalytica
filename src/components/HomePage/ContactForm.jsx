@@ -5,7 +5,7 @@ import './ContactForm.css'; // We'll create this CSS file next
 
 export default function ContactForm() {
   return (
-    <section className="contact-section">
+    <section className="contact-section" id="contact-form">
       <h2 className="contact-title">Let's have a chat</h2>
       <form className="contact-form">
         <div className="form-group">

@@ -6,7 +6,7 @@ import { FaPodcast } from 'react-icons/fa';
 
 export default function PodcastSection() {
   return (
-    <section className="podcast-section">
+    <section className="podcast-section" id="podcast-section">
       <div className="podcast-card">
         <div className="podcast-icon">
           <FaPodcast />

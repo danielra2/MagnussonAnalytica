@@ -6,7 +6,7 @@ import { FaPhoneAlt, FaLaptopCode, FaChartLine } from 'react-icons/fa';
 
 export default function AboutSection() {
   return (
-    <section className="about-section">
+    <section className="about-section" id="about-section">
       <div className="about-content-container">
         <h2 className="about-main-title">Product Growth, Simplified.</h2>
         <div className="about-partner-text">
