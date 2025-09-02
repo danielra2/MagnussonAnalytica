@@ -18,10 +18,10 @@ export default function Footer() {
           <div className="footer-section footer-links">
             <h4 className="footer-links-title">Quick Links</h4>
             <ul className="footer-link-list">
-              <li><a href="#what-we-do" className="footer-link">What we do</a></li>
-              <li><a href="#about" className="footer-link">About us</a></li>
-              <li><a href="#podcasts" className="footer-link">Podcasts</a></li>
-              <li><a href="#contact" className="footer-link">Contact Us</a></li>
+              <li><a href="/#top" className="footer-link">Home</a></li>
+              <li><a href="/#about-section" className="footer-link">About us</a></li>
+              <li><a href="/#podcast-section" className="footer-link">Podcasts</a></li>
+              <li><a href="/#contact-form" className="footer-link">Contact Us</a></li>
             </ul>
           </div>
           <div className="footer-section footer-contact">
