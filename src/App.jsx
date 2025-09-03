@@ -23,9 +23,38 @@ import superBetImg from './assets/img/superbet.png';
 import szallasImg from './assets/img/szallas.png';
 import tbiImg from './assets/img/tbi.jpg';
 import newLogo from './assets/img/Magnusson-Analytica-Logo (1).webp';
+import BlogListPage from './components/BlogPage/BlogListPage';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  
+  // New: Centralized blog data structure
+  const blogPosts = [
+    { 
+      id: '1', 
+      title: 'How to Design your Data Strategy: GTM vs Direct SDK', 
+      description: 'Explore the crucial differences between Google Tag Manager and Direct SDK to build a robust data strategy for your business.',
+      url: 'https://docs.google.com/document/d/e/2PACX-1vSK_vqIl5C_KU57D5WUtRORjv9vCn8J8L2gpMTrbLPcTZAtjY-7mNpWpiLyzTfNeRFaZ0RIbKPZ7hLJ/pub'
+    },
+    { 
+      id: '2', 
+      title: 'The Power of Product Analytics in Driving Growth', 
+      description: 'Learn how leveraging product analytics can provide actionable insights and lead to significant business growth.',
+      url: 'https://docs.google.com/document/d/e/2PACX-1vSK_vqIl5C_KU57D5WUtRORjv9vCn8J8L2gpMTrbLPcTZAtjY-7mNpWpiLyzTfNeRFaZ0RIbKPZ7hLJ/pub'
+    },
+    { 
+      id: '3', 
+      title: 'Why Data Warehousing is a Game-Changer for Modern Businesses', 
+      description: 'Discover the benefits of building a scalable data infrastructure to streamline operations and enhance decision-making.',
+      url: 'https://docs.google.com/document/d/e/2PACX-1vSK_vqIl5C_KU57D5WUtRORjv9vCn8J8L2gpMTrbLPcTZAtjY-7mNpWpiLyzTfNeRFaZ0RIbKPZ7hLJ/pub'
+    },
+    { 
+      id: '4', 
+      title: 'The Power of Product Analytics in Driving Growth', 
+      description: 'Learn how leveraging product analytics can provide actionable insights and lead to significant business growth.',
+      url: 'https://docs.google.com/document/d/e/2PACX-1vSK_vqIl5C_KU57D5WUtRORjv9vCn8J8L2gpMTrbLPcTZAtjY-7mNpWpiLyzTfNeRFaZ0RIbKPZ7hLJ/pub'
+    },
+  ];
 
   const partnerLogos = [
     { src: beactiveImg, title: "Beactive", alt: "Beactive Logo" },
@@ -36,7 +65,7 @@ function App() {
     { src: srfImg, title: "SRF", alt: "SRF Logo" },
     { src: superBetImg, title: "Superbet", alt: "Superbet Logo" },
     { src: szallasImg, title: "Szallas.hu", alt: "Szallas.hu Logo" },
-    { src: tbiImg, title: "TBI", alt: "TBI Logo" },
+    { tbiImg, title: "TBI", alt: "TBI Logo" },
   ]
 
   const HomePageContent = () => (
@@ -122,7 +151,8 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<HomePageContent />} />
-        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blogs" element={<BlogListPage blogPosts={blogPosts} />} />
+        <Route path="/blogs/:id" element={<BlogPage blogPosts={blogPosts} />} />
       </Routes>
       <Footer />
     </div>

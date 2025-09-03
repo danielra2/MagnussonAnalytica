@@ -1,33 +1,40 @@
 // src/components/BlogPage/BlogPage.jsx
 
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './BlogPage.css';
 
-export default function BlogPage() {
+export default function BlogPage({ blogPosts }) {
+  const { id } = useParams(); // Get the ID from the URL
   const [blogPost, setBlogPost] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // The public URL from your published Google Doc
-  const publishedDocUrl = 'https://docs.google.com/document/d/e/2PACX-1vSK_vqIl5C_KU57D5WUtRORjv9vCn8J8L2gpMTrbLPcTZAtjY-7mNpWpiLyzTfNeRFaZ0RIbKPZ7hLJ/pub';
+  // Find the blog post data based on the ID
+  const selectedPost = blogPosts.find(post => post.id === id);
 
   useEffect(() => {
+    if (!selectedPost) {
+      setBlogPost(null);
+      setIsLoading(false);
+      return;
+    }
+
     const fetchBlogContent = async () => {
       try {
-        const response = await fetch(publishedDocUrl);
+        const response = await fetch(selectedPost.url);
         const htmlText = await response.text();
 
-        // Use DOMParser to safely extract the main content
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlText, 'text/html');
         
-        // Find the main content div, which typically has this ID in published Google Docs
-        const contentDiv = doc.getElementById('contents');
+        let contentDiv = doc.getElementById('contents');
         
-        // Extract the title from the document title
         const title = doc.title;
 
         if (contentDiv) {
-          // Set the content with dangerouslySetInnerHTML to render the HTML
+          contentDiv.querySelectorAll('[style]').forEach(el => el.removeAttribute('style'));
+          contentDiv.querySelectorAll('style').forEach(el => el.remove());
+          
           setBlogPost({ title, content: contentDiv.innerHTML });
         } else {
           setBlogPost({ title, content: "Content not found." });
@@ -41,7 +48,7 @@ export default function BlogPage() {
     };
 
     fetchBlogContent();
-  }, [publishedDocUrl]);
+  }, [selectedPost]);
 
   if (isLoading) {
     return (

@@ -16,7 +16,7 @@ export default function BlogSection() {
         <p className="blog-description">
           Stay up-to-date with the latest news, case studies, and expert insights in the world of data analytics and technology.
         </p>
-        <Link to="/blog">
+        <Link to="/blogs">
           <button className="cta-button blog-button">
             Read Blog
           </button>

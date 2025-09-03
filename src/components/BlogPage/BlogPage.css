@@ -1,98 +1,184 @@
 /* src/components/BlogPage/BlogPage.css */
 
 .blog-page-container {
-  /* Change the background color of the blog section */
-  background-color: #f5f5f5; 
+  background-color: transparent; /* Allows main app background to show */
   padding: 120px 20px;
-  max-width: 1200px;
-  /* Add this line to make sure the container takes up full width */
-  width: 100%; 
-  margin: 0 auto; 
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  max-width: 900px; /* Slightly narrower for better readability */
+  margin: 0 auto;
+  border-radius: 15px; /* Slightly more rounded corners */
+  /* No box-shadow here, rely on inner elements for depth */
 }
 
 .blog-page-title {
   text-align: center;
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 2rem;
-  /* Adjust gradient for a light background */
-  background: linear-gradient(135deg, #000000 0%, #333333 50%, #666666 100%); 
-  background-clip: text;
+  font-size: clamp(2.8rem, 6vw, 4.5rem); /* Adjusted font size for title */
+  font-weight: 800; /* Bolder title */
+  line-height: 1.2;
+  margin-bottom: 2.5rem; /* Increased margin below title */
+  background: linear-gradient(135deg, #ffffff 0%, #ff8a65 50%, #ff5722 100%); /* Brighter orange gradient */
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* Adjust shadow for a light background */
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+  text-shadow: 0 6px 25px rgba(255, 107, 53, 0.4); /* Enhanced text shadow */
+  letter-spacing: -0.03em; /* Slightly tighter letter spacing */
 }
 
 .blog-content-wrapper {
-  max-width: 800px;
+  max-width: 750px; /* Optimal width for reading */
   margin: 0 auto;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  /* Change text color for readability on a white background */
-  color: #333333; 
-  text-align: center; 
+  font-family: 'Inter', sans-serif; /* Assuming 'Inter' or similar modern font is used site-wide */
+  font-size: 1.15rem; /* Slightly larger base font size for body text */
+  line-height: 1.9; /* Improved line height for readability */
+  color: rgba(255, 255, 255, 0.85); /* Lighter text for better contrast on dark background */
+  text-align: left;
+  background-color: #1a1a1a; /* Darker background for the content wrapper */
+  padding: 50px 40px; /* More padding inside the content */
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* Clearer box shadow for depth */
 }
 
-/* New: Styles for content inside the wrapper */
+/* Enhanced typography for paragraphs and lists */
 .blog-content-wrapper p,
 .blog-content-wrapper li {
-  margin-bottom: 20px;
-  text-align: left;
+  margin-bottom: 1.5em; /* Consistent spacing */
 }
 
+.blog-content-wrapper ul,
+.blog-content-wrapper ol {
+  list-style-position: inside; /* Ensures markers are inside for lists */
+  margin-left: 20px;
+  margin-bottom: 1.5em;
+}
+
+/* Redefined heading styles */
 .blog-content-wrapper h1,
 .blog-content-wrapper h2,
 .blog-content-wrapper h3,
 .blog-content-wrapper h4,
 .blog-content-wrapper h5,
 .blog-content-wrapper h6 {
-  /* Change heading colors for readability */
-  color: #000000; 
-  margin-top: 40px;
-  margin-bottom: 20px;
-  text-align: left;
+  color: #fff;
+  margin-top: 3.5rem; /* More space above headings */
+  margin-bottom: 1.5rem; /* Consistent space below headings */
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-.blog-content-wrapper h1 { font-size: 2.5rem; }
-.blog-content-wrapper h2 { font-size: 2rem; }
-.blog-content-wrapper h3 { font-size: 1.5rem; }
+.blog-content-wrapper h1 { 
+  font-size: 2.8rem; 
+  border-bottom: 2px solid rgba(255, 107, 53, 0.5); /* Subtle underline */
+  padding-bottom: 0.5rem;
+}
+.blog-content-wrapper h2 { 
+  font-size: 2.2rem; 
+  color: #ff8a65; /* Orange color for H2 to stand out */
+}
+.blog-content-wrapper h3 { font-size: 1.7rem; }
+.blog-content-wrapper h4 { font-size: 1.4rem; }
 
+/* Link styling */
 .blog-content-wrapper a {
-  color: #ff6b35;
+  color: #ff6b35; /* Primary accent color for links */
   text-decoration: underline;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+  text-underline-offset: 3px; /* Space between text and underline */
 }
 
 .blog-content-wrapper a:hover {
-  color: #f7931e;
+  color: #f7931e; /* Slightly different orange on hover */
+  text-decoration-color: #f7931e;
 }
 
-/* Updated styles for images inside the blog content wrapper */
+/* Image styling */
 .blog-content-wrapper img {
-  display: block; 
-  /* Changed max-width to a specific pixel value to make images smaller */
-  max-width: 500px;
+  display: block;
+  max-width: 100%; /* Ensure images are fully responsive */
   height: auto;
-  margin: 40px auto; 
+  margin: 3.5rem auto; /* More vertical space around images */
   border-radius: 10px;
-  /* Adjust box shadow for a lighter background */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* Stronger shadow for images */
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
 }
 
-/* Important: Add a rule for potential Google Doc-specific image wrappers */
+/* Google Doc specific wrappers for centering images (if they still appear) */
 .blog-content-wrapper .c1,
 .blog-content-wrapper .c2,
-.blog-content-wrapper .c3 {
+.blog-content-wrapper .c3,
+.blog-content-wrapper .c4, /* Add more as needed if Google Docs uses more classes */
+.blog-content-wrapper .c5 {
   text-align: center;
+  margin: 3.5rem auto; /* Apply similar margin to these containers */
 }
 
 .blog-content-wrapper .c1 img,
 .blog-content-wrapper .c2 img,
-.blog-content-wrapper .c3 img {
+.blog-content-wrapper .c3 img,
+.blog-content-wrapper .c4 img,
+.blog-content-wrapper .c5 img {
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Code blocks (if present in Google Doc) */
+.blog-content-wrapper pre {
+  background-color: #282c34; /* Dark background for code blocks */
+  color: #f8f8f2; /* Light text for code */
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto; /* Enable horizontal scrolling for long lines */
+  margin: 2.5rem 0;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; /* Monospace font for code */
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.blog-content-wrapper code {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 0.95em;
+}
+
+/* Blockquotes */
+.blog-content-wrapper blockquote {
+  border-left: 5px solid #ff6b35; /* Accent border */
+  padding-left: 25px;
+  margin: 3rem 0;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .blog-page-container {
+    padding: 100px 15px;
+  }
+
+  .blog-page-title {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    margin-bottom: 2rem;
+  }
+
+  .blog-content-wrapper {
+    padding: 30px 20px;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .blog-content-wrapper h1 { font-size: 2.2rem; }
+  .blog-content-wrapper h2 { font-size: 1.8rem; }
+  .blog-content-wrapper h3 { font-size: 1.4rem; }
+}
+
+@media (max-width: 480px) {
+  .blog-page-container {
+    padding: 80px 10px;
+  }
+  .blog-page-title {
+    font-size: clamp(1.8rem, 9vw, 3rem);
+  }
+  .blog-content-wrapper {
+    padding: 20px 15px;
+  }
 }

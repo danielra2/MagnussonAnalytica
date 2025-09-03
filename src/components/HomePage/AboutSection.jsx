@@ -57,7 +57,9 @@ export default function AboutSection() {
           </ul>
         </div>
         <div className="about-cta-container">
-          <button className="cta-button">Let's Chat</button>
+          <a href="/#contact-form">
+            <button className="cta-button">Let's Chat</button>
+          </a>
         </div>
       </div>
     </section>
