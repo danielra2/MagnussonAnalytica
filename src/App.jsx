@@ -24,6 +24,7 @@ import szallasImg from './assets/img/szallas.png';
 import tbiImg from './assets/img/tbi.jpg';
 import newLogo from './assets/img/Magnusson-Analytica-Logo (1).webp';
 import BlogListPage from './components/BlogPage/BlogListPage';
+import CollaborationSection from './components/HomePage/CollaborationSection';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -65,7 +66,7 @@ function App() {
     { src: srfImg, title: "SRF", alt: "SRF Logo" },
     { src: superBetImg, title: "Superbet", alt: "Superbet Logo" },
     { src: szallasImg, title: "Szallas.hu", alt: "Szallas.hu Logo" },
-    { tbiImg, title: "TBI", alt: "TBI Logo" },
+    { src: tbiImg, title: "TBI", alt: "TBI Logo" },
   ]
 
   const HomePageContent = () => (
@@ -91,6 +92,7 @@ function App() {
       </main>
       <ServicesSection id="services-section" />
       <AboutSection id="about-section" />
+      <CollaborationSection />
       <div style={{ padding: '120px 0 20px', backgroundColor: '#0a0a0a', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h2 style={{ textAlign: 'center', color: 'white', fontSize: '2rem', marginBottom: '40px' }}>Our trusted partners</h2>
         <div className="partners-section">
