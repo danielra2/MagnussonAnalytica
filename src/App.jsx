@@ -1,18 +1,19 @@
-import { useState } from 'react'
-import './App.css'
-import LogoLoop from './components/HomePage/LogoLoop'
-import AnimatedChart from './components/HomePage/AnimatedChart'
-import ContactForm from './components/HomePage/ContactForm'
-import TeamSection from './components/HomePage/TeamSection'
-import ServicesSection from './components/HomePage/ServicesSection'
-import AboutSection from './components/HomePage/AboutSection'
-import PodcastSection from './components/HomePage/PodcastSection'
-import ReviewsCarousel from './components/HomePage/ReviewsCarousel'
-import BlogPage from './components/BlogPage/BlogPage'
-import BlogSection from './components/HomePage/BlogSection'
-import Footer from './components/HomePage/Footer'
-import { Routes, Route, Link } from 'react-router-dom'
-import { FaFileAlt } from 'react-icons/fa'
+import { useState } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import CookieConsent from "react-cookie-consent";
+import './App.css';
+import LogoLoop from './components/HomePage/LogoLoop';
+import AnimatedChart from './components/HomePage/AnimatedChart';
+import ContactForm from './components/HomePage/ContactForm';
+import TeamSection from './components/HomePage/TeamSection';
+import ServicesSection from './components/HomePage/ServicesSection';
+import AboutSection from './components/HomePage/AboutSection';
+import PodcastSection from './components/HomePage/PodcastSection';
+import ReviewsCarousel from './components/HomePage/ReviewsCarousel';
+import BlogPage from './components/BlogPage/BlogPage';
+import BlogSection from './components/HomePage/BlogSection';
+import Footer from './components/HomePage/Footer';
+import { FaFileAlt } from 'react-icons/fa';
 import beactiveImg from './assets/img/BeActive.png';
 import busuuImg from './assets/img/Busuu.png';
 import brainlyImg from './assets/img/Brainly.png';
@@ -25,33 +26,35 @@ import tbiImg from './assets/img/tbi.jpg';
 import newLogo from './assets/img/Magnusson-Analytica-Logo (1).webp';
 import BlogListPage from './components/BlogPage/BlogListPage';
 import CollaborationSection from './components/HomePage/CollaborationSection';
+import PodcastPage from './components/PodcastPage/PodcastPage';
+import PrivacyPolicyPage from './components/PrivacyPolicyPage/PrivacyPolicyPage.jsx';
+import YouTubeSection from './components/HomePage/YouTubeSection'; // New Import
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  
-  // New: Centralized blog data structure
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const blogPosts = [
-    { 
-      id: '1', 
-      title: 'How to Design your Data Strategy: GTM vs Direct SDK', 
+    {
+      id: '1',
+      title: 'How to Design your Data Strategy: GTM vs Direct SDK',
       description: 'Explore the crucial differences between Google Tag Manager and Direct SDK to build a robust data strategy for your business.',
       url: 'https://docs.google.com/document/d/e/2PACX-1vSK_vqIl5C_KU57D5WUtRORjv9vCn8J8L2gpMTrbLPcTZAtjY-7mNpWpiLyzTfNeRFaZ0RIbKPZ7hLJ/pub'
     },
-    { 
-      id: '2', 
-      title: 'The Power of Product Analytics in Driving Growth', 
+    {
+      id: '2',
+      title: 'The Power of Product Analytics in Driving Growth',
       description: 'Learn how leveraging product analytics can provide actionable insights and lead to significant business growth.',
       url: 'https://docs.google.com/document/d/e/2PACX-1vSK_vqIl5C_KU57D5WUtRORjv9vCn8J8L2gpMTrbLPcTZAtjY-7mNpWpiLyzTfNeRFaZ0RIbKPZ7hLJ/pub'
     },
-    { 
-      id: '3', 
-      title: 'Why Data Warehousing is a Game-Changer for Modern Businesses', 
+    {
+      id: '3',
+      title: 'Why Data Warehousing is a Game-Changer for Modern Businesses',
       description: 'Discover the benefits of building a scalable data infrastructure to streamline operations and enhance decision-making.',
       url: 'https://docs.google.com/document/d/e/2PACX-1vSK_vqIl5C_KU57D5WUtRORjv9vCn8J8L2gpMTrbLPcTZAtjY-7mNpWpiLyzTfNeRFaZ0RIbKPZ7hLJ/pub'
     },
-    { 
-      id: '4', 
-      title: 'The Power of Product Analytics in Driving Growth', 
+    {
+      id: '4',
+      title: 'The Power of Product Analytics in Driving Growth',
       description: 'Learn how leveraging product analytics can provide actionable insights and lead to significant business growth.',
       url: 'https://docs.google.com/document/d/e/2PACX-1vSK_vqIl5C_KU57D5WUtRORjv9vCn8J8L2gpMTrbLPcTZAtjY-7mNpWpiLyzTfNeRFaZ0RIbKPZ7hLJ/pub'
     },
@@ -67,7 +70,7 @@ function App() {
     { src: superBetImg, title: "Superbet", alt: "Superbet Logo" },
     { src: szallasImg, title: "Szallas.hu", alt: "Szallas.hu Logo" },
     { src: tbiImg, title: "TBI", alt: "TBI Logo" },
-  ]
+  ];
 
   const HomePageContent = () => (
     <>
@@ -121,6 +124,7 @@ function App() {
       </section>
       <PodcastSection id="podcast-section" />
       <BlogSection id="blog-section" />
+      <YouTubeSection />
       <ContactForm id="contact-form" />
       <ReviewsCarousel />
       <TeamSection />
@@ -155,10 +159,50 @@ function App() {
         <Route path="/" element={<HomePageContent />} />
         <Route path="/blogs" element={<BlogListPage blogPosts={blogPosts} />} />
         <Route path="/blogs/:id" element={<BlogPage blogPosts={blogPosts} />} />
+        <Route path="/podcasts" element={<PodcastPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
       </Routes>
       <Footer />
+      <CookieConsent
+        location="bottom"
+        buttonText="Accept"
+        declineButtonText="Reject"
+        enableDeclineButton
+        onAccept={() => {
+          console.log("Cookies accepted!");
+        }}
+        onDecline={() => {
+          console.log("Cookies rejected!");
+        }}
+        cookieName="magnussonCookieConsent"
+        style={{
+          background: "#1a1a1a",
+          color: "white",
+          fontFamily: "Inter, sans-serif",
+        }}
+        buttonStyle={{
+          background: "linear-gradient(135deg, #ff6b35 0%, #d73027 100%)",
+          color: "white",
+          borderRadius: "50px",
+          fontWeight: "600",
+          fontSize: "1rem",
+          padding: "10px 20px",
+        }}
+        declineButtonStyle={{
+          background: "transparent",
+          color: "rgba(255, 255, 255, 0.7)",
+          border: "1px solid rgba(255, 255, 255, 0.4)",
+          borderRadius: "50px",
+          fontWeight: "600",
+          fontSize: "1rem",
+          padding: "10px 20px",
+        }}
+        expires={150}
+      >
+        This website uses cookies to enhance user experience and for analytics. By clicking "Accept", you agree to our use of cookies. <Link to="/privacy-policy" style={{ color: '#ff6b35' }}>Learn More</Link>
+      </CookieConsent>
     </div>
   );
 }
 
-export default App
+export default App;

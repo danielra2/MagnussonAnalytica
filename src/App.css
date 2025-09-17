@@ -472,3 +472,34 @@ html {
     flex-direction: column;
   }
 }
+/* Custom styles for the cookie banner */
+.CookieConsent { /* This is the class for the main banner container */
+  font-family: 'Inter', sans-serif;
+  padding: 15px 20px;
+}
+
+.my-cookie-accept-button {
+  background: linear-gradient(135deg, #ff6b35 0%, #d73027 100%);
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  padding: 10px 20px;
+}
+
+.my-cookie-decline-button {
+  background: #4a4a4a;
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  padding: 10px 20px;
+}
+.CookieConsent a {
+  color: #ff6b35;
+  text-decoration: underline;
+  margin-left: 5px;
+}
+
+.CookieConsent a:hover {
+  text-decoration: none;
+  color: #f7931e;
+}
