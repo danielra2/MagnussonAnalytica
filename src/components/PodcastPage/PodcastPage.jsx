@@ -35,7 +35,7 @@ const podcasts = [
 export default function PodcastPage() {
   return (
     <div className="podcast-page-container">
-      <h1 className="podcast-page-title">Data Driven Insights</h1>
+      <h1 className="podcast-page-title">Welcome to the Product Pulse</h1>
       <p className="podcast-page-description">
         Tune in to our podcast where we explore the latest trends in data analytics,
         business intelligence, and technology with industry experts.
