@@ -1,3 +1,5 @@
+// src/App.jsx
+
 import { useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import CookieConsent from "react-cookie-consent";
@@ -28,7 +30,7 @@ import BlogListPage from './components/BlogPage/BlogListPage';
 import CollaborationSection from './components/HomePage/CollaborationSection';
 import PodcastPage from './components/PodcastPage/PodcastPage';
 import PrivacyPolicyPage from './components/PrivacyPolicyPage/PrivacyPolicyPage.jsx';
-import YouTubeSection from './components/HomePage/YouTubeSection'; // New Import
+import YouTubeSection from './components/HomePage/YouTubeSection';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -86,10 +88,10 @@ function App() {
         <div className="hero-content">
           <h1 className="hero-title">Unlock the power of your data</h1>
           <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '30px' }}>
-            <button className="cta-button">Book a Free Audit</button>
-            <button className="cta-button" style={{ background: '#4a4a4a', boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)', textShadow: 'none', transition: 'all 0.3s ease' }}>
+            <a href="#contact-form" className="cta-button">Book a Free Audit</a>
+            <a href="https://calendar.google.com/calendar/u/3/r" className="cta-button" style={{ background: '#4a4a4a', boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)', textShadow: 'none', transition: 'all 0.3s ease' }}>
               Book a Free Call
-            </button>
+            </a>
           </div>
         </div>
       </main>
@@ -169,9 +171,12 @@ function App() {
         declineButtonText="Reject"
         enableDeclineButton
         onAccept={() => {
+          // This function is called when the user clicks 'Accept'
+          // You can add code here to enable analytics, etc.
           console.log("Cookies accepted!");
         }}
         onDecline={() => {
+          // This function is called when the user clicks 'Reject'
           console.log("Cookies rejected!");
         }}
         cookieName="magnussonCookieConsent"

@@ -2,8 +2,8 @@
 
 import React from 'react';
 import './TeamSection.css';
-import newTeamPhoto from 'C:/mycode/Website/WebsiteMagnusson/src/assets/img/daniphoto.jpg'; // Importă noua imagine  
-import horatiuPhoto from 'C:/mycode/Website/WebsiteMagnusson/src/assets/img/Horatiu.jpg'
+import newTeamPhoto from '../../assets/img/daniphoto.jpg'; // Importă noua imagine  
+import horatiuPhoto from '../../assets/img/Horatiu.jpg'
 import alexPhoto from '../../assets/img/alexphoto.jpg'; // Import the new photos
 import evertonPhoto from '../../assets/img/evertonphoto.jpg';
 import lukaPhoto from '../../assets/img/lukaphoto.jpg';

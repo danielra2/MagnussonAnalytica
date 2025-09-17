@@ -1,13 +1,15 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'; // NEW: Import BrowserRouter
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import './index.css';
+import App from './App.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter> {/* NEW: Wrap App in BrowserRouter */}
+    <BrowserRouter>
+      <ScrollToTop /> {/* NEW: Wrap App in ScrollToTop */}
       <App />
     </BrowserRouter>
   </StrictMode>,
-)
+);
