@@ -1,5 +1,3 @@
-// src/App.jsx
-
 import { useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import CookieConsent from "react-cookie-consent";
@@ -89,7 +87,7 @@ function App() {
           <h1 className="hero-title">Unlock the power of your data</h1>
           <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '30px' }}>
             <a href="#contact-form" className="cta-button">Book a Free Audit</a>
-            <a href="https://calendar.google.com/calendar/u/3/r" className="cta-button" style={{ background: '#4a4a4a', boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)', textShadow: 'none', transition: 'all 0.3s ease' }}>
+            <a href="https://calendar.notion.so/meet/alexandermagnusson/0az364lq3" className="cta-button" style={{ background: '#4a4a4a', boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)', textShadow: 'none', transition: 'all 0.3s ease' }}>
               Book a Free Call
             </a>
           </div>

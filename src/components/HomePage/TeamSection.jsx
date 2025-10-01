@@ -7,6 +7,10 @@ import horatiuPhoto from '../../assets/img/Horatiu.jpg'
 import alexPhoto from '../../assets/img/alexphoto.jpg'; // Import the new photos
 import evertonPhoto from '../../assets/img/evertonphoto.jpg';
 import lukaPhoto from '../../assets/img/lukaphoto.jpg';
+import andreeaCatalanPhoto from '../../assets/img/andreeacatalan.png';
+import andreeaLupsanPhoto from '../../assets/img/andreealupsan.png';
+import fredrikJonssonPhoto from '../../assets/img/fredrikjohnson.png';
+import paulOanceaPhoto from '../../assets/img/pauloancea.png';
 
 const teamMembers = [
   {
@@ -37,24 +41,24 @@ const teamMembers = [
     imgUrl: lukaPhoto,
   },
   {
-    name: 'Laura White',
-    title: 'Data Engineer',
-    imgUrl: 'https://via.placeholder.com/400x400.png?text=Team+Member+6',
+    name: 'Andreea Catalan',
+    title: 'Project Coordinator',
+    imgUrl: andreeaCatalanPhoto,
   },
   {
-    name: 'Chris Evans',
-    title: 'Solutions Architect',
-    imgUrl: 'https://via.placeholder.com/400x400.png?text=Team+Member+7',
+    name: 'Andreea Lupsan',
+    title: 'Data Governance Specialist',
+    imgUrl: andreeaLupsanPhoto,
   },
   {
-    name: 'Olivia Wilson',
-    title: 'UI/UX Designer',
-    imgUrl: 'https://via.placeholder.com/400x400.png?text=Team+Member+8',
+    name: 'Fredrik Jonsson',
+    title: 'VP of Sales & Partnerships',
+    imgUrl: fredrikJonssonPhoto,
   },
   {
-    name: 'Daniel Thomas',
-    title: 'Marketing Specialist',
-    imgUrl: 'https://via.placeholder.com/400x400.png?text=Team+Member+9',
+    name: 'Paul Oancea',
+    title: 'Product Analyst',
+    imgUrl: paulOanceaPhoto,
   },
 ];
 
