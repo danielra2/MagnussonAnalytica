@@ -10,8 +10,8 @@ export default function AboutSection() {
       <div className="about-content-container">
         <h2 className="about-main-title">Product Growth, Simplified.</h2>
         <div className="about-partner-text">
-          <p>
-            We are proud to be an **official Amplitude Partner**, specializing in a wide range of
+          <p className="partner-text-base">
+            We are proud to be an <span className="highlight-orange">Official Amplitude Partner</span>, specializing in a wide range of
             services including implementation, strategic support, and optimization.
           </p>
         </div>

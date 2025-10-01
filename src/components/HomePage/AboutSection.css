@@ -25,11 +25,29 @@
 .about-partner-text {
   text-align: center;
   font-size: 1.2rem;
-  color: #ff6b35;
+  /* Culoarea portocalie a fost mutată mai jos pentru a permite culoarea albă de bază */
   font-weight: 600;
   margin-bottom: 40px;
   opacity: 0.8;
   animation: fadeIn 1.5s ease-out;
+}
+
+/* NOU: Setare culoare text de bază la alb (pentru .about-partner-text p) */
+.about-partner-text .partner-text-base {
+  color: white;
+  margin: 0;
+}
+
+/* NOU: Setare culoare text evidențiat la portocaliu */
+.about-partner-text .highlight-orange {
+  color: #ff6b35;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(255, 107, 53, 0.4); /* Adaugă un efect de strălucire */
+  transition: color 0.3s ease;
+}
+
+.about-partner-text .highlight-orange:hover {
+  color: #f7931e;
 }
 
 .about-text-container {
@@ -126,3 +144,10 @@
 .how-it-works-item:nth-child(1) { animation-delay: 0.2s; }
 .how-it-works-item:nth-child(2) { animation-delay: 0.4s; }
 .how-it-works-item:nth-child(3) { animation-delay: 0.6s; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-section {
+    padding-top: 60px;
+  }
+}

@@ -18,18 +18,7 @@ const podcasts = [
     description: 'Learn the foundational steps and key considerations for building a data warehouse that grows with your business.',
     date: 'August 15, 2025',
   },
-  {
-    id: 3,
-    title: 'Marketing Automation with Data',
-    description: 'Explore how to leverage data to create intelligent marketing campaigns that drive higher engagement and conversion rates.',
-    date: 'July 30, 2025',
-  },
-  {
-    id: 4,
-    title: 'Data-Driven Decision Making',
-    description: 'We sit down with a CEO to discuss how they transformed their business by putting data at the center of every decision.',
-    date: 'July 15, 2025',
-  },
+  
 ];
 
 export default function PodcastPage() {

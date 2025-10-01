@@ -14,20 +14,7 @@ const reviews = [
     text: 'Magnusson Analytica guided our IT and marketing department through Amplitude implementation which led to a long term cooperation. Honestly? We just wanted someone to set things up. Instead we gained a real partner. We feel taken care of and really appreciate their expertise and way of thinking. It is great to work with someone that really knows it all within the service they provide. We look forward to expanding together and recommend other projects to them.',
     photoUrl: ewaPhoto, // Use the imported image here
   },
-  {
-    name: 'John Smith',
-    title: 'CEO',
-    company: 'Tech Solutions',
-    text: 'Working with Magnusson Analytica was a game-changer for our business. Their insights helped us streamline our data processes and make better decisions, leading to significant growth.',
-    photoUrl: 'https://via.placeholder.com/150x150.png?text=John',
-  },
-  {
-    name: 'Sarah Lee',
-    title: 'Director of Analytics',
-    company: 'Global Corp',
-    text: 'The team at Magnusson Analytica is incredibly knowledgeable and professional. They delivered a solution that was not only robust but also perfectly tailored to our specific needs.',
-    photoUrl: 'https://via.placeholder.com/150x150.png?text=Sarah',
-  },
+
 ];
 
 export default function ReviewsCarousel() {

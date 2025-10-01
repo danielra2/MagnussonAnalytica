@@ -21,7 +21,7 @@ const teamMembers = [
   },
   {
     name: 'Horatiu Cretu',
-    title: 'Product Analyst',
+    title: 'Senior Product Analyst',
     imgUrl: horatiuPhoto,
   },
   {
