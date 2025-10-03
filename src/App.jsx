@@ -85,9 +85,9 @@ function App() {
         </div>
         <div className="hero-content">
           <h1 className="hero-title">Unlock the power of your data</h1>
-          <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '30px' }}>
-            <a href="#contact-form" className="cta-button">Book a Free Audit</a>
-            <a href="https://calendar.notion.so/meet/alexandermagnusson/0az364lq3" className="cta-button" style={{ background: '#4a4a4a', boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)', textShadow: 'none', transition: 'all 0.3s ease' }}>
+          <div className="hero-cta-buttons">
+            <a href="#contact-form" className="cta-button hero-main-cta">Book a Free Audit</a>
+            <a href="https://calendar.notion.so/meet/alexandermagnusson/0az364lq3" className="cta-button hero-secondary-cta">
               Book a Free Call
             </a>
           </div>

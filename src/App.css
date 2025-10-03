@@ -503,3 +503,42 @@ html {
   text-decoration: none;
   color: #f7931e;
 }
+/* src/App.css */
+
+/* ... (cod existent) ... */
+
+/* Stilul de bază pentru butonul secundar (mutat din inline) */
+.hero-cta-buttons .hero-secondary-cta {
+  background: #4a4a4a;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
+  transition: all 0.3s ease;
+}
+
+/* Stilul pentru desktop (implicit: side-by-side) */
+.hero-cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* Responsive Design Overrides (Mobile: Stacked and Larger) */
+@media (max-width: 768px) {
+  /* Stivuirea butoanelor */
+  .hero-cta-buttons {
+    flex-direction: column; /* Stivuiește vertical */
+    gap: 15px; /* Spațiu redus între ele */
+    align-items: stretch; /* Întinde butoanele */
+  }
+
+  /* Mărirea butoanelor pentru mobil */
+  .hero-cta-buttons a {
+    width: 90%; /* Ocupă aproape toată lățimea disponibilă */
+    max-width: 380px; /* Limită maximă pentru a nu fi prea late pe tablete */
+    margin: 0 auto; /* Centrează butoanele */
+    padding: 1.3rem 2.5rem; /* Mărire padding (buton mai mare) */
+    font-size: 1.3rem; /* Font mai mare */
+  }
+}
+/* ... (restul codului existent) ... */
