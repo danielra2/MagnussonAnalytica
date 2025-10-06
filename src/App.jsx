@@ -29,6 +29,7 @@ import CollaborationSection from './components/HomePage/CollaborationSection';
 import PodcastPage from './components/PodcastPage/PodcastPage';
 import PrivacyPolicyPage from './components/PrivacyPolicyPage/PrivacyPolicyPage.jsx';
 import YouTubeSection from './components/HomePage/YouTubeSection';
+import CoursesSection from './components/HomePage/CoursesSection';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -102,26 +103,7 @@ function App() {
           <LogoLoop logos={partnerLogos} speed={20} direction="left" logoHeight={130} gap={48} pauseOnHover scaleOnHover fadeOut fadeOutColor="rgba(10, 10, 10, 1)" ariaLabel="Technology partners and tools" className="partners-marquee" />
         </div>
       </div>
-      <section className="training-section">
-        <h2 className="training-title">Training and Courses</h2>
-        <div className="card-container">
-          <div className="training-card">
-            <h3 className="card-title">Data Analytics Training</h3>
-            <p className="card-description">Learn the fundamentals of data analysis, from cleaning and modeling to advanced visualization.</p>
-            <button className="cta-button card-button">View Courses</button>
-          </div>
-          <div className="training-card">
-            <h3 className="card-title">Custom Workshops</h3>
-            <p className="card-description">We create custom learning experiences tailored to your team's specific needs and goals.</p>
-            <button className="cta-button card-button">View Courses</button>
-          </div>
-          <div className="training-card">
-            <h3 className="card-title">Certification Programs</h3>
-            <p className="card-description">Earn professional certifications in a range of data tools and technologies.</p>
-            <button className="cta-button card-button">View Courses</button>
-          </div>
-        </div>
-      </section>
+      <CoursesSection />
       <PodcastSection id="podcast-section" />
       <BlogSection id="blog-section" />
       <YouTubeSection />
@@ -148,7 +130,7 @@ function App() {
           <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}><span></span><span></span><span></span></div>
         </div>
         <div className={`mobile-menu ${isMenuOpen ? 'active' : ''}`}>
-          <a href="/#services-section" className="mobile-link" onClick={() => setIsMenuOpen(false)}>What we do</a>
+          <a href="/#" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Home</a>
           <a href="/#about-section" className="mobile-link" onClick={() => setIsMenuOpen(false)}>About us</a>
           <a href="/#podcast-section" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Podcasts</a>
           <a href="/#blog-section" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Blog</a>
@@ -169,12 +151,9 @@ function App() {
         declineButtonText="Reject"
         enableDeclineButton
         onAccept={() => {
-          // This function is called when the user clicks 'Accept'
-          // You can add code here to enable analytics, etc.
           console.log("Cookies accepted!");
         }}
         onDecline={() => {
-          // This function is called when the user clicks 'Reject'
           console.log("Cookies rejected!");
         }}
         cookieName="magnussonCookieConsent"

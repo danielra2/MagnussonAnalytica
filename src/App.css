@@ -213,6 +213,22 @@ body {
   text-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
 }
 
+/* Stilul de bază pentru containerul de butoane (Desktop: Side-by-side) */
+.hero-cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* Stilul de bază pentru butonul secundar (mutat din inline) */
+.hero-cta-buttons .hero-secondary-cta {
+  background: #4a4a4a;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
+  transition: all 0.3s ease;
+}
+
 .cta-button {
   background: linear-gradient(135deg, #ff6b35 0%, #d73027 100%);
   border: none;
@@ -342,9 +358,20 @@ body {
     margin-bottom: 2rem;
   }
   
-  .cta-button {
-    font-size: 1rem;
-    padding: 0.875rem 2rem;
+  /* Stivuirea butoanelor pe mobil */
+  .hero-cta-buttons {
+    flex-direction: column; /* Stivuiește vertical */
+    gap: 15px; /* Spațiu redus între ele */
+    align-items: stretch; /* Întinde butoanele */
+  }
+
+  /* Mărirea butoanelor pe mobil */
+  .hero-cta-buttons a {
+    width: 90%; /* Ocupă aproape toată lățimea disponibilă */
+    max-width: 380px; /* Limită maximă pentru a nu fi prea late pe tablete */
+    margin: 0 auto; /* Centrează butoanele */
+    padding: 1.3rem 2.5rem; /* Mărire padding (buton mai mare) */
+    font-size: 1.3rem; /* Font mai mare */
   }
   
   .nav-container {
@@ -353,6 +380,10 @@ body {
   
   .hero {
     padding: 1rem;
+  }
+  
+  .card-container {
+    flex-direction: column;
   }
 }
 
@@ -394,105 +425,8 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #ff8c42, #ff6b35);
 }
-/* Training Section Styles */
-.training-section {
-  padding: 80px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
 
-.training-title {
-  text-align: center;
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 5rem;
-  background: linear-gradient(135deg, #ffffff 0%, #ff6b35 50%, #f7931e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
-}
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 32px;
-}
-
-.training-card {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 300px; /* Allows cards to grow and shrink */
-  background: #111;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 3rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  min-height: 280px;
-}
-
-.training-card:hover {
-  transform: translateY(-8px);
-  background: #151515;
-  border-color: #ff6b35;
-  box-shadow: 0 12px 30px rgba(255, 107, 53, 0.2);
-}
-
-.card-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #ff6b35;
-}
-
-.card-description {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-  flex-grow: 1; /* Pushes the button to the bottom */
-}
-
-.card-button {
-  margin-top: 2rem;
-  align-self: flex-start;
-  padding: 0.8rem 2rem;
-  background: linear-gradient(135deg, #ff6b35 0%, #d73027 100%);
-  font-size: 1rem;
-}
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-  .training-section {
-    padding: 60px 20px;
-  }
-
-  .card-container {
-    flex-direction: column;
-  }
-}
-/* Custom styles for the cookie banner */
-.CookieConsent { /* This is the class for the main banner container */
-  font-family: 'Inter', sans-serif;
-  padding: 15px 20px;
-}
-
-.my-cookie-accept-button {
-  background: linear-gradient(135deg, #ff6b35 0%, #d73027 100%);
-  color: white;
-  border-radius: 50px;
-  font-weight: 600;
-  padding: 10px 20px;
-}
-
-.my-cookie-decline-button {
-  background: #4a4a4a;
-  color: white;
-  border-radius: 50px;
-  font-weight: 600;
-  padding: 10px 20px;
-}
+/* Cookie Consent Styles */
 .CookieConsent a {
   color: #ff6b35;
   text-decoration: underline;
@@ -503,42 +437,3 @@ html {
   text-decoration: none;
   color: #f7931e;
 }
-/* src/App.css */
-
-/* ... (cod existent) ... */
-
-/* Stilul de bază pentru butonul secundar (mutat din inline) */
-.hero-cta-buttons .hero-secondary-cta {
-  background: #4a4a4a;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  text-shadow: none;
-  transition: all 0.3s ease;
-}
-
-/* Stilul pentru desktop (implicit: side-by-side) */
-.hero-cta-buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-/* Responsive Design Overrides (Mobile: Stacked and Larger) */
-@media (max-width: 768px) {
-  /* Stivuirea butoanelor */
-  .hero-cta-buttons {
-    flex-direction: column; /* Stivuiește vertical */
-    gap: 15px; /* Spațiu redus între ele */
-    align-items: stretch; /* Întinde butoanele */
-  }
-
-  /* Mărirea butoanelor pentru mobil */
-  .hero-cta-buttons a {
-    width: 90%; /* Ocupă aproape toată lățimea disponibilă */
-    max-width: 380px; /* Limită maximă pentru a nu fi prea late pe tablete */
-    margin: 0 auto; /* Centrează butoanele */
-    padding: 1.3rem 2.5rem; /* Mărire padding (buton mai mare) */
-    font-size: 1.3rem; /* Font mai mare */
-  }
-}
-/* ... (restul codului existent) ... */
