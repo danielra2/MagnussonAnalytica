@@ -118,7 +118,8 @@ function App() {
       <nav className="navbar">
         <div className="nav-container">
           <div className="logo">
-            <a href="/#" className="nav-link"><img src={newLogo} alt="Magnusson Analytica Logo" style={{ height: '40px' }} /></a>
+            {/* MODIFICARE AICI: Am schimbat alt="Magnusson Analytica Logo" la alt="Magnusson Analytica" */}
+            <a href="/#" className="nav-link"><img src={newLogo} alt="Magnusson Analytica" style={{ height: '40px' }} /></a>
           </div>
           <ul className="nav-menu">
             <li className="nav-item"><a href="/#" className="nav-link">Home</a></li>
