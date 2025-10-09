@@ -30,6 +30,8 @@ import PodcastPage from './components/PodcastPage/PodcastPage';
 import PrivacyPolicyPage from './components/PrivacyPolicyPage/PrivacyPolicyPage.jsx';
 import YouTubeSection from './components/HomePage/YouTubeSection';
 import CoursesSection from './components/HomePage/CoursesSection';
+import AmplitudeCoursesPage from './components/AmplitudeCoursesPage/AmplitudeCoursesPage.jsx';
+import { trackButtonClick } from './utils/amplitudeTracker.js'; // Calea corectă și completă
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,23 +78,28 @@ function App() {
   const HomePageContent = () => (
     <>
       <main className="hero" id="top">
-        <div className="particles">
-          {[...Array(50)].map((_, i) => (
-            <div key={i} className="particle" style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 3}s`, animationDuration: `${3 + Math.random() * 4}s` }}></div>
-          ))}
-        </div>
-        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0.1, zIndex: 1, pointerEvents: 'none', paddingTop: '20vh' }}>
-          <AnimatedChart />
-        </div>
+        {/* ... (cod existent) ... */}
         <div className="hero-content">
           <h1 className="hero-title">Unlock the power of your data</h1>
           <div className="hero-cta-buttons">
-            <a href="#contact-form" className="cta-button hero-main-cta">Book a Free Audit</a>
-            <a href="https://calendar.notion.so/meet/alexandermagnusson/0az364lq3" className="cta-button hero-secondary-cta">
+            <a 
+              href="#contact-form" 
+              className="cta-button hero-main-cta"
+              onClick={() => trackButtonClick('Book Free Audit', 'Homepage Hero Section')} // AICI SE FACE TRACKING-UL
+            >
+              Book a Free Audit
+            </a>
+            <a 
+              href="https://calendar.notion.so/meet/alexandermagnusson/0az364lq3" 
+              className="cta-button hero-secondary-cta"
+              onClick={() => trackButtonClick('Book Free Call - Notion', 'Homepage Hero Section')} // AICI SE FACE TRACKING-UL
+              style={{ background: '#4a4a4a', boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)', textShadow: 'none', transition: 'all 0.3s ease' }}
+            >
               Book a Free Call
             </a>
           </div>
         </div>
+      
       </main>
       <ServicesSection id="services-section" />
       <AboutSection id="about-section" />
@@ -118,7 +125,6 @@ function App() {
       <nav className="navbar">
         <div className="nav-container">
           <div className="logo">
-            {/* MODIFICARE AICI: Am schimbat alt="Magnusson Analytica Logo" la alt="Magnusson Analytica" */}
             <a href="/#" className="nav-link"><img src={newLogo} alt="Magnusson Analytica" style={{ height: '40px' }} /></a>
           </div>
           <ul className="nav-menu">
@@ -144,6 +150,7 @@ function App() {
         <Route path="/blogs/:id" element={<BlogPage blogPosts={blogPosts} />} />
         <Route path="/podcasts" element={<PodcastPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/amplitude-courses" element={<AmplitudeCoursesPage />} />
       </Routes>
       <Footer />
       <CookieConsent

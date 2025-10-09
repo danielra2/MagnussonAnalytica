@@ -65,7 +65,7 @@ export default function ContactForm() {
       <section className="contact-section" id="contact-form">
         <h2 className="contact-title">Thank You!</h2>
         <div className="contact-form" style={{ textAlign: 'center', padding: '40px' }}>
-          <p style={{ fontSize: '1.4rem', color: '#00d4aa', fontWeight: '600' }}>
+          <p style={{ fontSize: '1.4rem', color: '#ff6b35', fontWeight: '600' }}>
             We received your message and will be in touch soon.
           </p>
           <p style={{ color: 'rgba(255, 255, 255, 0.8)', marginTop: '10px' }}>

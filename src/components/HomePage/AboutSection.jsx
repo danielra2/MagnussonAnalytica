@@ -3,15 +3,22 @@
 import React from 'react';
 import './AboutSection.css';
 import { FaPhoneAlt, FaLaptopCode, FaChartLine } from 'react-icons/fa';
+import { trackButtonClick } from '../../utils/amplitudeTracker'; // Importăm funcția de tracking
 
 export default function AboutSection() {
+  
+  // Funcție handler pentru click
+  const handleCtaClick = () => {
+    trackButtonClick('Let\'s Chat - About Section', 'Homepage About Section');
+  };
+
   return (
     <section className="about-section" id="about-section">
       <div className="about-content-container">
         <h2 className="about-main-title">Product Growth, Simplified.</h2>
         <div className="about-partner-text">
           <p className="partner-text-base">
-            We are proud to be an <span className="highlight-orange">Official Amplitude Partner</span>, specializing in a wide range of
+            We are proud to be an <span className="highlight-orange">official Amplitude Partner</span>, specializing in a wide range of
             services including implementation, strategic support, and optimization.
           </p>
         </div>
@@ -58,7 +65,12 @@ export default function AboutSection() {
         </div>
         <div className="about-cta-container">
           <a href="/#contact-form">
-            <button className="cta-button">Let's Chat</button>
+            <button 
+              className="cta-button"
+              onClick={handleCtaClick} // NOU: Se adaugă tracking
+            >
+              Let's Chat
+            </button>
           </a>
         </div>
       </div>
