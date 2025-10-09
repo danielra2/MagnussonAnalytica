@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import './ContactForm.css';
+import { trackEvent } from '../../utils/amplitudeTracker'; // Importăm funcția de tracking general
 
-// *** ID-URILE EXTRASA DIN CODUL EMBED DE LA HUBSPOT ***
+// ID-URILE EXTRASA DIN CODUL EMBED DE LA HUBSPOT 
 const PORTAL_ID = '48960057'; 
 const FORM_GUID = 'eb984e32-fea6-425f-b373-f5952fef6a62';
 // ******************************************************
@@ -27,7 +28,6 @@ export default function ContactForm() {
         { name: 'firstname', value: formData.get('name') },
         { name: 'lastname', value: formData.get('surname') },
         { name: 'email', value: formData.get('email') },
-        // Presupunând că doriți să mapați câmpul 'message' la un câmp 'message' sau 'content' în HubSpot
         { name: 'message', value: formData.get('message') },
       ],
       context: {
@@ -46,10 +46,16 @@ export default function ContactForm() {
       });
 
       if (response.ok) {
+        // --- NOU: TRACKING SUCCES DUPĂ TRIMITEREA SPRE HUBSPOT ---
+        trackEvent('Form Submitted', {
+            form_name: 'Let\'s Have a Chat',
+            form_guid: FORM_GUID,
+        });
+        // -----------------------------------------------------
+
         setStatus('');
         setIsSubmitted(true); // Ascunde formularul și afișează mesajul de succes
       } else {
-        // Tratează erorile specifice din API-ul HubSpot
         const errorData = await response.json();
         console.error('HubSpot Error:', errorData);
         setStatus('Error: Failed to submit form. Please try again.');
@@ -65,7 +71,11 @@ export default function ContactForm() {
       <section className="contact-section" id="contact-form">
         <h2 className="contact-title">Thank You!</h2>
         <div className="contact-form" style={{ textAlign: 'center', padding: '40px' }}>
-          <p style={{ fontSize: '1.4rem', color: '#ff6b35', fontWeight: '600' }}>
+          <p style={{ 
+              fontSize: '1.4rem', 
+              color: '#ff6b35', // Culoare Portocalie
+              fontWeight: '600' 
+            }}>
             We received your message and will be in touch soon.
           </p>
           <p style={{ color: 'rgba(255, 255, 255, 0.8)', marginTop: '10px' }}>

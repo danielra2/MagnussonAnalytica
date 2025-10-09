@@ -3,8 +3,18 @@
 import React from 'react';
 import './Footer.css';
 import { FaInstagram, FaLinkedin, FaFacebook } from 'react-icons/fa';
+import { trackEvent } from '../../utils/amplitudeTracker'; // Importăm funcția de tracking
 
 export default function Footer() {
+  
+  // Funcție generică pentru tracking-ul rețelelor sociale
+  const trackSocialClick = (platform) => {
+    trackEvent('Social Link Clicked', {
+      platform: platform,
+      location: 'Footer Section',
+    });
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -34,13 +44,31 @@ export default function Footer() {
         </div>
 
         <div className="footer-socials">
-          <a href="https://www.instagram.com/magnussonanalytica_hq/" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a 
+            href="https://www.instagram.com/magnussonanalytica_hq/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="social-icon"
+            onClick={() => trackSocialClick('Instagram')} // NOU: Tracking
+          >
             <FaInstagram />
           </a>
-          <a href="https://www.linkedin.com/company/magnusson-analytica/?originalSubdomain=uk" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a 
+            href="https://www.linkedin.com/company/magnusson-analytica/?originalSubdomain=uk" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="social-icon"
+            onClick={() => trackSocialClick('LinkedIn')} // NOU: Tracking
+          >
             <FaLinkedin />
           </a>
-          <a href="https://www.facebook.com/people/Magnusson-Analytica/61556230900777/" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a 
+            href="https://www.facebook.com/people/Magnusson-Analytica/61556230900777/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="social-icon"
+            onClick={() => trackSocialClick('Facebook')} // NOU: Tracking
+          >
             <FaFacebook />
           </a>
         </div>
