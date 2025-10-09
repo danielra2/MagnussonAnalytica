@@ -3,7 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import CookieConsent from "react-cookie-consent";
 import './App.css';
 import LogoLoop from './components/HomePage/LogoLoop';
-import AnimatedChart from './components/HomePage/AnimatedChart';
+import AnimatedChart from './components/HomePage/AnimatedChart'; // CRITIC: Asigură-te că acest import există
 import ContactForm from './components/HomePage/ContactForm';
 import TeamSection from './components/HomePage/TeamSection';
 import ServicesSection from './components/HomePage/ServicesSection';
@@ -31,7 +31,7 @@ import PrivacyPolicyPage from './components/PrivacyPolicyPage/PrivacyPolicyPage.
 import YouTubeSection from './components/HomePage/YouTubeSection';
 import CoursesSection from './components/HomePage/CoursesSection';
 import AmplitudeCoursesPage from './components/AmplitudeCoursesPage/AmplitudeCoursesPage.jsx';
-import { trackButtonClick } from './utils/amplitudeTracker.js'; // Calea corectă și completă
+import { trackButtonClick } from './utils/amplitudeTracker'; 
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -78,28 +78,37 @@ function App() {
   const HomePageContent = () => (
     <>
       <main className="hero" id="top">
-        {/* ... (cod existent) ... */}
+        {/* BLOC ANIMATIE PARTICULE (BULE) */}
+        <div className="particles">
+          {[...Array(50)].map((_, i) => (
+            <div key={i} className="particle" style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 3}s`, animationDuration: `${3 + Math.random() * 4}s` }}></div>
+          ))}
+        </div>
+        {/* BLOC ANIMATIE CHART (GRAFIC) */}
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0.1, zIndex: 1, pointerEvents: 'none', paddingTop: '20vh' }}>
+          <AnimatedChart />
+        </div>
+        
         <div className="hero-content">
           <h1 className="hero-title">Unlock the power of your data</h1>
           <div className="hero-cta-buttons">
             <a 
               href="#contact-form" 
               className="cta-button hero-main-cta"
-              onClick={() => trackButtonClick('Book Free Audit', 'Homepage Hero Section')} // AICI SE FACE TRACKING-UL
+              onClick={() => trackButtonClick('Book Free Audit', 'Homepage Hero Section')} 
             >
               Book a Free Audit
             </a>
             <a 
               href="https://calendar.notion.so/meet/alexandermagnusson/0az364lq3" 
               className="cta-button hero-secondary-cta"
-              onClick={() => trackButtonClick('Book Free Call - Notion', 'Homepage Hero Section')} // AICI SE FACE TRACKING-UL
+              onClick={() => trackButtonClick('Book Free Call - Notion', 'Homepage Hero Section')}
               style={{ background: '#4a4a4a', boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)', textShadow: 'none', transition: 'all 0.3s ease' }}
             >
               Book a Free Call
             </a>
           </div>
         </div>
-      
       </main>
       <ServicesSection id="services-section" />
       <AboutSection id="about-section" />
