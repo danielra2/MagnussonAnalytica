@@ -1,3 +1,6 @@
+
+// src/main.jsx
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'; 
@@ -14,8 +17,9 @@ amplitude.getInstance().init(AMPLITUDE_API_KEY, null, {
   includeUtm: true,      
   includeReferrer: true, 
   trackingOptions: {
-    // NOU: Activăm Page Views automat. Vom trimite evenimentul standard Amplitude.
-    pageViews: true, 
+    // CRITIC: Rămâne 'false' pentru a preveni dublarea evenimentelor.
+    // Logică de tracking este acum în ScrollToTop.jsx.
+    pageViews: false, 
   }
 });
 
