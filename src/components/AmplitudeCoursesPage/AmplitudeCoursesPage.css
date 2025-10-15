@@ -28,7 +28,7 @@
 
 .courses-pricing-grid {
     display: grid;
-    /* Lățimea minimă redusă de la 300px la 280px */
+    /* Lățimea minimă redusă la 280px */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     align-items: stretch;
@@ -40,7 +40,7 @@
     border-radius: 12px;
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    /* MODIFICARE: Padding vertical și orizontal redus de la 30px 20px la 25px 20px */
+    /* Padding redus */
     padding: 25px 20px; 
     display: flex;
     flex-direction: column;
@@ -89,7 +89,6 @@
 }
 
 .card-header {
-    /* Spațiu redus la 20px */
     margin-bottom: 20px;
 }
 
@@ -121,14 +120,12 @@
     list-style: none;
     padding: 0;
     text-align: left;
-    /* Spațiu redus la 20px */
     margin-bottom: 20px; 
     flex-grow: 1; 
 }
 
 .course-features li {
     color: rgba(255, 255, 255, 0.9);
-    /* Spațiu redus de la 15px la 10px */
     margin-bottom: 10px; 
     font-size: 1rem;
     display: flex;
@@ -157,9 +154,13 @@
 }
 
 .course-cta-button {
+    /* NOU: Reguli pentru a forța link-ul să fie clicabil */
     width: 100%;
     padding: 1rem;
     font-size: 1.1rem;
+    z-index: 10; /* Asigură că Link-ul este deasupra textului și umbrelor */
+    position: relative; /* Necesar pentru z-index */
+    display: block; /* Necesar pentru a ocupa toată lățimea */
 }
 
 /* Responsive */

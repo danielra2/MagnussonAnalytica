@@ -1,8 +1,10 @@
 // src/components/AmplitudeCoursesPage/AmplitudeCoursesPage.jsx
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './AmplitudeCoursesPage.css';
 import { FaCheckCircle, FaStar, FaClock } from 'react-icons/fa';
+// Tracking-ul a fost eliminat pentru a nu bloca link-ul
 
 const coursesData = [
   {
@@ -49,6 +51,7 @@ const coursesData = [
 ];
 
 export default function AmplitudeCoursesPage() {
+    
   return (
     <div className="amplitude-page-container">
       <h1 className="amplitude-main-title">Amplitude Certified Courses</h1>
@@ -78,10 +81,14 @@ export default function AmplitudeCoursesPage() {
 
             <div className="card-footer">
                 <p className="course-price">{course.price}</p>
-                {/* Butonul "Get a Quote" va avea acum stilul CTA implicit */}
-                <button className="cta-button course-cta-button">
+                
+                {/* AICI ESTE REDIRECȚIONAREA: către pagina /enrollment-embed */}
+                <Link 
+                    to={`/enrollment-embed?course=${encodeURIComponent(course.title)}`}
+                    className="cta-button course-cta-button"
+                > 
                     {course.price === 'Contact Us' ? 'Get a Quote' : 'Enroll Now'}
-                </button>
+                </Link>
             </div>
           </div>
         ))}

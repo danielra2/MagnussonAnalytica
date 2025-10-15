@@ -3,7 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import CookieConsent from "react-cookie-consent";
 import './App.css';
 import LogoLoop from './components/HomePage/LogoLoop';
-import AnimatedChart from './components/HomePage/AnimatedChart'; // CRITIC: Asigură-te că acest import există
+import AnimatedChart from './components/HomePage/AnimatedChart';
 import ContactForm from './components/HomePage/ContactForm';
 import TeamSection from './components/HomePage/TeamSection';
 import ServicesSection from './components/HomePage/ServicesSection';
@@ -31,6 +31,7 @@ import PrivacyPolicyPage from './components/PrivacyPolicyPage/PrivacyPolicyPage.
 import YouTubeSection from './components/HomePage/YouTubeSection';
 import CoursesSection from './components/HomePage/CoursesSection';
 import AmplitudeCoursesPage from './components/AmplitudeCoursesPage/AmplitudeCoursesPage.jsx';
+import EnrollmentEmbedPage from './components/EnrollmentEmbedPage/EnrollmentEmbedPage.jsx'; // Import formular embed
 import { trackButtonClick } from './utils/amplitudeTracker'; 
 
 function App() {
@@ -78,13 +79,13 @@ function App() {
   const HomePageContent = () => (
     <>
       <main className="hero" id="top">
-        {/* BLOC ANIMATIE PARTICULE (BULE) */}
+        {/* BLOC ANIMATIE PARTICULE */}
         <div className="particles">
           {[...Array(50)].map((_, i) => (
             <div key={i} className="particle" style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 3}s`, animationDuration: `${3 + Math.random() * 4}s` }}></div>
           ))}
         </div>
-        {/* BLOC ANIMATIE CHART (GRAFIC) */}
+        {/* BLOC ANIMATIE CHART */}
         <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0.1, zIndex: 1, pointerEvents: 'none', paddingTop: '20vh' }}>
           <AnimatedChart />
         </div>
@@ -160,6 +161,7 @@ function App() {
         <Route path="/podcasts" element={<PodcastPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/amplitude-courses" element={<AmplitudeCoursesPage />} />
+        <Route path="/enrollment-embed" element={<EnrollmentEmbedPage />} /> {/* RUTA FORMARULUI DE REZERVARE */}
       </Routes>
       <Footer />
       <CookieConsent
