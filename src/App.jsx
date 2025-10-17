@@ -135,13 +135,13 @@ function App() {
       <nav className="navbar">
         <div className="nav-container">
           <div className="logo">
-            <a href="/#" className="nav-link"><img src={newLogo} alt="Magnusson Analytica" style={{ height: '40px' }} /></a>
+            <Link to="/" className="nav-link"><img src={newLogo} alt="Magnusson Analytica" style={{ height: '40px' }} /></Link>
           </div>
           <ul className="nav-menu">
             <li className="nav-item"><a href="/#" className="nav-link">Home</a></li>
             <li className="nav-item"><a href="/#about-section" className="nav-link">About us</a></li>
-            <li className="nav-item"><a href="/#podcast-section" className="nav-link">Podcasts</a></li>
-            <li className="nav-item"><a href="/#blog-section" className="nav-link">Blog</a></li>
+            <li className="nav-item"><Link to="/podcasts" className="nav-link">Podcasts</Link></li>
+            <li className="nav-item"><Link to="/blogs" className="nav-link">Blog</Link></li>
             <li className="nav-item"><a href="/#contact-form" className="nav-link">Contact Us</a></li>
           </ul>
           <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}><span></span><span></span><span></span></div>
@@ -149,8 +149,8 @@ function App() {
         <div className={`mobile-menu ${isMenuOpen ? 'active' : ''}`}>
           <a href="/#" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Home</a>
           <a href="/#about-section" className="mobile-link" onClick={() => setIsMenuOpen(false)}>About us</a>
-          <a href="/#podcast-section" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Podcasts</a>
-          <a href="/#blog-section" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Blog</a>
+          <Link to="/podcasts" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Podcasts</Link>
+          <Link to="/blogs" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Blog</Link>
           <a href="/#contact-form" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Contact Us</a>
         </div>
       </nav>

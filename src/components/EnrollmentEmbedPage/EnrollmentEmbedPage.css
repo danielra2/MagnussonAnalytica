@@ -21,69 +21,17 @@
 }
 
 .enrollment-embed-subtitle {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 3rem;
-}
-
-.hubspot-form-wrapper {
-    max-width: 550px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #1a1a1a;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: left;
-    position: relative; /* Asigură că z-index-ul funcționează corect */
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 2.5rem;
 }
 
 .enrollment-note {
     margin-top: 30px;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6); 
+    font-style: italic;
 }
 
-/* REGULI CRITICE PENTRU INTERACȚIUNE ȘI VIZIBILITATE */
-.hubspot-form-wrapper form label {
-    color: rgba(255, 255, 255, 0.9) !important;
-    font-weight: 600 !important;
-}
-
-.hubspot-form-wrapper form input[type="text"],
-.hubspot-form-wrapper form input[type="email"],
-.hubspot-form-wrapper form textarea {
-    /* Stil pentru câmpurile de text */
-    background-color: #282828 !important; /* Fundal închis */
-    color: #ffffff !important; /* Text alb */
-    border: 1px solid #444 !important; /* Margine vizibilă */
-    padding: 10px !important;
-    border-radius: 6px !important;
-    width: 100% !important;
-    box-shadow: none !important;
-    
-    /* SOLUȚIE PENTRU INTERACȚIUNEA BLOCATĂ */
-    pointer-events: auto !important;
-    z-index: 9999 !important; 
-    position: relative !important;
-}
-
-.hubspot-form-wrapper form textarea {
-    resize: vertical !important;
-}
-
-/* Stilul pentru butonul Submit */
-.hubspot-form-wrapper input[type="submit"] {
-    background: linear-gradient(135deg, #ff6b35 0%, #d73027 100%) !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 50px !important;
-    font-size: 1.1rem !important;
-    font-weight: 600 !important;
-    padding: 10px 20px !important;
-    cursor: pointer !important;
-    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4) !important;
-    transition: all 0.3s !important;
-    width: auto !important; 
-}
+/* The form itself is now styled by EnrollmentForm.css */
