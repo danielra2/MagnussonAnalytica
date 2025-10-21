@@ -1,4 +1,3 @@
-
 // src/main.jsx
 
 import { StrictMode } from 'react'
@@ -17,10 +16,13 @@ amplitude.getInstance().init(AMPLITUDE_API_KEY, null, {
   includeUtm: true,      
   includeReferrer: true, 
   trackingOptions: {
-    // CRITIC: Rămâne 'false' pentru a preveni dublarea evenimentelor.
-    // Logică de tracking este acum în ScrollToTop.jsx.
+    // Păstrează 'false' pentru Page Views, deoarece este gestionat manual de ScrollToTop.jsx, 
+    // prevenind astfel dublarea evenimentelor. Autocapture pentru click-uri/formulare rămâne activat implicit.
     pageViews: false, 
-  }
+  },
+  // NOU: Adăugăm opțiunea explicită pentru a ne asigura că evenimentele autocapturate sunt logate corect,
+  // combinându-le cu evenimentele custom.
+  logAttributedEvent: true,
 });
 
 createRoot(document.getElementById('root')).render(
