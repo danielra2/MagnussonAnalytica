@@ -37,8 +37,8 @@ export default function Footer() {
           <div className="footer-section footer-contact">
             <h4 className="footer-links-title">Contact</h4>
             <p className="footer-contact-info">
-              Email: info@magnusson.com<br />
-              Phone: +40 700 000 000
+              Email: alexander.magnusson@magnussonanalytica.com<br />
+              Phone: +44 74757 37792
             </p>
           </div>
         </div>
