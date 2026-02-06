@@ -1,82 +1,64 @@
 // src/components/EnrollmentEmbedPage/EnrollmentForm.jsx
-
 import React, { useState } from 'react';
 import './EnrollmentForm.css';
-import { trackEvent } from '../../utils/amplitudeTracker'; 
+import { trackEvent } from '../../utils/amplitudeTracker';
+import emailjs from '@emailjs/browser';
 
-// --- CONFIGURATION FOR HUBSPOT ---
-// These are the IDs for the Enrollment Form (Adjust as necessary if HubSpot IDs change)
-const PORTAL_ID = '48960057'; 
-const FORM_GUID = '283e2a2e-66c5-4885-a88f-f93e43d92302'; // Using the GUID from the original embed code
-// ----------------------------------
+// --- EMAILJS CONFIGURATION ---
+const SERVICE_ID = 'service_e2zy5ws'; 
+const PUBLIC_KEY = 'zoMIuFPodloDD3Z0n';
+const USER_ENROLL_TEMPLATE_ID = 'template_p55ow6d';
+const INTERNAL_ENROLL_ALERT_ID = 'template_7li5dxz';
+// ------------------------------
 
 export default function EnrollmentForm({ courseTitle }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [status, setStatus] = useState('');
-  
-  const HUBSPOT_API_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setStatus('Submitting...');
+    setStatus('Processing...');
 
     const form = event.target;
-    const formData = new FormData(form);
+    const userEmail = form.email.value;
+    const userName = form.name.value;
+    
+    const userParams = {
+      course_title: courseTitle,
+      to_name: userName,
+      to_email: userEmail,
+    };
 
-    // Mapează câmpurile formularului la structura API-ului HubSpot
-    const submissionData = {
-      fields: [
-        { name: 'email', value: formData.get('email') },
-        { name: 'name', value: formData.get('name') },
-        // Adaugă un câmp ascuns pentru titlul cursului
-        { name: 'course_title', value: courseTitle }, 
-      ],
-      context: {
-          pageUri: window.location.href,
-          pageName: document.title,
-      }
+    const internalParams = {
+      course_title: courseTitle,
+      user_name: userName,
+      user_email: userEmail,
+      company: form.company.value || 'N/A',
+      // COMMA SEPARATED LIST
+      team_emails: 'horatiu@magnussonanalytica.com, daniel.radoi@magnussonanalytica.com, alexander.magnusson@magnussonanalytica.com'
     };
     
     try {
-      const response = await fetch(HUBSPOT_API_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(submissionData),
-      });
+      await Promise.all([
+        emailjs.send(SERVICE_ID, USER_ENROLL_TEMPLATE_ID, userParams, PUBLIC_KEY),
+        emailjs.send(SERVICE_ID, INTERNAL_ENROLL_ALERT_ID, internalParams, PUBLIC_KEY)
+      ]);
 
-      if (response.ok) {
-        trackEvent('Enrollment Form Submitted', {
-            form_name: 'Amplitude Course Enrollment',
-            course_title: courseTitle,
-        });
-
-        setStatus('');
-        setIsSubmitted(true);
-      } else {
-        const errorData = await response.json();
-        console.error('HubSpot Error:', errorData);
-        setStatus('Error: Failed to submit form. Please try again.');
-      }
+      trackEvent('Enrollment Form Submitted', { course_title: courseTitle });
+      setStatus('');
+      setIsSubmitted(true);
     } catch (error) {
-      console.error('Network Error:', error);
-      setStatus('Error: Network problem during submission.');
+      console.error('Enrollment Error:', error);
+      setStatus('Error: Check EmailJS configuration.');
     }
   };
 
   if (isSubmitted) {
     return (
       <div className="enrollment-form-container" style={{ textAlign: 'center', padding: '40px' }}>
-        <p style={{ 
-            fontSize: '1.4rem', 
-            color: '#00d4aa', // Success color
-            fontWeight: '600' 
-          }}>
-          Success! Your enrollment for "{courseTitle}" has been received!
-        </p>
+        <p style={{ fontSize: '1.4rem', color: '#00d4aa', fontWeight: '600' }}>Enrollment Successful!</p>
         <p style={{ color: 'rgba(255, 255, 255, 0.8)', marginTop: '10px' }}>
-          A member of the Magnusson Analytica team will contact you shortly to confirm details.
+                      MA team will be in touch soon.
         </p>
       </div>
     );
@@ -84,37 +66,13 @@ export default function EnrollmentForm({ courseTitle }) {
 
   return (
     <form className="enrollment-form-container" onSubmit={handleSubmit}>
-      <p style={{ color: 'rgba(255, 255, 255, 0.8)', marginBottom: '10px' }}>
-        Please fill out the form below to secure your spot in **{courseTitle}**.
-      </p>
-
-      {/* Câmp Email */}
-      <div className="form-group">
-        <label htmlFor="email">Email*</label>
-        <input type="email" id="email" name="email" placeholder="Your Email Address" required />
-      </div>
-
-      {/* Câmp Name */}
-      <div className="form-group">
-        <label htmlFor="name">Full Name*</label>
-        <input type="text" id="name" name="name" placeholder="Your Full Name" required />
-      </div>
-
-      {/* Câmp Company/Role (Opțional, pentru context) */}
-      <div className="form-group">
-        <label htmlFor="company">Company / Role (Optional)</label>
-        <input type="text" id="company" name="company" placeholder="Company Name or Role" />
-      </div>
-
-      <button type="submit" className="cta-button form-submit-button" disabled={status === 'Submitting...'}>
-        {status === 'Submitting...' ? 'Submitting...' : 'Enroll Now'}
+      <div className="form-group"><label htmlFor="email">Email Address*</label><input type="email" name="email" required /></div>
+      <div className="form-group"><label htmlFor="name">Full Name*</label><input type="text" name="name" required /></div>
+      <div className="form-group"><label htmlFor="company">Company / Role (Optional)</label><input type="text" name="company" /></div>
+      <button type="submit" className="cta-button form-submit-button" disabled={status === 'Processing...'}>
+        {status === 'Processing...' ? 'Processing...' : 'Confirm Enrollment'}
       </button>
-      
-      {status && status !== 'Submitting...' && (
-          <p style={{ marginTop: '20px', textAlign: 'center', color: status.startsWith('Error') ? '#ff6b35' : '#00d4aa' }}>
-              {status}
-          </p>
-      )}
+      {status && <p style={{ marginTop: '20px', textAlign: 'center', color: '#ff6b35' }}>{status}</p>}
     </form>
   );
 }
