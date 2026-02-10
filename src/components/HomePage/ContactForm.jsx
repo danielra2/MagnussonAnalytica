@@ -38,7 +38,7 @@ export default function ContactForm() {
       message: form.message.value,
       page_uri: window.location.href,
       // COMMA SEPARATED LIST FOR MULTIPLE RECIPIENTS
-      team_emails: 'horatiu@magnussonanalytica.com, daniel.radoi@magnussonanalytica.com, alexander.magnusson@magnussonanalytica.com'
+      team_emails: 'horatiu@magnussonanalytica.com, daniel.radoi@magnussonanalytica.com, alexander.magnusson@magnussonanalytica.com, arran@magnussonanalytica.com'
     };
     
     try {

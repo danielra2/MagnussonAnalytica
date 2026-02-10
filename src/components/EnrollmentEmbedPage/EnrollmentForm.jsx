@@ -35,7 +35,7 @@ export default function EnrollmentForm({ courseTitle }) {
       user_email: userEmail,
       company: form.company.value || 'N/A',
       // COMMA SEPARATED LIST
-      team_emails: 'horatiu@magnussonanalytica.com, daniel.radoi@magnussonanalytica.com, alexander.magnusson@magnussonanalytica.com'
+      team_emails: 'horatiu@magnussonanalytica.com, daniel.radoi@magnussonanalytica.com, alexander.magnusson@magnussonanalytica.com, arran@magnussonanalytica.com'
     };
     
     try {
