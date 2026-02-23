@@ -32,6 +32,10 @@ import YouTubeSection from './components/HomePage/YouTubeSection';
 import CoursesSection from './components/HomePage/CoursesSection';
 import AmplitudeCoursesPage from './components/AmplitudeCoursesPage/AmplitudeCoursesPage.jsx';
 import EnrollmentEmbedPage from './components/EnrollmentEmbedPage/EnrollmentEmbedPage.jsx'; // Import formular embed
+import CareersPage from './components/CareersPage/CareersPage.jsx';
+import EngineeringPage from './components/CareersPage/EngineeringPage.jsx';
+import BusinessInternshipPage from './components/CareersPage/BusinessInternshipPage.jsx';
+import MarketingPage from './components/CareersPage/MarketingPage.jsx';
 import { trackButtonClick } from './utils/amplitudeTracker'; 
 
 function App() {
@@ -142,6 +146,7 @@ function App() {
             <li className="nav-item"><a href="/#about-section" className="nav-link">About us</a></li>
             <li className="nav-item"><Link to="/podcasts" className="nav-link">Podcasts</Link></li>
             <li className="nav-item"><Link to="/blogs" className="nav-link">Blog</Link></li>
+            <li className="nav-item"><Link to="/careers" className="nav-link">Careers</Link></li>
             <li className="nav-item"><a href="/#contact-form" className="nav-link">Contact Us</a></li>
           </ul>
           <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}><span></span><span></span><span></span></div>
@@ -151,6 +156,7 @@ function App() {
           <a href="/#about-section" className="mobile-link" onClick={() => setIsMenuOpen(false)}>About us</a>
           <Link to="/podcasts" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Podcasts</Link>
           <Link to="/blogs" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Blog</Link>
+          <Link to="/careers" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Careers</Link>
           <a href="/#contact-form" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Contact Us</a>
         </div>
       </nav>
@@ -162,6 +168,10 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/amplitude-courses" element={<AmplitudeCoursesPage />} />
         <Route path="/enrollment-embed" element={<EnrollmentEmbedPage />} /> {/* RUTA FORMARULUI DE REZERVARE */}
+        <Route path="/careers" element={<CareersPage />} />
+        <Route path="/careers/engineering" element={<EngineeringPage />} />
+        <Route path="/careers/business-internship" element={<BusinessInternshipPage />} />
+        <Route path="/careers/marketing" element={<MarketingPage />} />
       </Routes>
       <Footer />
       <CookieConsent

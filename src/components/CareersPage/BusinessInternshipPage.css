@@ -1,0 +1,230 @@
+.business-page {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  color: white;
+  padding-top: 80px;
+}
+
+.business-hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+  background: linear-gradient(135deg, rgba(100, 149, 237, 0.1) 0%, rgba(70, 130, 180, 0.1) 100%);
+  position: relative;
+}
+
+.back-link {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+  font-size: 1rem;
+}
+
+.back-link:hover {
+  color: #6495ed;
+}
+
+.business-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #6495ed 0%, #4682b4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.job-meta-header {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.meta-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+}
+
+.business-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.job-details {
+  margin-bottom: 60px;
+}
+
+.job-section {
+  margin-bottom: 40px;
+}
+
+.job-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #6495ed 0%, #4682b4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.job-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 15px;
+}
+
+.responsibilities-list,
+.requirements-list,
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.responsibilities-list li,
+.requirements-list li,
+.benefits-list li {
+  padding: 12px 0;
+  padding-left: 30px;
+  position: relative;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.responsibilities-list li::before,
+.requirements-list li::before,
+.benefits-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #6495ed;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.application-form-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(100, 149, 237, 0.3);
+  padding: 40px;
+  border-radius: 10px;
+  margin-top: 60px;
+}
+
+.application-form-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #6495ed 0%, #4682b4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.application-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(100, 149, 237, 0.5);
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #6495ed;
+  box-shadow: 0 0 10px rgba(100, 149, 237, 0.3);
+}
+
+.submit-btn {
+  padding: 14px 30px;
+  background: linear-gradient(135deg, #6495ed 0%, #4682b4 100%);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(100, 149, 237, 0.4);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.success-message {
+  background: rgba(100, 149, 237, 0.1);
+  border: 2px solid #6495ed;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.success-message h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #6495ed;
+}
+
+.success-message p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .business-hero h1 {
+    font-size: 2rem;
+  }
+
+  .job-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .application-form-section {
+    padding: 25px;
+  }
+
+  .application-form-section h2 {
+    font-size: 1.5rem;
+  }
+}
