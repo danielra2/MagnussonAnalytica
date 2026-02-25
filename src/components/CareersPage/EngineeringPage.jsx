@@ -53,6 +53,7 @@ ${formData.coverLetter}
           <div className="job-meta-header">
             <span className="meta-item">🎓 Internship</span>
             <span className="meta-item">🏢 Engineering</span>
+            <span className="meta-item">📍 Sibiu</span>
           </div>
         </div>
 
@@ -66,21 +67,24 @@ ${formData.coverLetter}
                 and learn from experienced professionals in the field.
               </p>
               <p>
-                As an intern, you'll be involved in building data solutions, analyzing business metrics, and
+                As an intern, you'll be involved in building data solutions, analysing business metrics, and
                 contributing to projects that help companies make data-driven decisions. This internship
                 is designed to give you practical skills that complement your university education and prepare
                 you for a successful career in data engineering and analytics.
+              </p>
+              <p>
+                This internship is conducted on-site in Sibiu.
               </p>
             </section>
 
             <section className="job-section">
               <h2>What You'll Learn & Do</h2>
               <ul className="responsibilities-list">
-                <li>Learn how to implement product analytics with Amplitude (events, properties, and governance)</li>
+                <li>Learn how to implement product analytics with Amplitude</li>
                 <li>Build and maintain dashboards to track product KPIs, funnels, and retention</li>
                 <li>Write SQL queries to validate tracking data and answer product questions</li>
                 <li>Support A/B testing analysis and experiment readouts with the team</li>
-                <li>Work with customer engagement tools like Braze and connect campaign performance to product data</li>
+                <li>Work with customer engagement tools like Braze and connect marketing campaign performance to product data</li>
                 <li>Collaborate on analytics specifications for new features and releases</li>
                 <li>Perform data quality checks to ensure clean, reliable tracking</li>
                 <li>Document tracking plans, dashboards, and insights for clients</li>
@@ -91,25 +95,24 @@ ${formData.coverLetter}
               <h2>Requirements</h2>
               <ul className="requirements-list">
                 <li>Currently enrolled in an Engineering degree program (Computer Science, Software Engineering, Data Science, or related field)</li>
-                <li>Basic programming knowledge in Python or similar language</li>
+                <li>Basic programming knowledge in JavaScript or similar language</li>
                 <li>Fundamental understanding of SQL and databases</li>
                 <li>Strong willingness to learn and adapt to new technologies</li>
                 <li>Good problem-solving and analytical thinking skills</li>
-                <li>Ability to work independently in a remote environment</li>
-                <li>Good communication skills in English</li>
+                <li>Self-motivated with the ability to work independently</li>
+                <li>English proficiency certificate at C1 or C2 level (or equivalent demonstrated fluency)</li>
                 <li>Passionate about data, analytics, and technology</li>
               </ul>
             </section>
 
             <section className="job-section">
-              <h2>Nice to Have (Bonus Points)</h2>
+              <h2>Nice to Have</h2>
               <ul className="nice-to-have-list">
                 <li>Any coursework or projects in product analytics, data analysis, or databases</li>
+                <li>Interested in client-facing consultative work</li>
                 <li>Familiarity with Amplitude, Mixpanel, GA4, or similar analytics tools</li>
-                <li>Experience building dashboards (Amplitude, Looker, Tableau, Power BI)</li>
+                <li>Experience building analytical dashboards</li>
                 <li>Basic understanding of experiment design and A/B testing</li>
-                <li>Interest in lifecycle marketing tools like Braze or Iterable</li>
-                <li>Personal projects or portfolio demonstrating analytics or tracking work</li>
                 <li>Familiarity with Git or other version control systems</li>
               </ul>
             </section>
@@ -118,7 +121,7 @@ ${formData.coverLetter}
               <h2>What We Offer</h2>
               <ul className="benefits-list">
                 <li>🎓 Hands-on learning experience with real client projects</li>
-                <li>👨‍🏫 Mentorship from experienced data engineers and analysts</li>
+                <li>👨‍🏫 Mentorship from experienced data consultants and analysts</li>
                 <li>🚀 Exposure to cutting-edge data technologies and tools</li>
                 <li>💼 Work on diverse projects across different industries</li>
                 <li>📜 Internship completion certificate and reference letter</li>

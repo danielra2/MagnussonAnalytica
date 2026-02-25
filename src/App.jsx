@@ -36,6 +36,7 @@ import CareersPage from './components/CareersPage/CareersPage.jsx';
 import EngineeringPage from './components/CareersPage/EngineeringPage.jsx';
 import BusinessInternshipPage from './components/CareersPage/BusinessInternshipPage.jsx';
 import MarketingPage from './components/CareersPage/MarketingPage.jsx';
+import ABTestingCalculatorPage from './components/ToolsPage/ABTestingCalculatorPage.jsx';
 import { trackButtonClick } from './utils/amplitudeTracker'; 
 
 function App() {
@@ -146,6 +147,7 @@ function App() {
             <li className="nav-item"><a href="/#about-section" className="nav-link">About us</a></li>
             <li className="nav-item"><Link to="/podcasts" className="nav-link">Podcasts</Link></li>
             <li className="nav-item"><Link to="/blogs" className="nav-link">Blog</Link></li>
+            <li className="nav-item"><Link to="/tools" className="nav-link">Tools</Link></li>
             <li className="nav-item"><Link to="/careers" className="nav-link">Careers</Link></li>
             <li className="nav-item"><a href="/#contact-form" className="nav-link">Contact Us</a></li>
           </ul>
@@ -156,6 +158,7 @@ function App() {
           <a href="/#about-section" className="mobile-link" onClick={() => setIsMenuOpen(false)}>About us</a>
           <Link to="/podcasts" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Podcasts</Link>
           <Link to="/blogs" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Blog</Link>
+          <Link to="/tools" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Tools</Link>
           <Link to="/careers" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Careers</Link>
           <a href="/#contact-form" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Contact Us</a>
         </div>
@@ -165,6 +168,7 @@ function App() {
         <Route path="/blogs" element={<BlogListPage blogPosts={blogPosts} />} />
         <Route path="/blogs/:id" element={<BlogPage blogPosts={blogPosts} />} />
         <Route path="/podcasts" element={<PodcastPage />} />
+        <Route path="/tools" element={<ABTestingCalculatorPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/amplitude-courses" element={<AmplitudeCoursesPage />} />
         <Route path="/enrollment-embed" element={<EnrollmentEmbedPage />} /> {/* RUTA FORMARULUI DE REZERVARE */}

@@ -53,6 +53,7 @@ ${formData.coverLetter}
           <div className="job-meta-header">
             <span className="meta-item">🎓 Internship</span>
             <span className="meta-item">📈 Marketing</span>
+            <span className="meta-item">📍 Sibiu</span>
           </div>
         </div>
 
@@ -69,6 +70,9 @@ ${formData.coverLetter}
                 You will collaborate with experienced team members on content, campaign execution, and reporting,
                 developing hands-on experience in B2B marketing and analytics.
               </p>
+              <p>
+                This internship is conducted on-site in Sibiu.
+              </p>
             </section>
 
             <section className="job-section">
@@ -76,8 +80,8 @@ ${formData.coverLetter}
               <ul className="responsibilities-list">
                 <li>Plan and execute full-funnel marketing campaigns (awareness, consideration, conversion)</li>
                 <li>Create content for website, newsletters, and social channels</li>
-                <li>Support SEO and campaign optimization activities</li>
-                <li>Track campaign performance and prepare simple reports</li>
+                <li>Support SEO and campaign optimisation activities</li>
+                <li>Track campaign performance and prepare reports</li>
                 <li>Help with market research and competitor analysis</li>
                 <li>Collaborate with sales and delivery teams on messaging</li>
                 <li>Assist in keeping a consistent brand voice across channels</li>
@@ -91,8 +95,8 @@ ${formData.coverLetter}
                 <li>Strong written and verbal communication skills</li>
                 <li>Basic understanding of digital marketing channels</li>
                 <li>Interest in analytics, growth, and campaign performance</li>
-                <li>Excellent written and verbal communication skills in English</li>
-                <li>Ability to work independently in a remote environment</li>
+                  <li>English proficiency certificate at C1 or C2 level (or equivalent demonstrated fluency)</li>
+                <li>Self-motivated with the ability to work independently</li>
               </ul>
             </section>
 
@@ -100,8 +104,8 @@ ${formData.coverLetter}
               <h2>Nice to Have</h2>
               <ul className="nice-to-have-list">
                 <li>Previous internship, student project, or coursework in marketing</li>
-                <li>Familiarity with Google Analytics, HubSpot, or similar tools</li>
-                <li>Experience with Canva, basic design, or short-form video content</li>
+                <li>Familiarity with Product Analytics, and the business consultant industry</li>
+                <li>Experience with Canva, basic design, and short-form video content</li>
                 <li>Interest in B2B, SaaS, or analytics-related topics</li>
               </ul>
             </section>
@@ -109,10 +113,12 @@ ${formData.coverLetter}
             <section className="job-section">
               <h2>What We Offer</h2>
               <ul className="benefits-list">
-                <li>🎓 Hands-on internship experience on real marketing projects</li>
-                <li>🌍 Remote-first setup with flexible schedule</li>
-                <li>👨‍🏫 Mentorship from experienced professionals</li>
-                <li>🚀 Growth opportunities and potential for long-term collaboration</li>
+                <li>🎓 Hands-on learning experience with real client projects</li>
+                <li>👨‍🏫 Mentorship from experienced business consultants</li>
+                <li>🚀 Exposure to cutting-edge data technologies and tools</li>
+                <li>💼 Work on diverse projects across different industries</li>
+                <li>📜 Internship completion certificate and reference letter</li>
+                <li>🔄 Potential for full-time position after completion</li>
               </ul>
             </section>
           </div>

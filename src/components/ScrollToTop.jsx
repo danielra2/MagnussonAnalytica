@@ -10,6 +10,7 @@ const getPageName = (pathname) => {
     if (pathname.startsWith('/blogs/')) return 'Blog Detail Page'; 
     if (pathname === '/blogs') return 'Blog List Page';
     if (pathname === '/podcasts') return 'Podcast Page';
+    if (pathname === '/tools') return 'AB Testing Calculator Page';
     if (pathname === '/privacy-policy') return 'Privacy Policy Page';
     if (pathname === '/amplitude-courses') return 'Amplitude Courses Page';
     return 'Other Page';

@@ -53,6 +53,7 @@ ${formData.coverLetter}
           <div className="job-meta-header">
             <span className="meta-item">🎓 Internship</span>
             <span className="meta-item">💼 Business</span>
+            <span className="meta-item">📍 Sibiu</span>
           </div>
         </div>
 
@@ -66,9 +67,12 @@ ${formData.coverLetter}
                 and strategic initiatives while working alongside experienced professionals.
               </p>
               <p>
-                As a Business Intern, you'll contribute to key business functions including client success, market research,
+                As a Business Intern, you'll contribute to key business functions including client success, strategic research,
                 business development, and operational projects. This role is ideal for students interested in learning how
-                data-driven organizations operate and develop business acumen in a growing tech company.
+                data-driven organisations operate and develop business acumen in a growing tech company.
+              </p>
+              <p>
+                This internship is conducted on-site in Sibiu.
               </p>
             </section>
 
@@ -76,14 +80,13 @@ ${formData.coverLetter}
               <h2>What You'll Learn & Do</h2>
               <ul className="responsibilities-list">
                 <li>Support client onboarding and implementation processes</li>
-                <li>Conduct market research and competitive analysis</li>
-                <li>Assist in developing business proposals and case studies</li>
-                <li>Help manage client relationships and communication</li>
-                <li>Analyze business metrics and performance data</li>
+                <li>Assist in developing case studies and customer success stories</li>
+                <li>Help manage client projects and communication</li>
+                <li>Analyse business metrics and performance data</li>
                 <li>Support marketing and business development initiatives</li>
                 <li>Participate in strategic planning and brainstorming sessions</li>
-                <li>Create presentations and reports for stakeholders</li>
-                <li>Learn about product positioning and go-to-market strategies</li>
+                <li>Create presentations and reports for core stakeholders in client organisations</li>
+                <li>Learn about product positioning and acquisition & product engagement strategies</li>
                 <li>Build understanding of SaaS business models and analytics industry trends</li>
               </ul>
             </section>
@@ -91,141 +94,152 @@ ${formData.coverLetter}
             <section className="job-section">
               <h2>Requirements</h2>
               <ul className="requirements-list">
-                <li>Currently enrolled in a Business, Economics, Marketing, or related degree program</li>
+                <li>Currently enrolled in a Masters in Business Administration or other Masters courses within business, economics, marketing</li>
                 <li>Strong written and verbal communication skills</li>
-                <li>Excellent organizational and project management abilities</li>
-                <li>Proficiency with Microsoft Office suite (Excel, PowerPoint, Word)</li>
+                <li>Excellent organisational and project management abilities</li>
+                <li>Proficiency with Google Business suite (Sheets, Slides, Docs)</li>
                 <li>Self-motivated with the ability to work independently</li>
-                <li>Ability to work in a remote environment</li>
-                <li>Fluent in English</li>
-                <li>Passion for data, business, and analytics (experience preferred but not required)</li>
+                <li>Availability to work on-site in Sibiu</li>
+                <li>English proficiency certificate at C1 or C2 level (or equivalent demonstrated fluency)</li>
+                <li>Passion for data, business, and analytics</li>
+              </ul>
+            </section>
+
+            <section className="job-section">
+              <h2>Nice to Have</h2>
+              <ul className="nice-to-have-list">
+                <li>Previous internship, consulting project, or relevant business coursework</li>
+                <li>Experience with CRM, analytics, or project management tools</li>
+                <li>Interest in client-facing consultative work</li>
+                <li>Basic understanding of SaaS and digital product business models</li>
+                <li>Familiarity with presentation storytelling and executive communication</li>
               </ul>
             </section>
 
             <section className="job-section">
               <h2>What We Offer</h2>
               <ul className="benefits-list">
-                <li>Competitive hourly rate for internship position</li>
-                <li>Fully remote work opportunity with flexible schedule</li>
-                <li>Mentorship from experienced professionals</li>
-                <li>Exposure to real-world business challenges and solutions</li>
-                <li>Professional development and learning opportunities</li>
-                <li>Potential for extension or full-time conversion based on performance</li>
+                <li>🎓 Hands-on learning experience with real client projects</li>
+                <li>👨‍🏫 Mentorship from experienced business consultants</li>
+                <li>🚀 Exposure to cutting-edge data technologies and tools</li>
+                <li>💼 Work on diverse projects across different industries</li>
+                <li>📜 Internship completion certificate and reference letter</li>
+                <li>🔄 Potential for full-time position after completion</li>
               </ul>
-            </section>
-
-            <section className="job-section">
-              <h2>How to Apply</h2>
-              <p>
-                Fill out the application form below with your information and we'll be in touch within 5-7 business days.
-                Please ensure all fields are completed accurately so we can best review your application.
-              </p>
             </section>
           </div>
 
-          <div className="application-form-section">
-            <h2>Apply Now</h2>
-            {isSubmitted ? (
-              <div className="success-message">
-                <h3>Thank You for Your Application!</h3>
-                <p>We've received your application and will review it shortly. Check your email for updates.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="application-form">
-                <div className="form-group">
-                  <label htmlFor="name">Full Name *</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your full name"
-                    required
-                  />
+          <div className="application-form-container">
+            <div className="application-form-sticky">
+              <h2>Apply Now</h2>
+              {isSubmitted ? (
+                <div className="success-message">
+                  <p>✓ Your application email has been prepared!</p>
+                  <p className="success-note">If your email client didn&apos;t open automatically, please send your application to: <strong>careers@magnussonanalytica.com</strong></p>
+                  <button onClick={() => setIsSubmitted(false)} className="reset-btn">
+                    Submit Another Application
+                  </button>
                 </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="application-form">
+                  <div className="form-group">
+                    <label htmlFor="name">Full Name *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="John Doe"
+                      required
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="email">Email Address *</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="your.email@example.com"
-                    required
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Email Address *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="john.doe@example.com"
+                      required
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="phone">Phone Number *</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+1 (555) 123-4567"
-                    required
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="phone">Phone Number</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+1 234 567 8900"
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="university">University & Graduation Year *</label>
-                  <input
-                    type="text"
-                    id="university"
-                    name="university"
-                    value={formData.university}
-                    onChange={handleChange}
-                    placeholder="e.g., Stanford University, 2026"
-                    required
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="university">University & Study Program *</label>
+                    <input
+                      type="text"
+                      id="university"
+                      name="university"
+                      value={formData.university}
+                      onChange={handleChange}
+                      placeholder="e.g., Stockholm School of Economics - MBA"
+                      required
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="major">Major / Field of Study *</label>
-                  <input
-                    type="text"
-                    id="major"
-                    name="major"
-                    value={formData.major}
-                    onChange={handleChange}
-                    placeholder="e.g., Business Administration"
-                    required
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="major">Major / Field of Study *</label>
+                    <input
+                      type="text"
+                      id="major"
+                      name="major"
+                      value={formData.major}
+                      onChange={handleChange}
+                      placeholder="e.g., Business Administration"
+                      required
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="resumeLink">Resume Link (Google Drive, Dropbox, etc.) *</label>
-                  <input
-                    type="url"
-                    id="resumeLink"
-                    name="resumeLink"
-                    value={formData.resumeLink}
-                    onChange={handleChange}
-                    placeholder="https://drive.google.com/..."
-                    required
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="resumeLink">Resume Link *</label>
+                    <input
+                      type="url"
+                      id="resumeLink"
+                      name="resumeLink"
+                      value={formData.resumeLink}
+                      onChange={handleChange}
+                      placeholder="Link to Google Drive, Dropbox, etc."
+                      required
+                    />
+                    <small>Please share a link to your resume (Google Drive, Dropbox, etc.)</small>
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="coverLetter">Why are you interested in this internship? *</label>
-                  <textarea
-                    id="coverLetter"
-                    name="coverLetter"
-                    value={formData.coverLetter}
-                    onChange={handleChange}
-                    placeholder="Tell us about your interest in Magnusson Analytica and what you hope to learn..."
-                    rows="5"
-                    required
-                  ></textarea>
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="coverLetter">Why are you interested in this internship? *</label>
+                    <textarea
+                      id="coverLetter"
+                      name="coverLetter"
+                      value={formData.coverLetter}
+                      onChange={handleChange}
+                      placeholder="Tell us about your interest in business consulting, what you hope to learn, and any relevant projects..."
+                      rows="6"
+                      required
+                    ></textarea>
+                  </div>
 
-                <button type="submit" className="submit-btn">Submit Application</button>
-              </form>
-            )}
+                  <button type="submit" className="submit-btn">Send Application via Email</button>
+                  <p className="form-note">
+                    This will open your email client with your application details
+                  </p>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </div>
