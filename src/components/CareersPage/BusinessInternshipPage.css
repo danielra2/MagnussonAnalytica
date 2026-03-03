@@ -197,6 +197,12 @@
   min-height: 120px;
 }
 
+.captcha-container {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
 .submit-btn {
   padding: 14px 30px;
   background: linear-gradient(135deg, #6495ed 0%, #4682b4 100%);
@@ -218,6 +224,14 @@
 
 .submit-btn:active {
   transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
 }
 
 .form-note {

@@ -88,7 +88,7 @@ function CareersPage() {
                     ))}
                   </ul>
                   {job.status === 'Open' ? (
-                    <Link to={`/careers/${job.id}`} className="job-apply-btn">
+                    <Link to="#" onClick={(e) => e.preventDefault()} className="job-apply-btn">
                       View Details & Apply
                     </Link>
                   ) : (
