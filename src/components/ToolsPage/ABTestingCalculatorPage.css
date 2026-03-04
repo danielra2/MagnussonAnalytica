@@ -40,6 +40,44 @@
   backdrop-filter: blur(8px);
 }
 
+.ab-pretest {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(8px);
+}
+
+.ab-pretest h2 {
+  margin-bottom: 8px;
+}
+
+.ab-pretest p {
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 16px;
+}
+
+.ab-pretest-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.ab-pretest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ab-pretest-results {
+  margin-top: 18px;
+}
+
+.ab-pretest-note {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
 .ab-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -78,6 +116,10 @@
   font-size: 1rem;
   padding: 10px 12px;
   outline: none;
+}
+
+.ab-card input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .ab-card input:focus,
@@ -170,6 +212,10 @@
 }
 
 @media (max-width: 900px) {
+  .ab-pretest-grid {
+    grid-template-columns: 1fr;
+  }
+
   .ab-metrics-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

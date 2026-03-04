@@ -58,6 +58,11 @@ function parsePositiveInt(value) {
   return Number.isFinite(parsed) ? parsed : NaN;
 }
 
+function parsePositiveFloat(value) {
+  const parsed = Number.parseFloat(value);
+  return Number.isFinite(parsed) ? parsed : NaN;
+}
+
 function formatPercent(value, digits = 2) {
   return `${(value * 100).toFixed(digits)}%`;
 }
@@ -70,6 +75,14 @@ function formatSignedPercent(value, digits = 2) {
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
+}
+
+function formatInteger(value) {
+  if (!Number.isFinite(value)) {
+    return 'N/A';
+  }
+
+  return Math.round(value).toLocaleString('en-US');
 }
 
 function calculateObservedPower({ difference, seNull, seAlternative, alpha, hypothesis }) {
@@ -95,6 +108,15 @@ function calculateObservedPower({ difference, seNull, seAlternative, alpha, hypo
 }
 
 export default function ABTestingCalculatorPage() {
+  const [pretestBaselineRate, setPretestBaselineRate] = useState('12');
+  const [pretestMde, setPretestMde] = useState('10');
+  const [pretestConfidenceLevel, setPretestConfidenceLevel] = useState('0.95');
+  const [pretestPowerLevel, setPretestPowerLevel] = useState('0.8');
+  const [pretestHypothesisType, setPretestHypothesisType] = useState('two-sided');
+  const [pretestDailyVisitors, setPretestDailyVisitors] = useState('');
+  const [pretestError, setPretestError] = useState('');
+  const [pretestResult, setPretestResult] = useState(null);
+
   const [variantAVisitors, setVariantAVisitors] = useState('1000');
   const [variantAConversions, setVariantAConversions] = useState('120');
   const [variantBVisitors, setVariantBVisitors] = useState('1000');
@@ -103,6 +125,92 @@ export default function ABTestingCalculatorPage() {
   const [hypothesisType, setHypothesisType] = useState('two-sided');
   const [error, setError] = useState('');
   const [result, setResult] = useState(null);
+
+  const handlePretestCalculate = (event) => {
+    event.preventDefault();
+    setPretestError('');
+
+    const baselinePercent = parsePositiveFloat(pretestBaselineRate);
+    const mdePercent = parsePositiveFloat(pretestMde);
+    const confidence = parsePositiveFloat(pretestConfidenceLevel);
+    const power = parsePositiveFloat(pretestPowerLevel);
+
+    if (!Number.isFinite(baselinePercent) || baselinePercent <= 0 || baselinePercent >= 100) {
+      setPretestResult(null);
+      setPretestError('Baseline conversion rate must be between 0 and 100 (exclusive).');
+      return;
+    }
+
+    if (!Number.isFinite(mdePercent) || mdePercent <= 0) {
+      setPretestResult(null);
+      setPretestError('Minimum detectable effect must be greater than 0.');
+      return;
+    }
+
+    const dailyVisitors = pretestDailyVisitors === '' ? NaN : parsePositiveInt(pretestDailyVisitors);
+    if (pretestDailyVisitors !== '' && (!Number.isFinite(dailyVisitors) || dailyVisitors <= 0)) {
+      setPretestResult(null);
+      setPretestError('Estimated daily visitors must be a whole number greater than 0.');
+      return;
+    }
+
+    const baselineRate = baselinePercent / 100;
+    const relativeMde = mdePercent / 100;
+    const expectedRateB = baselineRate * (1 + relativeMde);
+
+    if (expectedRateB >= 1) {
+      setPretestResult(null);
+      setPretestError('MDE is too large for this baseline rate. Reduce MDE or baseline rate.');
+      return;
+    }
+
+    const absoluteDelta = expectedRateB - baselineRate;
+
+    if (!Number.isFinite(absoluteDelta) || absoluteDelta <= 0) {
+      setPretestResult(null);
+      setPretestError('Unable to calculate required sample size with the current inputs.');
+      return;
+    }
+
+    const alpha = 1 - confidence;
+    const zAlpha = pretestHypothesisType === 'greater'
+      ? inverseNormalCdf(1 - alpha)
+      : inverseNormalCdf(1 - (alpha / 2));
+    const zBeta = inverseNormalCdf(power);
+
+    const pooledRate = (baselineRate + expectedRateB) / 2;
+    const pooledVarianceTerm = Math.sqrt(2 * pooledRate * (1 - pooledRate));
+    const unpooledVarianceTerm = Math.sqrt((baselineRate * (1 - baselineRate)) + (expectedRateB * (1 - expectedRateB)));
+
+    const sampleSizePerVariant = Math.ceil(
+      Math.pow((zAlpha * pooledVarianceTerm) + (zBeta * unpooledVarianceTerm), 2) / Math.pow(absoluteDelta, 2),
+    );
+
+    if (!Number.isFinite(sampleSizePerVariant) || sampleSizePerVariant <= 0) {
+      setPretestResult(null);
+      setPretestError('Unable to calculate required sample size with the current inputs.');
+      return;
+    }
+
+    const totalSampleSize = sampleSizePerVariant * 2;
+    const estimatedDurationDays = Number.isFinite(dailyVisitors)
+      ? Math.ceil(totalSampleSize / dailyVisitors)
+      : null;
+
+    setPretestResult({
+      baselineRate,
+      expectedRateB,
+      relativeMde,
+      absoluteDelta,
+      confidence,
+      power,
+      alpha,
+      sampleSizePerVariant,
+      totalSampleSize,
+      estimatedDurationDays,
+      pretestHypothesisType,
+    });
+  };
 
   const handleCalculate = (event) => {
     event.preventDefault();
@@ -219,8 +327,140 @@ export default function ABTestingCalculatorPage() {
       <div className="ab-tools-container">
         <header className="ab-tools-header">
           <h1>A/B Testing Calculator</h1>
-          <p>Compare two conversion rates and check if your experiment result is statistically significant.</p>
+          <p>Plan your test sample size before launch and analyze statistical significance after your experiment runs.</p>
         </header>
+
+        <div className="ab-pretest">
+          <h2>Pre-test Calculator</h2>
+          <p>
+            Estimate how many visitors you need per variant to detect your target uplift.
+          </p>
+
+          <form className="ab-pretest-form" onSubmit={handlePretestCalculate}>
+            <div className="ab-pretest-grid">
+              <div className="ab-card">
+                <label htmlFor="pretest-baseline">Baseline conversion rate (%)</label>
+                <input
+                  id="pretest-baseline"
+                  type="number"
+                  min="0.01"
+                  max="99.99"
+                  step="0.01"
+                  value={pretestBaselineRate}
+                  onChange={(event) => setPretestBaselineRate(event.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="ab-card">
+                <label htmlFor="pretest-mde">Minimum detectable effect (% relative uplift)</label>
+                <input
+                  id="pretest-mde"
+                  type="number"
+                  min="0.01"
+                  step="0.01"
+                  value={pretestMde}
+                  onChange={(event) => setPretestMde(event.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="ab-card">
+                <label htmlFor="pretest-daily-visitors">Estimated daily visitors (optional)</label>
+                <input
+                  id="pretest-daily-visitors"
+                  type="number"
+                  min="1"
+                  step="1"
+                  value={pretestDailyVisitors}
+                  onChange={(event) => setPretestDailyVisitors(event.target.value)}
+                  placeholder="e.g. 5000"
+                />
+              </div>
+            </div>
+
+            <div className="ab-controls">
+              <label htmlFor="pretest-hypothesis-type">Hypothesis</label>
+              <select
+                id="pretest-hypothesis-type"
+                value={pretestHypothesisType}
+                onChange={(event) => setPretestHypothesisType(event.target.value)}
+              >
+                <option value="two-sided">Two-sided (A ≠ B)</option>
+                <option value="greater">One-sided (B &gt; A)</option>
+              </select>
+
+              <label htmlFor="pretest-confidence-level">Confidence level</label>
+              <select
+                id="pretest-confidence-level"
+                value={pretestConfidenceLevel}
+                onChange={(event) => setPretestConfidenceLevel(event.target.value)}
+              >
+                <option value="0.8">80%</option>
+                <option value="0.9">90%</option>
+                <option value="0.95">95%</option>
+                <option value="0.99">99%</option>
+              </select>
+
+              <label htmlFor="pretest-power-level">Statistical power</label>
+              <select
+                id="pretest-power-level"
+                value={pretestPowerLevel}
+                onChange={(event) => setPretestPowerLevel(event.target.value)}
+              >
+                <option value="0.8">80%</option>
+                <option value="0.85">85%</option>
+                <option value="0.9">90%</option>
+                <option value="0.95">95%</option>
+              </select>
+
+              <button className="cta-button ab-submit" type="submit">
+                Calculate Sample Size
+              </button>
+            </div>
+
+            {pretestError && <p className="ab-error">{pretestError}</p>}
+          </form>
+
+          {pretestResult && (
+            <div className="ab-pretest-results">
+              <div className="ab-metrics-grid">
+                <div className="ab-metric">
+                  <span>Baseline conversion rate</span>
+                  <strong>{formatPercent(pretestResult.baselineRate)}</strong>
+                </div>
+                <div className="ab-metric">
+                  <span>Target conversion rate (variant B)</span>
+                  <strong>{formatPercent(pretestResult.expectedRateB)}</strong>
+                </div>
+                <div className="ab-metric">
+                  <span>MDE (relative uplift)</span>
+                  <strong>{formatSignedPercent(pretestResult.relativeMde)}</strong>
+                </div>
+                <div className="ab-metric">
+                  <span>Required sample size / variant</span>
+                  <strong>{formatInteger(pretestResult.sampleSizePerVariant)}</strong>
+                </div>
+                <div className="ab-metric">
+                  <span>Total sample size</span>
+                  <strong>{formatInteger(pretestResult.totalSampleSize)}</strong>
+                </div>
+                <div className="ab-metric">
+                  <span>Estimated duration</span>
+                  <strong>
+                    {pretestResult.estimatedDurationDays === null
+                      ? 'Add daily visitors'
+                      : `${formatInteger(pretestResult.estimatedDurationDays)} day(s)`}
+                  </strong>
+                </div>
+              </div>
+
+              <p className="ab-pretest-note">
+                Uses a two-proportion z-test approximation with {Math.round(pretestResult.confidence * 100)}% confidence and {Math.round(pretestResult.power * 100)}% power ({pretestResult.pretestHypothesisType === 'greater' ? 'one-sided' : 'two-sided'} hypothesis).
+              </p>
+            </div>
+          )}
+        </div>
 
         <form className="ab-form" onSubmit={handleCalculate}>
           <div className="ab-grid">
