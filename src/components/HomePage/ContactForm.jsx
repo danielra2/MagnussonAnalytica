@@ -1,23 +1,23 @@
-// src/components/HomePage/ContactForm.jsx
 import React, { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import './ContactForm.css';
 import { trackEvent } from '../../utils/amplitudeTracker'; 
 import emailjs from '@emailjs/browser';
 
-// --- EMAILJS CONFIGURATION ---
-// REPLACE THESE WITH YOUR ACTUAL KEYS
 const SERVICE_ID = 'service_e2zy5ws'; 
 const PUBLIC_KEY = 'zoMIuFPodloDD3Z0n';
 const USER_CONFIRM_TEMPLATE_ID = 'template_p55ow6d';
 const INTERNAL_ALERT_TEMPLATE_ID = 'template_7li5dxz'; 
-// ------------------------------
 
 export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [status, setStatus] = useState('');
+  const [captchaValue, setCaptchaValue] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!captchaValue) return;
+
     setStatus('Sending...');
 
     const form = event.target;
@@ -25,19 +25,16 @@ export default function ContactForm() {
     const userName = form.name.value;
     const userFullName = `${userName} ${form.surname.value}`;
 
-    // 1. Params for the User's "Thank You" email
     const userTemplateParams = {
       to_name: userName,
       to_email: userEmail, 
     };
 
-    // 2. Params for the Internal Alert (Sent to the team)
     const internalTemplateParams = {
       from_name: userFullName,
       from_email: userEmail,
       message: form.message.value,
       page_uri: window.location.href,
-      // COMMA SEPARATED LIST FOR MULTIPLE RECIPIENTS
       team_emails: 'horatiu@magnussonanalytica.com, daniel.radoi@magnussonanalytica.com, alexander.magnusson@magnussonanalytica.com, arran@magnussonanalytica.com'
     };
     
@@ -78,7 +75,16 @@ export default function ContactForm() {
         <div className="form-group"><input type="text" name="surname" placeholder="Surname" required /></div>
         <div className="form-group"><input type="email" name="email" placeholder="Email" required /></div>
         <div className="form-group"><textarea name="message" rows="5" placeholder="How can we help?" required></textarea></div>
-        <button type="submit" className="cta-button form-submit-button" disabled={status === 'Sending...'}>
+        
+        <div className="captcha-container">
+          <ReCAPTCHA
+            sitekey="6LdIen4sAAAAAFd_KliS6kGz_liS7yfIWhKtCcx_"
+            onChange={(value) => setCaptchaValue(value)}
+            theme="dark"
+          />
+        </div>
+
+        <button type="submit" className="cta-button form-submit-button" disabled={!captchaValue || status === 'Sending...'}>
           {status === 'Sending...' ? 'Sending...' : 'Send Message'}
         </button>
         {status && <p style={{ marginTop: '20px', textAlign: 'center', color: '#ff6b35' }}>{status}</p>}

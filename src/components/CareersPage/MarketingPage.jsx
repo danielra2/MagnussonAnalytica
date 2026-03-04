@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
 import './MarketingPage.css';
 import ScrollToTop from '../ScrollToTop';
 
@@ -15,6 +16,7 @@ function MarketingPage() {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [captchaValue, setCaptchaValue] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -25,21 +27,8 @@ function MarketingPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!captchaValue) return;
 
-    const subject = encodeURIComponent('Application for Marketing Internship - Magnusson Analytica');
-    const body = encodeURIComponent(`
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-  University & Program: ${formData.university}
-Portfolio / Work Samples: ${formData.portfolio}
-Resume Link: ${formData.resumeLink}
-
-  Why I'm interested in this internship:
-${formData.coverLetter}
-    `);
-
-    window.location.href = `mailto:careers@magnussonanalytica.com?subject=${subject}&body=${body}`;
     setIsSubmitted(true);
   };
 
@@ -128,8 +117,7 @@ ${formData.coverLetter}
               <h2>Apply Now</h2>
               {isSubmitted ? (
                 <div className="success-message">
-                  <p>✓ Your application email has been prepared!</p>
-                  <p className="success-note">If your email client didn&apos;t open automatically, please send your application to: <strong>careers@magnussonanalytica.com</strong></p>
+                  <p>✓ Your application has been prepared!</p>
                   <button onClick={() => setIsSubmitted(false)} className="reset-btn">
                     Submit Another Application
                   </button>
@@ -226,12 +214,17 @@ ${formData.coverLetter}
                     />
                   </div>
 
-                  <button type="submit" className="submit-btn">
+                  <div className="captcha-container">
+                    <ReCAPTCHA
+                      sitekey="6LdIen4sAAAAAFd_KliS6kGz_liS7yfIWhKtCcx_"
+                      onChange={(value) => setCaptchaValue(value)}
+                      theme="dark"
+                    />
+                  </div>
+
+                  <button type="submit" className="submit-btn" disabled={!captchaValue}>
                     Send Application via Email
                   </button>
-                  <p className="form-note">
-                    This will open your email client with your application details
-                  </p>
                 </form>
               )}
             </div>

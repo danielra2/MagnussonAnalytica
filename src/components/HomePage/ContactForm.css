@@ -1,6 +1,3 @@
-/* src/components/HomePage/ContactForm.css */
-
-/* Contact Section Styles */
 .contact-section {
   padding: 80px 20px;
   max-width: 1200px;
@@ -67,6 +64,12 @@
   resize: vertical;
 }
 
+.captcha-container {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
 .form-submit-button {
   width: 100%;
   padding: 1rem;
@@ -78,7 +81,14 @@
   letter-spacing: 0.5px;
 }
 
-/* Accessibility for hidden labels */
+.form-submit-button:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
