@@ -9,7 +9,7 @@ function CareersPage() {
       title: 'Engineering Intern - Data Analytics',
       department: 'Engineering Internship',
       type: 'Internship (3-6 months)',
-      description: 'Perfect opportunity for engineering students to gain hands-on experience in data analytics and engineering.',
+      description: 'Build real analytics implementations, dashboards, and experiment workflows used on client projects.',
       requirements: ['Currently enrolled in Engineering program', 'Basic programming knowledge (Python/SQL)', 'Passionate about data and analytics'],
       status: 'Open'
     },
@@ -18,7 +18,7 @@ function CareersPage() {
       title: 'Business Intern',
       department: 'Business Internship',
       type: 'Internship (3-6 months)',
-      description: 'Join our team and gain practical experience in business operations, client relations, and strategic initiatives.',
+      description: 'Learn how research, client delivery, and growth operations work inside a live analytics consultancy.',
       requirements: ['Currently enrolled in Business or related program', 'Strong communication skills', 'Passionate about business and analytics'],
       status: 'Open'
     },
@@ -27,7 +27,7 @@ function CareersPage() {
       title: 'Marketing Intern',
       department: 'Marketing Internship',
       type: 'Internship (3-6 months)',
-      description: 'Join our team and gain hands-on experience in digital marketing, content creation, and campaign analytics.',
+      description: 'Create campaigns and content tied to reporting, conversion, and growth outcomes.',
       requirements: ['Currently enrolled in Business/Marketing or related program', 'Strong communication and writing skills', 'Passionate about marketing and analytics'],
       status: 'Open'
     }
@@ -38,29 +38,29 @@ function CareersPage() {
       <ScrollToTop />
       <div className="careers-page">
         <div className="careers-hero">
-          <h1>Join Our Team</h1>
-          <p className="careers-subtitle">Build the future of data analytics with us</p>
+          <h1>Build client-ready skills on real analytics projects</h1>
+          <p className="careers-subtitle">Learn with direct mentorship in Sibiu while contributing to live client work</p>
         </div>
 
         <div className="careers-content">
           <section className="careers-intro">
-            <h2>Why Work With Us?</h2>
+            <h2>What you will leave with</h2>
             <div className="benefits-grid">
               <div className="benefit-card">
-                <h3>🚀 Growth Opportunities</h3>
-                <p>Continuous learning and career development in a fast-growing company</p>
+                <h3>🚀 Faster Skill Growth</h3>
+                <p>Build practical analytics, growth, and communication skills on live work.</p>
               </div>
               <div className="benefit-card">
-                <h3>🌍 Remote First</h3>
-                <p>Work from anywhere with flexible hours and work-life balance</p>
+                <h3>🏢 On-site Mentorship</h3>
+                <p>Work alongside the team in Sibiu and get rapid feedback as you learn.</p>
               </div>
               <div className="benefit-card">
-                <h3>💡 Innovation</h3>
-                <p>Work with cutting-edge technologies and industry-leading clients</p>
+                <h3>💡 Client Exposure</h3>
+                <p>Contribute to deliverables used by product, growth, and data teams.</p>
               </div>
               <div className="benefit-card">
-                <h3>🤝 Collaborative Culture</h3>
-                <p>Join a talented team that values collaboration and creativity</p>
+                <h3>🤝 Small-Team Ownership</h3>
+                <p>Take ownership early and learn how collaboration works inside a consultancy team.</p>
               </div>
             </div>
           </section>
@@ -89,7 +89,7 @@ function CareersPage() {
                   </ul>
                   {job.status === 'Open' ? (
                     <Link to={`/careers/${job.id}`} className="job-apply-btn">
-                      View Details & Apply
+                      See Role Details & Apply
                     </Link>
                   ) : (
                     <button className="job-apply-btn job-apply-btn-disabled" disabled>

@@ -15,6 +15,19 @@
   -webkit-text-fill-color: transparent;
   text-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
 }
+.contact-offer-banner {
+  margin: -3.7rem auto 2rem;
+  width: fit-content;
+  max-width: 92%;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 107, 53, 0.5);
+  background: rgba(255, 107, 53, 0.12);
+  color: #ffd4c2;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  text-align: center;
+}
 
 .contact-form {
   display: flex;
@@ -87,6 +100,39 @@
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
+}
+
+.contact-cta-proof {
+  margin: 2px 0 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.contact-secondary-route {
+  margin: 6px 0 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.9rem;
+}
+
+.contact-secondary-link {
+  color: #ffb089;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-secondary-link:hover {
+  color: #ffd4c2;
+}
+
+@media (max-width: 768px) {
+  .contact-offer-banner {
+    margin-top: -3.2rem;
+    margin-bottom: 1.6rem;
+    font-size: 0.8rem;
+  }
 }
 
 .visually-hidden {

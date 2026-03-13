@@ -63,6 +63,32 @@
   letter-spacing: 0.5px;
 }
 
+.enrollment-cta-proof {
+  margin: 2px 0 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.enrollment-secondary-route {
+  margin: 4px 0 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.9rem;
+}
+
+.enrollment-secondary-link {
+  color: #ffb089;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+.enrollment-secondary-link:hover {
+  color: #ffd4c2;
+}
+
 /* Accessibility for hidden labels */
 .visually-hidden {
   position: absolute;

@@ -3,19 +3,25 @@ import { Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import './EngineeringPage.css';
 import ScrollToTop from '../ScrollToTop';
+import { BRAND_NAME } from '../../constants/brand';
+import { trackEvent } from '../../utils/amplitudeTracker';
+import { submitCareerApplication } from '../../utils/careerApplicationEmail';
+
+const getInitialFormData = () => ({
+  name: '',
+  email: '',
+  phone: '',
+  linkedIn: '',
+  portfolio: '',
+  resumeLink: '',
+  coverLetter: ''
+});
 
 function EngineeringPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    linkedIn: '',
-    portfolio: '',
-    resumeLink: '',
-    coverLetter: ''
-  });
+  const [formData, setFormData] = useState(getInitialFormData);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [status, setStatus] = useState('');
   const [captchaValue, setCaptchaValue] = useState(null);
 
   const handleChange = (e) => {
@@ -25,11 +31,47 @@ function EngineeringPage() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!captchaValue) return;
+  const resetFormState = () => {
+    setFormData(getInitialFormData());
+    setCaptchaValue(null);
+    setStatus('');
+    setIsSubmitted(false);
+  };
 
-    setIsSubmitted(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!captchaValue || status === 'Sending application...') return;
+
+    setStatus('Sending application...');
+
+    try {
+      await submitCareerApplication({
+        roleTitle: 'Engineering Internship - Data Analytics',
+        applicantName: formData.name,
+        applicantEmail: formData.email,
+        pageUri: window.location.href,
+        fields: [
+          { label: 'Phone Number', value: formData.phone },
+          { label: 'University & Study Program', value: formData.linkedIn },
+          { label: 'Portfolio / GitHub', value: formData.portfolio },
+          { label: 'Resume Link', value: formData.resumeLink },
+          { label: 'Motivation', value: formData.coverLetter },
+        ],
+      });
+
+      trackEvent('Career Application Submitted', {
+        role_title: 'Engineering Internship - Data Analytics',
+        page_location: 'Careers Engineering Page',
+      });
+
+      setFormData(getInitialFormData());
+      setCaptchaValue(null);
+      setStatus('');
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Career Application Error:', error);
+      setStatus('We could not send your application. Please try again in a moment.');
+    }
   };
 
   return (
@@ -51,15 +93,12 @@ function EngineeringPage() {
             <section className="job-section">
               <h2>About the Internship</h2>
               <p>
-                We're offering an exciting internship opportunity for engineering students at Magnusson Analytica.
-                This is your chance to gain real-world experience in data analytics, work on actual client projects,
-                and learn from experienced professionals in the field.
+                Build hands-on experience with analytics implementations, dashboards, and experimentation work used on
+                real client accounts at {BRAND_NAME}.
               </p>
               <p>
-                As an intern, you'll be involved in building data solutions, analysing business metrics, and
-                contributing to projects that help companies make data-driven decisions. This internship
-                is designed to give you practical skills that complement your university education and prepare
-                you for a successful career in data engineering and analytics.
+                You will help ship data solutions, validate tracking, and turn product questions into reliable reporting,
+                building practical skills that complement your university work and prepare you for data engineering and analytics roles.
               </p>
               <p>
                 This internship is conducted on-site in Sibiu.
@@ -67,7 +106,7 @@ function EngineeringPage() {
             </section>
 
             <section className="job-section">
-              <h2>What You'll Learn & Do</h2>
+              <h2>What You'll Learn & Build</h2>
               <ul className="responsibilities-list">
                 <li>Learn how to implement product analytics with Amplitude</li>
                 <li>Build and maintain dashboards to track product KPIs, funnels, and retention</li>
@@ -107,7 +146,7 @@ function EngineeringPage() {
             </section>
 
             <section className="job-section">
-              <h2>What We Offer</h2>
+              <h2>What You'll Leave With</h2>
               <ul className="benefits-list">
                 <li>🎓 Hands-on learning experience with real client projects</li>
                 <li>👨‍🏫 Mentorship from experienced data consultants and analysts</li>
@@ -121,11 +160,11 @@ function EngineeringPage() {
 
           <div className="application-form-container">
             <div className="application-form-sticky">
-              <h2>Apply Now</h2>
+              <h2>Start Your Application</h2>
               {isSubmitted ? (
                 <div className="success-message">
-                  <p>✓ Your application has been prepared!</p>
-                  <button onClick={() => setIsSubmitted(false)} className="reset-btn">
+                  <p>✓ Your application was sent.</p>
+                  <button onClick={resetFormState} className="reset-btn">
                     Submit Another Application
                   </button>
                 </div>
@@ -217,7 +256,7 @@ function EngineeringPage() {
                       onChange={handleChange}
                       required
                       rows="6"
-                      placeholder="Tell us about your interest in data analytics, what you hope to learn, and any relevant coursework or projects..."
+                      placeholder="Tell us which analytics problems you want to learn to solve, and any relevant coursework or projects..."
                     />
                   </div>
 
@@ -225,13 +264,16 @@ function EngineeringPage() {
                     <ReCAPTCHA
                       sitekey="6LdIen4sAAAAAFd_KliS6kGz_liS7yfIWhKtCcx_"
                       onChange={(value) => setCaptchaValue(value)}
+                      onExpired={() => setCaptchaValue(null)}
+                      onErrored={() => setCaptchaValue(null)}
                       theme="dark"
                     />
                   </div>
 
-                  <button type="submit" className="submit-btn" disabled={!captchaValue}>
-                    Send Application via Email
+                  <button type="submit" className="submit-btn" disabled={!captchaValue || status === 'Sending application...'}>
+                    {status === 'Sending application...' ? 'Sending application...' : 'Submit Application'}
                   </button>
+                  {status && status !== 'Sending application...' ? <p className="status-message">{status}</p> : null}
                 </form>
               )}
             </div>

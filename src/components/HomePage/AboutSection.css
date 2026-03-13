@@ -121,6 +121,27 @@
   text-align: center;
 }
 
+.about-secondary-cta {
+  display: block;
+  margin-top: 12px;
+  color: #ffb089;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+.about-secondary-cta:hover {
+  color: #ffd4c2;
+}
+
+.about-cta-proof {
+  margin: 14px auto 0;
+  max-width: 580px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
 /* Animations */
 @keyframes fadeInUp {
   from {

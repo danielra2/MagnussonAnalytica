@@ -4,6 +4,7 @@ import React from 'react';
 import './Footer.css';
 import { FaInstagram, FaLinkedin, FaFacebook } from 'react-icons/fa';
 import { trackEvent } from '../../utils/amplitudeTracker'; // Importăm funcția de tracking
+import { BRAND_CONTACT_EMAIL, BRAND_NAME } from '../../constants/brand';
 
 export default function Footer() {
   
@@ -20,9 +21,9 @@ export default function Footer() {
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-section footer-about">
-            <h3 className="footer-title">Magnusson Analytica</h3>
+            <h3 className="footer-title">{BRAND_NAME}</h3>
             <p className="footer-description">
-              Driving business growth through data-driven insights and innovative solutions.
+              Helping teams fix tracking, trust their funnels, and act faster on product growth.
             </p>
           </div>
           <div className="footer-section footer-links">
@@ -32,13 +33,13 @@ export default function Footer() {
               <li><a href="/#about-section" className="footer-link">About us</a></li>
               <li><a href="/#podcast-section" className="footer-link">Podcasts</a></li>
               <li><a href="/tools" className="footer-link">Tools</a></li>
-              <li><a href="/#contact-form" className="footer-link">Contact Us</a></li>
+              <li><a href="/#contact-form" className="footer-link">Get Audit Plan</a></li>
             </ul>
           </div>
           <div className="footer-section footer-contact">
             <h4 className="footer-links-title">Contact</h4>
             <p className="footer-contact-info">
-              Email: alexander.magnusson@magnussonanalytica.com<br />
+              Email: {BRAND_CONTACT_EMAIL}<br />
               Phone: +44 74757 37792
             </p>
           </div>
@@ -77,7 +78,7 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <p className="footer-copyright">
-          © {new Date().getFullYear()} Magnusson Analytica. All rights reserved.
+          © {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
         </p>
       </div>
     </footer>

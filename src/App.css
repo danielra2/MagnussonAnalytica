@@ -218,15 +218,71 @@ body {
   display: flex;
   gap: 20px;
   justify-content: center;
+  flex-wrap: wrap;
   margin-top: 30px;
+}
+
+.hero-offer-note {
+  margin: 14px auto 0;
+  max-width: 620px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.hero-proof-list {
+  margin: 18px auto 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 760px;
+}
+
+.hero-proof-list li {
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.86rem;
+  line-height: 1.45;
 }
 
 /* Stilul de bază pentru butonul secundar (mutat din inline) */
 .hero-cta-buttons .hero-secondary-cta {
-  background: #4a4a4a;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  box-shadow: none;
   text-shadow: none;
   transition: all 0.3s ease;
+}
+
+.hero-cta-buttons .hero-secondary-cta:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.62);
+  box-shadow: none;
+}
+
+.hero-cta-buttons .hero-secondary-cta::before {
+  display: none;
+}
+
+.hero-tertiary-cta {
+  margin-top: 14px;
+  display: inline-block;
+  color: #ffb089;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  font-size: 0.96rem;
+  transition: color 0.2s ease;
+}
+
+.hero-tertiary-cta:hover {
+  color: #ffd4c2;
 }
 
 .cta-button {
@@ -244,6 +300,10 @@ body {
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cta-button::before {
@@ -372,6 +432,27 @@ body {
     margin: 0 auto; /* Centrează butoanele */
     padding: 1.3rem 2.5rem; /* Mărire padding (buton mai mare) */
     font-size: 1.3rem; /* Font mai mare */
+  }
+
+  .hero-proof-list {
+    margin-top: 16px;
+  }
+
+  .hero-offer-note {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    max-width: 380px;
+  }
+
+  .hero-tertiary-cta {
+    margin-top: 10px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .hero-proof-list li {
+    width: 100%;
+    max-width: 380px;
   }
   
   .nav-container {

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import './PrivacyPolicyPage.css'; // This will share styles with the blog
+import { BRAND_INFO_EMAIL, BRAND_NAME } from '../../constants/brand';
 
 export default function PrivacyPolicyPage() {
   return (
@@ -9,7 +10,7 @@ export default function PrivacyPolicyPage() {
       <h1 className="blog-page-title">Privacy Policy</h1>
       <div className="blog-content-wrapper">
         <p>
-          Your privacy is important to us. This policy outlines how Magnusson Analytica collects, uses, and protects your personal information.
+          Your privacy is important to us. This policy outlines how {BRAND_NAME} collects, uses, and protects your personal information.
         </p>
         
         <h2>Information We Collect</h2>
@@ -38,7 +39,7 @@ export default function PrivacyPolicyPage() {
         </p>
         
         <p>
-          For any questions about this policy, please contact us at info@magnusson.com.
+          For any questions about this policy, please contact us at {BRAND_INFO_EMAIL}.
         </p>
       </div>
     </div>

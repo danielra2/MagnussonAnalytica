@@ -3,19 +3,25 @@ import { Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import './BusinessInternshipPage.css';
 import ScrollToTop from '../ScrollToTop';
+import { BRAND_NAME } from '../../constants/brand';
+import { trackEvent } from '../../utils/amplitudeTracker';
+import { submitCareerApplication } from '../../utils/careerApplicationEmail';
+
+const getInitialFormData = () => ({
+  name: '',
+  email: '',
+  phone: '',
+  university: '',
+  major: '',
+  resumeLink: '',
+  coverLetter: ''
+});
 
 function BusinessInternshipPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    university: '',
-    major: '',
-    resumeLink: '',
-    coverLetter: ''
-  });
+  const [formData, setFormData] = useState(getInitialFormData);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [status, setStatus] = useState('');
   const [captchaValue, setCaptchaValue] = useState(null);
 
   const handleChange = (e) => {
@@ -25,11 +31,47 @@ function BusinessInternshipPage() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!captchaValue) return;
+  const resetFormState = () => {
+    setFormData(getInitialFormData());
+    setCaptchaValue(null);
+    setStatus('');
+    setIsSubmitted(false);
+  };
 
-    setIsSubmitted(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!captchaValue || status === 'Sending application...') return;
+
+    setStatus('Sending application...');
+
+    try {
+      await submitCareerApplication({
+        roleTitle: 'Business Internship',
+        applicantName: formData.name,
+        applicantEmail: formData.email,
+        pageUri: window.location.href,
+        fields: [
+          { label: 'Phone Number', value: formData.phone },
+          { label: 'University & Study Program', value: formData.university },
+          { label: 'Major / Field of Study', value: formData.major },
+          { label: 'Resume Link', value: formData.resumeLink },
+          { label: 'Motivation', value: formData.coverLetter },
+        ],
+      });
+
+      trackEvent('Career Application Submitted', {
+        role_title: 'Business Internship',
+        page_location: 'Careers Business Internship Page',
+      });
+
+      setFormData(getInitialFormData());
+      setCaptchaValue(null);
+      setStatus('');
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Career Application Error:', error);
+      setStatus('We could not send your application. Please try again in a moment.');
+    }
   };
 
   return (
@@ -51,14 +93,12 @@ function BusinessInternshipPage() {
             <section className="job-section">
               <h2>About the Internship</h2>
               <p>
-                Join Magnusson Analytica as a Business Intern and gain hands-on experience in a fast-growing analytics
-                company. This internship offers the perfect opportunity to explore business operations, client relationships,
-                and strategic initiatives while working alongside experienced professionals.
+                Build hands-on experience in client operations, strategic research, and commercial problem-solving inside
+                a fast-growing analytics company.
               </p>
               <p>
-                As a Business Intern, you'll contribute to key business functions including client success, strategic research,
-                business development, and operational projects. This role is ideal for students interested in learning how
-                data-driven organisations operate and develop business acumen in a growing tech company.
+                As a Business Intern at {BRAND_NAME}, you will support client success, research, and business development
+                work while learning how data-led teams operate and grow.
               </p>
               <p>
                 This internship is conducted on-site in Sibiu.
@@ -66,7 +106,7 @@ function BusinessInternshipPage() {
             </section>
 
             <section className="job-section">
-              <h2>What You'll Learn & Do</h2>
+              <h2>What You'll Learn & Deliver</h2>
               <ul className="responsibilities-list">
                 <li>Support client onboarding and implementation processes</li>
                 <li>Assist in developing case studies and customer success stories</li>
@@ -106,7 +146,7 @@ function BusinessInternshipPage() {
             </section>
 
             <section className="job-section">
-              <h2>What We Offer</h2>
+              <h2>What You'll Leave With</h2>
               <ul className="benefits-list">
                 <li>🎓 Hands-on learning experience with real client projects</li>
                 <li>👨‍🏫 Mentorship from experienced business consultants</li>
@@ -120,11 +160,11 @@ function BusinessInternshipPage() {
 
           <div className="application-form-container">
             <div className="application-form-sticky">
-              <h2>Apply Now</h2>
+              <h2>Start Your Application</h2>
               {isSubmitted ? (
                 <div className="success-message">
-                  <p>✓ Your application has been prepared!</p>
-                  <button onClick={() => setIsSubmitted(false)} className="reset-btn">
+                  <p>✓ Your application was sent.</p>
+                  <button onClick={resetFormState} className="reset-btn">
                     Submit Another Application
                   </button>
                 </div>
@@ -215,7 +255,7 @@ function BusinessInternshipPage() {
                       name="coverLetter"
                       value={formData.coverLetter}
                       onChange={handleChange}
-                      placeholder="Tell us about your interest in business consulting, what you hope to learn, and any relevant projects..."
+                      placeholder="Tell us which business or client outcomes you want to learn to influence, and any relevant projects..."
                       rows="6"
                       required
                     ></textarea>
@@ -225,13 +265,16 @@ function BusinessInternshipPage() {
                     <ReCAPTCHA
                       sitekey="6LdIen4sAAAAAFd_KliS6kGz_liS7yfIWhKtCcx_"
                       onChange={(value) => setCaptchaValue(value)}
+                      onExpired={() => setCaptchaValue(null)}
+                      onErrored={() => setCaptchaValue(null)}
                       theme="dark"
                     />
                   </div>
 
-                  <button type="submit" className="submit-btn" disabled={!captchaValue}>
-                    Send Application via Email
+                  <button type="submit" className="submit-btn" disabled={!captchaValue || status === 'Sending application...'}>
+                    {status === 'Sending application...' ? 'Sending application...' : 'Submit Application'}
                   </button>
+                  {status && status !== 'Sending application...' ? <p className="status-message">{status}</p> : null}
                 </form>
               )}
             </div>

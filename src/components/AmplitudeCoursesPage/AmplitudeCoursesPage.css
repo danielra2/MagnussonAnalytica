@@ -19,6 +19,19 @@
     text-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
 }
 
+.courses-offer-badge {
+    margin: 0 auto 1.2rem;
+    width: fit-content;
+    max-width: 92%;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 107, 53, 0.5);
+    background: rgba(255, 107, 53, 0.12);
+    color: #ffd4c2;
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
 .amplitude-description {
     font-size: 1.1rem;
     color: rgba(255, 255, 255, 0.7);
@@ -163,6 +176,81 @@
     display: block; /* Necesar pentru a ocupa toată lățimea */
 }
 
+.course-cta-proof {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.68);
+}
+
+.courses-comparison {
+    margin-top: 56px;
+    padding: 34px 28px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255, 107, 53, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    text-align: left;
+}
+
+.courses-comparison-title {
+    margin: 0 0 10px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: #fff;
+}
+
+.courses-comparison-subtitle {
+    margin: 0 0 24px;
+    color: rgba(255, 255, 255, 0.76);
+    line-height: 1.7;
+    max-width: 850px;
+}
+
+.courses-comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.courses-comparison-card {
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.24);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.courses-comparison-card h3 {
+    margin: 0 0 12px;
+    color: #ffb089;
+    font-size: 1.1rem;
+}
+
+.courses-comparison-card ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.courses-comparison-card li {
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.5;
+}
+
+.courses-comparison-card li:last-child {
+    margin-bottom: 0;
+}
+
+.courses-comparison-cta {
+    display: inline-block;
+    margin-top: 24px;
+}
+
+.courses-comparison-proof {
+    margin: 14px 0 0;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.55;
+    font-size: 0.92rem;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .recommended-card {
@@ -170,5 +258,29 @@
     }
     .recommended-card:hover {
         transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .courses-offer-badge {
+        font-size: 0.8rem;
+    }
+
+    .courses-comparison {
+        margin-top: 40px;
+        padding: 24px 18px;
+    }
+
+    .courses-comparison-subtitle {
+        margin-bottom: 18px;
+    }
+
+    .courses-comparison-cta {
+        width: 100%;
+        text-align: center;
+    }
+
+    .courses-comparison-proof {
+        margin-top: 12px;
     }
 }

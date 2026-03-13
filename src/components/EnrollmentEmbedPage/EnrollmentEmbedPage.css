@@ -20,6 +20,19 @@
     text-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
 }
 
+.enrollment-offer-banner {
+    margin: 0 auto 1.1rem;
+    width: fit-content;
+    max-width: 92%;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 107, 53, 0.5);
+    background: rgba(255, 107, 53, 0.12);
+    color: #ffd4c2;
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
 .enrollment-embed-subtitle {
     font-size: 1.3rem;
     font-weight: 600;
@@ -27,11 +40,47 @@
     margin-bottom: 2.5rem;
 }
 
+.enrollment-proof-strip {
+    margin: -1.2rem auto 2rem;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 760px;
+}
+
+.enrollment-proof-strip li {
+    padding: 0.48rem 0.82rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.84rem;
+    line-height: 1.4;
+}
+
 .enrollment-note {
     margin-top: 30px;
     font-size: 0.95rem;
     color: rgba(255, 255, 255, 0.6); 
     font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .enrollment-offer-banner {
+        font-size: 0.8rem;
+    }
+
+    .enrollment-proof-strip {
+        margin-top: -1rem;
+    }
+
+    .enrollment-proof-strip li {
+        width: 100%;
+        max-width: 460px;
+    }
 }
 
 /* The form itself is now styled by EnrollmentForm.css */

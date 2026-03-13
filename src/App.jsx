@@ -4,8 +4,11 @@ import CookieConsent from "react-cookie-consent";
 import './App.css';
 import LogoLoop from './components/HomePage/LogoLoop';
 import AnimatedChart from './components/HomePage/AnimatedChart';
+import WhyMagnussonBand from './components/HomePage/WhyMagnussonBand';
 import ContactForm from './components/HomePage/ContactForm';
 import TeamSection from './components/HomePage/TeamSection';
+import FounderAuthoritySection from './components/HomePage/FounderAuthoritySection';
+import StackSpecializationsSection from './components/HomePage/StackSpecializationsSection';
 import ServicesSection from './components/HomePage/ServicesSection';
 import AboutSection from './components/HomePage/AboutSection';
 import PodcastSection from './components/HomePage/PodcastSection';
@@ -30,6 +33,7 @@ import PodcastPage from './components/PodcastPage/PodcastPage';
 import PrivacyPolicyPage from './components/PrivacyPolicyPage/PrivacyPolicyPage.jsx';
 import YouTubeSection from './components/HomePage/YouTubeSection';
 import CoursesSection from './components/HomePage/CoursesSection';
+import FAQSection from './components/HomePage/FAQSection';
 import AmplitudeCoursesPage from './components/AmplitudeCoursesPage/AmplitudeCoursesPage.jsx';
 import EnrollmentEmbedPage from './components/EnrollmentEmbedPage/EnrollmentEmbedPage.jsx'; // Import formular embed
 import CareersPage from './components/CareersPage/CareersPage.jsx';
@@ -38,6 +42,8 @@ import BusinessInternshipPage from './components/CareersPage/BusinessInternshipP
 import MarketingPage from './components/CareersPage/MarketingPage.jsx';
 import ABTestingCalculatorPage from './components/ToolsPage/ABTestingCalculatorPage.jsx';
 import { trackButtonClick } from './utils/amplitudeTracker'; 
+import { BRAND_NAME } from './constants/brand';
+import { CONVERSION_OFFER } from './constants/conversionOffer';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -96,27 +102,41 @@ function App() {
         </div>
         
         <div className="hero-content">
-          <h1 className="hero-title">Unlock the power of your data</h1>
+          <h1 className="hero-title">unlock the power of your data</h1>
           <div className="hero-cta-buttons">
             <a 
               href="#contact-form" 
               className="cta-button hero-main-cta"
-              onClick={() => trackButtonClick('Book Free Audit', 'Homepage Hero Section')} 
+              onClick={() => trackButtonClick(CONVERSION_OFFER.primaryCtaLabel, 'Homepage Hero Section')} 
             >
-              Book a Free Audit
+              {CONVERSION_OFFER.primaryCtaLabel}
             </a>
             <a 
               href="https://calendar.notion.so/meet/alexandermagnusson/0az364lq3" 
               className="cta-button hero-secondary-cta"
-              onClick={() => trackButtonClick('Book Free Call - Notion', 'Homepage Hero Section')}
-              style={{ background: '#4a4a4a', boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)', textShadow: 'none', transition: 'all 0.3s ease' }}
+              onClick={() => trackButtonClick(CONVERSION_OFFER.secondaryCtaLabel, 'Homepage Hero Section')}
             >
-              Book a Free Call
+              {CONVERSION_OFFER.secondaryCtaLabel}
             </a>
           </div>
+          <Link
+            to="/amplitude-courses"
+            className="hero-tertiary-cta"
+            onClick={() => trackButtonClick(CONVERSION_OFFER.tertiaryCtaLabel, 'Homepage Hero Section')}
+          >
+            {CONVERSION_OFFER.tertiaryCtaLabel}
+          </Link>
+          <p className="hero-offer-note">Find the tracking gaps hurting conversion, clean up your signal quality, and leave with the next 2-4 weeks mapped out.</p>
+          <ul className="hero-proof-list" aria-label="Quantified outcomes">
+            <li>Spot analytics issues before they distort reporting</li>
+            <li>Turn messy funnels into a practical next-step plan</li>
+            <li>{partnerLogos.length} visible partner brands in our track record</li>
+          </ul>
         </div>
       </main>
+      <WhyMagnussonBand partnerCount={partnerLogos.length} />
       <ServicesSection id="services-section" />
+      <StackSpecializationsSection />
       <AboutSection id="about-section" />
       <CollaborationSection />
       <div style={{ padding: '120px 0 20px', backgroundColor: '#0a0a0a', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -129,9 +149,11 @@ function App() {
       <PodcastSection id="podcast-section" />
       <BlogSection id="blog-section" />
       <YouTubeSection />
+      <FAQSection />
       <ContactForm id="contact-form" />
       <ReviewsCarousel />
       <TeamSection />
+      <FounderAuthoritySection />
     </>
   );
 
@@ -140,7 +162,7 @@ function App() {
       <nav className="navbar">
         <div className="nav-container">
           <div className="logo">
-            <Link to="/" className="nav-link"><img src={newLogo} alt="Magnusson Analytica" style={{ height: '40px' }} /></Link>
+            <Link to="/" className="nav-link"><img src={newLogo} alt={BRAND_NAME} style={{ height: '40px' }} /></Link>
           </div>
           <ul className="nav-menu">
             <li className="nav-item"><a href="/#" className="nav-link">Home</a></li>
@@ -149,7 +171,7 @@ function App() {
             <li className="nav-item"><Link to="/blogs" className="nav-link">Blog</Link></li>
             <li className="nav-item"><Link to="/tools" className="nav-link">Tools</Link></li>
             <li className="nav-item"><Link to="/careers" className="nav-link">Careers</Link></li>
-            <li className="nav-item"><a href="/#contact-form" className="nav-link">Contact Us</a></li>
+            <li className="nav-item"><a href="/#contact-form" className="nav-link">Get Audit Plan</a></li>
           </ul>
           <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}><span></span><span></span><span></span></div>
         </div>
@@ -160,7 +182,7 @@ function App() {
           <Link to="/blogs" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Blog</Link>
           <Link to="/tools" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Tools</Link>
           <Link to="/careers" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Careers</Link>
-          <a href="/#contact-form" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Contact Us</a>
+          <a href="/#contact-form" className="mobile-link" onClick={() => setIsMenuOpen(false)}>Get Audit Plan</a>
         </div>
       </nav>
       <Routes>

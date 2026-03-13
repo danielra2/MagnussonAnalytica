@@ -18,10 +18,51 @@
   text-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
 }
 
+.services-positioning-intro {
+  max-width: 860px;
+  margin: -2.5rem auto 3rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.74);
+  line-height: 1.7;
+  font-size: 1.02rem;
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 32px;
+}
+
+.services-cta-block {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.services-cta-button {
+  min-width: 220px;
+}
+
+.services-cta-secondary {
+  color: #ffb089;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+.services-cta-secondary:hover {
+  color: #ffd4c2;
+}
+
+.services-cta-proof {
+  margin: 0;
+  max-width: 760px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.94rem;
+  line-height: 1.6;
 }
 
 .service-card {
@@ -94,6 +135,58 @@
   font-weight: 500;
 }
 
+.service-stack-block {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.service-stack-label {
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.service-stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.service-stack-tag {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.88);
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.service-comparison-block {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.service-comparison-line {
+  margin: 0 0 8px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
+  font-size: 0.94rem;
+}
+
+.service-comparison-line:last-child {
+  margin-bottom: 0;
+}
+
+.service-comparison-key {
+  color: #ffb089;
+  font-weight: 700;
+}
+
 .checkmark {
   color: #00d4aa; /* Green checkmark color */
   font-size: 1.2rem;
@@ -107,5 +200,20 @@
 
   .services-main-title {
     margin-bottom: 3rem;
+  }
+
+  .services-positioning-intro {
+    margin-top: -1.8rem;
+    margin-bottom: 2.2rem;
+    font-size: 0.98rem;
+  }
+
+  .services-cta-button {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .services-cta-proof {
+    font-size: 0.9rem;
   }
 }
