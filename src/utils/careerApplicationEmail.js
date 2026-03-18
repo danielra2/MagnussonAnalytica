@@ -4,7 +4,16 @@ const SERVICE_ID = 'service_m41gwtd';
 const PUBLIC_KEY = 'GEnLWxa4I1fUOYec7';
 const USER_CONFIRM_TEMPLATE_ID = 'template_1irt9em';
 const INTERNAL_ALERT_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CAREERS_INTERNAL_TEMPLATE_ID || 'template_63sudqc';
-const CAREERS_EMAIL = 'careers@magnussonanalytica.com';
+const DEFAULT_CAREERS_ALERT_EMAILS = 'horatiu@magnussonanalytica.com, daniel.radoi@magnussonanalytica.com';
+
+const CAREERS_ALERT_EMAILS = (
+  import.meta.env.VITE_CAREERS_ALERT_EMAILS ||
+  import.meta.env.VITE_CAREERS_ALERT_EMAIL ||
+  DEFAULT_CAREERS_ALERT_EMAILS
+).trim();
+
+const PRIMARY_CAREERS_EMAIL =
+  CAREERS_ALERT_EMAILS.split(',').map((email) => email.trim()).filter(Boolean)[0] || 'careers@magnussonanalytica.com';
 
 const getDisplayValue = (value) => {
   if (typeof value !== 'string') {
@@ -63,9 +72,9 @@ export async function submitCareerApplication({
     role_title: normalizedRoleTitle,
     page_uri: normalizedPageUri,
     message,
-    to_email: CAREERS_EMAIL,
-    team_emails: CAREERS_EMAIL,
-    careers_email: CAREERS_EMAIL,
+    to_email: PRIMARY_CAREERS_EMAIL,
+    team_emails: CAREERS_ALERT_EMAILS,
+    careers_email: PRIMARY_CAREERS_EMAIL,
   };
 
   await Promise.all([
