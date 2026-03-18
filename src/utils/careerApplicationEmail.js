@@ -12,8 +12,12 @@ const CAREERS_ALERT_EMAILS = (
   DEFAULT_CAREERS_ALERT_EMAILS
 ).trim();
 
-const PRIMARY_CAREERS_EMAIL =
-  CAREERS_ALERT_EMAILS.split(',').map((email) => email.trim()).filter(Boolean)[0] || 'careers@magnussonanalytica.com';
+const CAREERS_ALERT_RECIPIENTS = CAREERS_ALERT_EMAILS
+  .split(',')
+  .map((email) => email.trim())
+  .filter(Boolean);
+
+const PRIMARY_CAREERS_EMAIL = CAREERS_ALERT_RECIPIENTS[0] || 'careers@magnussonanalytica.com';
 
 const getDisplayValue = (value) => {
   if (typeof value !== 'string') {
@@ -63,7 +67,7 @@ export async function submitCareerApplication({
     role_title: normalizedRoleTitle,
   };
 
-  const internalTemplateParams = {
+  const internalTemplateBaseParams = {
     subject: `Career application - ${normalizedRoleTitle}`,
     from_name: normalizedApplicantName,
     from_email: normalizedApplicantEmail,
@@ -72,13 +76,35 @@ export async function submitCareerApplication({
     role_title: normalizedRoleTitle,
     page_uri: normalizedPageUri,
     message,
-    to_email: PRIMARY_CAREERS_EMAIL,
     team_emails: CAREERS_ALERT_EMAILS,
-    careers_email: PRIMARY_CAREERS_EMAIL,
   };
+
+  const internalAlertPromises = CAREERS_ALERT_RECIPIENTS.map((recipientEmail) => {
+    const internalTemplateParams = {
+      ...internalTemplateBaseParams,
+      to_email: recipientEmail,
+      careers_email: recipientEmail,
+      recipient_email: recipientEmail,
+    };
+
+    return emailjs.send(SERVICE_ID, INTERNAL_ALERT_TEMPLATE_ID, internalTemplateParams, PUBLIC_KEY);
+  });
+
+  if (internalAlertPromises.length === 0) {
+    const fallbackTemplateParams = {
+      ...internalTemplateBaseParams,
+      to_email: PRIMARY_CAREERS_EMAIL,
+      careers_email: PRIMARY_CAREERS_EMAIL,
+      recipient_email: PRIMARY_CAREERS_EMAIL,
+    };
+
+    internalAlertPromises.push(
+      emailjs.send(SERVICE_ID, INTERNAL_ALERT_TEMPLATE_ID, fallbackTemplateParams, PUBLIC_KEY)
+    );
+  }
 
   await Promise.all([
     emailjs.send(SERVICE_ID, USER_CONFIRM_TEMPLATE_ID, userTemplateParams, PUBLIC_KEY),
-    emailjs.send(SERVICE_ID, INTERNAL_ALERT_TEMPLATE_ID, internalTemplateParams, PUBLIC_KEY),
+    ...internalAlertPromises,
   ]);
 }
