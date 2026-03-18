@@ -6,7 +6,7 @@ import ScrollToTop from '../ScrollToTop';
 import { BRAND_HQ_CITY_COUNTRY, BRAND_NAME, BRAND_SECONDARY_OFFICE } from '../../constants/brand';
 import { trackEvent } from '../../utils/amplitudeTracker';
 import { submitCareerApplication } from '../../utils/careerApplicationEmail';
-import { uploadResumePdf } from '../../utils/resumeUpload';
+import { isResumeUploadConfigured, uploadResumePdf } from '../../utils/resumeUpload';
 
 const getInitialFormData = () => ({
   name: '',
@@ -14,6 +14,7 @@ const getInitialFormData = () => ({
   phone: '',
   linkedIn: '',
   portfolio: '',
+  resumeLink: '',
   coverLetter: ''
 });
 
@@ -81,14 +82,26 @@ function EngineeringPage() {
     e.preventDefault();
     if (!captchaValue || status === 'Sending application...' || status === 'Uploading CV...') return;
 
-    if (!resumeFile) {
+    if (isResumeUploadConfigured && !resumeFile) {
       setStatus('Please upload your CV as a PDF before submitting.');
       return;
     }
 
+    if (!isResumeUploadConfigured && !formData.resumeLink.trim()) {
+      setStatus('Please add a public CV link before submitting.');
+      return;
+    }
+
     try {
-      setStatus('Uploading CV...');
-      const { resumeUrl, fileName } = await uploadResumePdf(resumeFile);
+      let resumeUrl = formData.resumeLink.trim();
+      let fileName = 'N/A';
+
+      if (isResumeUploadConfigured) {
+        setStatus('Uploading CV...');
+        const uploadResult = await uploadResumePdf(resumeFile);
+        resumeUrl = uploadResult.resumeUrl;
+        fileName = uploadResult.fileName;
+      }
 
       setStatus('Sending application...');
       await submitCareerApplication({
@@ -288,17 +301,35 @@ function EngineeringPage() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="resumePdf">CV (PDF) *</label>
-                    <input
-                      type="file"
-                      id="resumePdf"
-                      name="resume_pdf"
-                      accept=".pdf,application/pdf"
-                      onChange={handleResumeFileChange}
-                      ref={resumeInputRef}
-                      required
-                    />
-                    <small>Upload your CV directly as a PDF (max {MAX_RESUME_FILE_SIZE_MB}MB).</small>
+                    {isResumeUploadConfigured ? (
+                      <>
+                        <label htmlFor="resumePdf">CV (PDF) *</label>
+                        <input
+                          type="file"
+                          id="resumePdf"
+                          name="resume_pdf"
+                          accept=".pdf,application/pdf"
+                          onChange={handleResumeFileChange}
+                          ref={resumeInputRef}
+                          required
+                        />
+                        <small>Upload your CV directly as a PDF (max {MAX_RESUME_FILE_SIZE_MB}MB).</small>
+                      </>
+                    ) : (
+                      <>
+                        <label htmlFor="resumeLink">CV Link *</label>
+                        <input
+                          type="url"
+                          id="resumeLink"
+                          name="resumeLink"
+                          value={formData.resumeLink}
+                          onChange={handleChange}
+                          placeholder="https://drive.google.com/..."
+                          required
+                        />
+                        <small>Direct upload is temporarily unavailable. Add a public CV link to continue.</small>
+                      </>
+                    )}
                   </div>
 
                   <div className="form-group">

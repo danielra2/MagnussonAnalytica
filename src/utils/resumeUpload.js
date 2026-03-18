@@ -1,10 +1,11 @@
 const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+export const isResumeUploadConfigured = Boolean(CLOUDINARY_CLOUD_NAME && CLOUDINARY_UPLOAD_PRESET);
 
 const getCloudinaryUploadUrl = (cloudName) => `https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`;
 
 const ensureCloudinaryConfig = () => {
-  if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_UPLOAD_PRESET) {
+  if (!isResumeUploadConfigured) {
     throw new Error('CV upload is not configured. Please set VITE_CLOUDINARY_CLOUD_NAME and VITE_CLOUDINARY_UPLOAD_PRESET.');
   }
 };
