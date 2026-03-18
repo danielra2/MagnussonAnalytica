@@ -1,5 +1,8 @@
-const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+const DEFAULT_CLOUDINARY_CLOUD_NAME = 'dznh1lxa2';
+const DEFAULT_CLOUDINARY_UPLOAD_PRESET = 'magnusson_careers_pdf';
+
+const CLOUDINARY_CLOUD_NAME = (import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || DEFAULT_CLOUDINARY_CLOUD_NAME).trim();
+const CLOUDINARY_UPLOAD_PRESET = (import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET || DEFAULT_CLOUDINARY_UPLOAD_PRESET).trim();
 export const isResumeUploadConfigured = Boolean(CLOUDINARY_CLOUD_NAME && CLOUDINARY_UPLOAD_PRESET);
 
 const getCloudinaryUploadUrl = (cloudName) => `https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`;
