@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import './BusinessInternshipPage.css';
@@ -6,6 +6,7 @@ import ScrollToTop from '../ScrollToTop';
 import { BRAND_HQ_CITY_COUNTRY, BRAND_NAME, BRAND_SECONDARY_OFFICE } from '../../constants/brand';
 import { trackEvent } from '../../utils/amplitudeTracker';
 import { submitCareerApplication } from '../../utils/careerApplicationEmail';
+import { uploadResumePdf } from '../../utils/resumeUpload';
 
 const getInitialFormData = () => ({
   name: '',
@@ -13,12 +14,16 @@ const getInitialFormData = () => ({
   phone: '',
   university: '',
   major: '',
-  resumeLink: '',
   coverLetter: ''
 });
 
+const MAX_RESUME_FILE_SIZE_MB = 5;
+const MAX_RESUME_FILE_SIZE_BYTES = MAX_RESUME_FILE_SIZE_MB * 1024 * 1024;
+
 function BusinessInternshipPage() {
   const [formData, setFormData] = useState(getInitialFormData);
+  const [resumeFile, setResumeFile] = useState(null);
+  const resumeInputRef = useRef(null);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [status, setStatus] = useState('');
@@ -31,20 +36,61 @@ function BusinessInternshipPage() {
     });
   };
 
+  const handleResumeFileChange = (e) => {
+    const selectedFile = e.target.files?.[0] ?? null;
+
+    if (!selectedFile) {
+      setResumeFile(null);
+      return;
+    }
+
+    if (selectedFile.type !== 'application/pdf') {
+      setStatus('Please upload your CV as a PDF file.');
+      setResumeFile(null);
+      e.target.value = '';
+      return;
+    }
+
+    if (selectedFile.size > MAX_RESUME_FILE_SIZE_BYTES) {
+      setStatus(`Please upload a PDF smaller than ${MAX_RESUME_FILE_SIZE_MB}MB.`);
+      setResumeFile(null);
+      e.target.value = '';
+      return;
+    }
+
+    setResumeFile(selectedFile);
+
+    if (status && status !== 'Sending application...' && status !== 'Uploading CV...') {
+      setStatus('');
+    }
+  };
+
   const resetFormState = () => {
     setFormData(getInitialFormData());
+    setResumeFile(null);
     setCaptchaValue(null);
     setStatus('');
     setIsSubmitted(false);
+
+    if (resumeInputRef.current) {
+      resumeInputRef.current.value = '';
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!captchaValue || status === 'Sending application...') return;
+    if (!captchaValue || status === 'Sending application...' || status === 'Uploading CV...') return;
 
-    setStatus('Sending application...');
+    if (!resumeFile) {
+      setStatus('Please upload your CV as a PDF before submitting.');
+      return;
+    }
 
     try {
+      setStatus('Uploading CV...');
+      const { resumeUrl, fileName } = await uploadResumePdf(resumeFile);
+
+      setStatus('Sending application...');
       await submitCareerApplication({
         roleTitle: 'Business Internship',
         applicantName: formData.name,
@@ -54,7 +100,8 @@ function BusinessInternshipPage() {
           { label: 'Phone Number', value: formData.phone },
           { label: 'University & Study Program', value: formData.university },
           { label: 'Major / Field of Study', value: formData.major },
-          { label: 'Resume Link', value: formData.resumeLink },
+          { label: 'Resume URL', value: resumeUrl },
+          { label: 'Resume Filename', value: fileName },
           { label: 'Motivation', value: formData.coverLetter },
         ],
       });
@@ -65,14 +112,21 @@ function BusinessInternshipPage() {
       });
 
       setFormData(getInitialFormData());
+      setResumeFile(null);
       setCaptchaValue(null);
       setStatus('');
       setIsSubmitted(true);
+
+      if (resumeInputRef.current) {
+        resumeInputRef.current.value = '';
+      }
     } catch (error) {
       console.error('Career Application Error:', error);
-      setStatus('We could not send your application. Please try again in a moment.');
+      setStatus(error?.message || 'We could not send your application. Please try again in a moment.');
     }
   };
+
+  const isSubmitting = status === 'Sending application...' || status === 'Uploading CV...';
 
   return (
     <>
@@ -235,17 +289,17 @@ function BusinessInternshipPage() {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="resumeLink">Resume Link *</label>
+                    <label htmlFor="resumePdf">CV (PDF) *</label>
                     <input
-                      type="url"
-                      id="resumeLink"
-                      name="resumeLink"
-                      value={formData.resumeLink}
-                      onChange={handleChange}
-                      placeholder="Link to Google Drive, Dropbox, etc."
+                      type="file"
+                      id="resumePdf"
+                      name="resume_pdf"
+                      accept=".pdf,application/pdf"
+                      onChange={handleResumeFileChange}
+                      ref={resumeInputRef}
                       required
                     />
-                    <small>Please share a link to your resume (Google Drive, Dropbox, etc.)</small>
+                    <small>Upload your CV directly as a PDF (max {MAX_RESUME_FILE_SIZE_MB}MB).</small>
                   </div>
 
                   <div className="form-group">
@@ -271,10 +325,10 @@ function BusinessInternshipPage() {
                     />
                   </div>
 
-                  <button type="submit" className="submit-btn" disabled={!captchaValue || status === 'Sending application...'}>
-                    {status === 'Sending application...' ? 'Sending application...' : 'Submit Application'}
+                  <button type="submit" className="submit-btn" disabled={!captchaValue || isSubmitting}>
+                    {isSubmitting ? status : 'Submit Application'}
                   </button>
-                  {status && status !== 'Sending application...' ? <p className="status-message">{status}</p> : null}
+                  {status && !isSubmitting ? <p className="status-message">{status}</p> : null}
                 </form>
               )}
             </div>
