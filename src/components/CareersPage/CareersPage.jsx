@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './CareersPage.css';
 import ScrollToTop from '../ScrollToTop';
+import { BRAND_HQ_CITY_COUNTRY, BRAND_SECONDARY_OFFICE } from '../../constants/brand';
 
 function CareersPage() {
   const jobPostings = [
@@ -39,7 +40,9 @@ function CareersPage() {
       <div className="careers-page">
         <div className="careers-hero">
           <h1>Build client-ready skills on real analytics projects</h1>
-          <p className="careers-subtitle">Learn with direct mentorship in Sibiu while contributing to live client work</p>
+          <p className="careers-subtitle">
+            Learn with direct mentorship at our {BRAND_HQ_CITY_COUNTRY} HQ while contributing to live client work coordinated with our {BRAND_SECONDARY_OFFICE} office
+          </p>
         </div>
 
         <div className="careers-content">
@@ -52,7 +55,7 @@ function CareersPage() {
               </div>
               <div className="benefit-card">
                 <h3>🏢 On-site Mentorship</h3>
-                <p>Work alongside the team in Sibiu and get rapid feedback as you learn.</p>
+                <p>Work alongside the team in Sibiu and collaborate with stakeholders from our London office.</p>
               </div>
               <div className="benefit-card">
                 <h3>💡 Client Exposure</h3>

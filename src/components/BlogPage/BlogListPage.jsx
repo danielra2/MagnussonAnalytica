@@ -3,13 +3,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './BlogListPage.css';
+import { ICP_INDUSTRIES_SENTENCE } from '../../constants/icp';
 
 export default function BlogListPage({ blogPosts }) {
   return (
     <div className="blog-list-page-container">
       <h1 className="blog-list-page-title">Blog & Insights</h1>
       <p className="blog-list-description">
-        Stay up-to-date with our latest insights in data analytics and technology.
+        Stay up-to-date with practical insights for product, growth, and data teams in
+        {' '}
+        {ICP_INDUSTRIES_SENTENCE}.
       </p>
       <div className="blog-posts-grid">
         {blogPosts.map((post) => (

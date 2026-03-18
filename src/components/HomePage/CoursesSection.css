@@ -33,6 +33,15 @@
   text-align: center;
 }
 
+.training-icp-line {
+  margin: -0.6rem auto 2.2rem;
+  max-width: 880px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.94rem;
+  line-height: 1.66;
+}
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -115,8 +124,14 @@
 
   .training-offer-strip {
     margin-top: -2.8rem;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.2rem;
     font-size: 0.8rem;
+  }
+
+  .training-icp-line {
+    margin-top: 0;
+    margin-bottom: 1.8rem;
+    font-size: 0.9rem;
   }
   
   .card-container {

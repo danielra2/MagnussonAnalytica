@@ -7,14 +7,18 @@ import AnimatedChart from './components/HomePage/AnimatedChart';
 import WhyMagnussonBand from './components/HomePage/WhyMagnussonBand';
 import ContactForm from './components/HomePage/ContactForm';
 import TeamSection from './components/HomePage/TeamSection';
+import ProcessTimelineSection from './components/HomePage/ProcessTimelineSection';
+import FitDisciplineSection from './components/HomePage/FitDisciplineSection';
 import FounderAuthoritySection from './components/HomePage/FounderAuthoritySection';
 import StackSpecializationsSection from './components/HomePage/StackSpecializationsSection';
 import ServicesSection from './components/HomePage/ServicesSection';
+import ProofCaseStudiesSection from './components/HomePage/ProofCaseStudiesSection';
 import AboutSection from './components/HomePage/AboutSection';
 import PodcastSection from './components/HomePage/PodcastSection';
 import ReviewsCarousel from './components/HomePage/ReviewsCarousel';
 import BlogPage from './components/BlogPage/BlogPage';
 import BlogSection from './components/HomePage/BlogSection';
+import AnalyticsGlossarySection from './components/HomePage/AnalyticsGlossarySection';
 import Footer from './components/HomePage/Footer';
 import { FaFileAlt } from 'react-icons/fa';
 import beactiveImg from './assets/img/BeActive.png';
@@ -42,8 +46,13 @@ import BusinessInternshipPage from './components/CareersPage/BusinessInternshipP
 import MarketingPage from './components/CareersPage/MarketingPage.jsx';
 import ABTestingCalculatorPage from './components/ToolsPage/ABTestingCalculatorPage.jsx';
 import { trackButtonClick } from './utils/amplitudeTracker'; 
-import { BRAND_NAME } from './constants/brand';
+import {
+  BRAND_LOCATION_LINE,
+  BRAND_NAME,
+  BRAND_REGIONAL_FOCUS,
+} from './constants/brand';
 import { CONVERSION_OFFER } from './constants/conversionOffer';
+import { ICP_CLARITY, ICP_INDUSTRIES_SENTENCE } from './constants/icp';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -103,6 +112,9 @@ function App() {
         
         <div className="hero-content">
           <h1 className="hero-title">unlock the power of your data</h1>
+          <p className="hero-icp-line">
+            {ICP_CLARITY.coreAudience}
+          </p>
           <div className="hero-cta-buttons">
             <a 
               href="#contact-form" 
@@ -126,26 +138,33 @@ function App() {
           >
             {CONVERSION_OFFER.tertiaryCtaLabel}
           </Link>
-          <p className="hero-offer-note">Find the tracking gaps hurting conversion, clean up your signal quality, and leave with the next 2-4 weeks mapped out.</p>
           <ul className="hero-proof-list" aria-label="Quantified outcomes">
             <li>Spot analytics issues before they distort reporting</li>
             <li>Turn messy funnels into a practical next-step plan</li>
+            <li>Industries served most often: {ICP_INDUSTRIES_SENTENCE}</li>
+            <li>{BRAND_LOCATION_LINE}. Regional focus: {BRAND_REGIONAL_FOCUS}.</li>
             <li>{partnerLogos.length} visible partner brands in our track record</li>
           </ul>
         </div>
       </main>
       <WhyMagnussonBand partnerCount={partnerLogos.length} />
       <ServicesSection id="services-section" />
+      <ProofCaseStudiesSection />
+      <ProcessTimelineSection />
+      <FitDisciplineSection />
       <StackSpecializationsSection />
       <AboutSection id="about-section" />
       <CollaborationSection />
       <div style={{ padding: '120px 0 20px', backgroundColor: '#0a0a0a', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h2 style={{ textAlign: 'center', color: 'white', fontSize: '2rem', marginBottom: '40px' }}>Our trusted partners</h2>
+        <p style={{ textAlign: 'center', color: '#ff6b35', textTransform: 'uppercase', letterSpacing: '0.12em', fontSize: '0.8rem', fontWeight: 700, margin: '0 0 10px' }}>Client &amp; Partner Track Record</p>
+        <h2 style={{ textAlign: 'center', color: 'white', fontSize: 'clamp(1.9rem, 3.9vw, 2.8rem)', fontWeight: 700, lineHeight: 1.12, margin: '0 0 10px', background: 'linear-gradient(135deg, #ffffff 0%, #ff6b35 52%, #f7931e 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Trusted by product &amp; growth teams at</h2>
+        <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem', margin: '0 0 40px' }}>{partnerLogos.length} verified client &amp; partner brands across SaaS, ecommerce, fintech, and edtech</p>
         <div className="partners-section">
           <LogoLoop logos={partnerLogos} speed={20} direction="left" logoHeight={130} gap={48} pauseOnHover scaleOnHover fadeOut fadeOutColor="rgba(10, 10, 10, 1)" ariaLabel="Technology partners and tools" className="partners-marquee" />
         </div>
       </div>
       <CoursesSection />
+      <AnalyticsGlossarySection />
       <PodcastSection id="podcast-section" />
       <BlogSection id="blog-section" />
       <YouTubeSection />

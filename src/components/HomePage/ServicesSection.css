@@ -27,6 +27,15 @@
   font-size: 1.02rem;
 }
 
+.services-positioning-detail {
+  max-width: 900px;
+  margin: -2rem auto 2.6rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.84);
+  line-height: 1.68;
+  font-size: 0.97rem;
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -204,8 +213,14 @@
 
   .services-positioning-intro {
     margin-top: -1.8rem;
-    margin-bottom: 2.2rem;
+    margin-bottom: 1.2rem;
     font-size: 0.98rem;
+  }
+
+  .services-positioning-detail {
+    margin-top: 0;
+    margin-bottom: 2.2rem;
+    font-size: 0.92rem;
   }
 
   .services-cta-button {

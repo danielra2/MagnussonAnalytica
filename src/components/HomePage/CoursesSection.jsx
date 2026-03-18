@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import './CoursesSection.css'; // Importă noul fișier CSS
 import { trackButtonClick } from '../../utils/amplitudeTracker'; // Importăm funcția de tracking
 import { CONVERSION_OFFER } from '../../constants/conversionOffer';
+import { ICP_CLARITY, ICP_INDUSTRIES_SENTENCE } from '../../constants/icp';
 
 export default function CoursesSection() {
   
@@ -20,6 +21,11 @@ export default function CoursesSection() {
         <section className="training-section">
             <h2 className="training-title">Training built for better analytics decisions</h2>
             <p className="training-offer-strip">{CONVERSION_OFFER.campaignLabel} · {CONVERSION_OFFER.deadlineLabel}</p>
+            <p className="training-icp-line">
+                {ICP_CLARITY.coreAudience}
+                {' '}
+                Industries served most often: {ICP_INDUSTRIES_SENTENCE}.
+            </p>
             <div className="card-container">
                 <div className="training-card">
                     <h3 className="card-title">Data Analytics Training</h3>

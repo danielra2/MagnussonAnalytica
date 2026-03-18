@@ -4,8 +4,13 @@ import React from 'react';
 import './AboutSection.css';
 import { FaPhoneAlt, FaLaptopCode, FaChartLine } from 'react-icons/fa';
 import { trackButtonClick } from '../../utils/amplitudeTracker'; // Importăm funcția de tracking
-import { BRAND_NAME } from '../../constants/brand';
+import {
+  BRAND_LOCATION_LINE,
+  BRAND_NAME,
+  BRAND_REGIONAL_FOCUS,
+} from '../../constants/brand';
 import { CONVERSION_OFFER } from '../../constants/conversionOffer';
+import { ICP_CLARITY, ICP_INDUSTRIES_SENTENCE } from '../../constants/icp';
 
 export default function AboutSection() {
   
@@ -35,6 +40,14 @@ export default function AboutSection() {
           <p className="about-text">
             At {BRAND_NAME}, we combine setup, QA, strategy, and enablement so your team can move
             from messy data to clear next actions.
+          </p>
+          <p className="about-text">
+            {ICP_CLARITY.coreAudience}
+            {' '}
+            We most often support teams in {ICP_INDUSTRIES_SENTENCE}.
+          </p>
+          <p className="about-text">
+            {BRAND_LOCATION_LINE}. Regional focus: {BRAND_REGIONAL_FOCUS}.
           </p>
         </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaAward, FaChartLine, FaUserTie } from 'react-icons/fa';
+import { FaAward, FaChartLine, FaUserTie, FaCheckCircle } from 'react-icons/fa';
 import alexPhoto from '../../assets/img/alexphoto.jpg';
 import { trackButtonClick } from '../../utils/amplitudeTracker';
 import { BRAND_NAME, FOUNDER_NAME, FOUNDER_TITLE } from '../../constants/brand';
@@ -25,9 +25,9 @@ const credibilityPoints = [
 ];
 
 const trustSignals = [
-  'Senior strategy without agency layers',
-  'Official Amplitude Partner',
-  'Built for product and growth teams',
+  { label: 'Senior strategy without agency layers', verified: false },
+  { label: 'Official Amplitude Partner', verified: true },
+  { label: 'Built for product and growth teams', verified: false },
 ];
 
 export default function FounderAuthoritySection() {
@@ -61,7 +61,13 @@ export default function FounderAuthoritySection() {
 
           <div className="authority-signals" aria-label="Credibility highlights">
             {trustSignals.map((signal) => (
-              <span key={signal} className="authority-signal-pill">{signal}</span>
+              <span
+                key={signal.label}
+                className={`authority-signal-pill${signal.verified ? ' authority-signal-pill--verified' : ''}`}
+              >
+                {signal.verified && <FaCheckCircle className="authority-signal-check" aria-hidden="true" />}
+                {signal.label}
+              </span>
             ))}
           </div>
 

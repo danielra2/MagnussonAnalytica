@@ -3,6 +3,7 @@
 import React from 'react';
 import './PodcastPage.css';
 import { FaPlayCircle, FaMicrophoneAlt } from 'react-icons/fa';
+import { ICP_INDUSTRIES_SENTENCE } from '../../constants/icp';
 
 // Placeholder data for your podcast episodes
 const podcasts = [
@@ -28,6 +29,8 @@ export default function PodcastPage() {
       <p className="podcast-page-description">
         Tune in to our podcast where we explore the latest trends in data analytics,
         business intelligence, and technology with industry experts.
+        {' '}
+        Built for product, growth, and data teams, with frequent examples from {ICP_INDUSTRIES_SENTENCE}.
       </p>
 
       <div className="podcast-episodes-grid">

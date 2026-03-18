@@ -6,6 +6,7 @@ import { SERVICE_STACK_SPECIALIZATIONS } from '../../constants/capabilities';
 import { BRAND_NAME } from '../../constants/brand';
 import { trackButtonClick } from '../../utils/amplitudeTracker';
 import { CONVERSION_OFFER } from '../../constants/conversionOffer';
+import { ICP_CLARITY, ICP_INDUSTRIES_SENTENCE } from '../../constants/icp';
 
 const services = [
   {
@@ -82,6 +83,11 @@ export default function ServicesSection({ id = 'services-section' }) {
         {BRAND_NAME}
         {' '}
         brings strategy, delivery, and enablement into a single engagement.
+      </p>
+      <p className="services-positioning-detail">
+        {ICP_CLARITY.coreAudience}
+        {' '}
+        Industries served most often: {ICP_INDUSTRIES_SENTENCE}.
       </p>
       <div className="services-grid">
         {services.map((service, index) => (

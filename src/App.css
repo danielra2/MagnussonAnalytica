@@ -191,6 +191,7 @@ body {
   justify-content: center;
   text-align: center;
   padding: 2rem;
+  padding-top: calc(72px + 3rem);
   overflow: hidden;
 }
 
@@ -211,6 +212,14 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+}
+
+.hero-icp-line {
+  margin: 0 auto 1.2rem;
+  max-width: 760px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: clamp(1rem, 2.2vw, 1.16rem);
+  line-height: 1.58;
 }
 
 /* Stilul de bază pentru containerul de butoane (Desktop: Side-by-side) */
@@ -416,6 +425,12 @@ body {
   
   .hero-title {
     margin-bottom: 2rem;
+  }
+
+  .hero-icp-line {
+    margin-bottom: 1rem;
+    max-width: 400px;
+    font-size: 0.98rem;
   }
   
   /* Stivuirea butoanelor pe mobil */

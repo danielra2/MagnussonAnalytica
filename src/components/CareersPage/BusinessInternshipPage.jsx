@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import './BusinessInternshipPage.css';
 import ScrollToTop from '../ScrollToTop';
-import { BRAND_NAME } from '../../constants/brand';
+import { BRAND_HQ_CITY_COUNTRY, BRAND_NAME, BRAND_SECONDARY_OFFICE } from '../../constants/brand';
 import { trackEvent } from '../../utils/amplitudeTracker';
 import { submitCareerApplication } from '../../utils/careerApplicationEmail';
 
@@ -84,7 +84,7 @@ function BusinessInternshipPage() {
           <div className="job-meta-header">
             <span className="meta-item">🎓 Internship</span>
             <span className="meta-item">💼 Business</span>
-            <span className="meta-item">📍 Sibiu</span>
+            <span className="meta-item">📍 {BRAND_HQ_CITY_COUNTRY}</span>
           </div>
         </div>
 
@@ -101,7 +101,7 @@ function BusinessInternshipPage() {
                 work while learning how data-led teams operate and grow.
               </p>
               <p>
-                This internship is conducted on-site in Sibiu.
+                This internship is conducted on-site at our {BRAND_HQ_CITY_COUNTRY} HQ while supporting projects delivered with our {BRAND_SECONDARY_OFFICE} office.
               </p>
             </section>
 
@@ -128,7 +128,7 @@ function BusinessInternshipPage() {
                 <li>Excellent organisational and project management abilities</li>
                 <li>Proficiency with Google Business suite (Sheets, Slides, Docs)</li>
                 <li>Self-motivated with the ability to work independently</li>
-                <li>Availability to work on-site in Sibiu</li>
+                <li>Availability to work on-site in Sibiu, Romania</li>
                 <li>English proficiency certificate at C1 or C2 level (or equivalent demonstrated fluency)</li>
                 <li>Passion for data, business, and analytics</li>
               </ul>

@@ -1,8 +1,13 @@
 import React from 'react';
 import { FaBolt, FaLayerGroup, FaUserTie, FaAward } from 'react-icons/fa';
-import { BRAND_NAME } from '../../constants/brand';
+import {
+  BRAND_LOCATION_LINE,
+  BRAND_NAME,
+  BRAND_REGIONAL_FOCUS,
+} from '../../constants/brand';
 import { trackButtonClick } from '../../utils/amplitudeTracker';
 import { CONVERSION_OFFER } from '../../constants/conversionOffer';
+import { ICP_INDUSTRIES_SENTENCE } from '../../constants/icp';
 import './WhyMagnussonBand.css';
 
 const differentiators = [
@@ -41,6 +46,10 @@ export default function WhyMagnussonBand({ partnerCount = 0 }) {
           <h2 id="why-magnusson-title">Why teams bring {BRAND_NAME} in</h2>
           <p className="why-magnusson-subtitle">
             Get strategy, implementation, and enablement from one team, so tracking quality and decision speed improve together.
+            {' '}
+            Best fit for product, growth, and data leaders in {ICP_INDUSTRIES_SENTENCE}.
+            {' '}
+            {BRAND_LOCATION_LINE}. Regional focus: {BRAND_REGIONAL_FOCUS}.
             {' '}
             {partnerCount > 0 ? `Trusted by ${partnerCount} visible partner brands.` : ''}
           </p>

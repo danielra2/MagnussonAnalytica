@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import './EngineeringPage.css';
 import ScrollToTop from '../ScrollToTop';
-import { BRAND_NAME } from '../../constants/brand';
+import { BRAND_HQ_CITY_COUNTRY, BRAND_NAME, BRAND_SECONDARY_OFFICE } from '../../constants/brand';
 import { trackEvent } from '../../utils/amplitudeTracker';
 import { submitCareerApplication } from '../../utils/careerApplicationEmail';
 
@@ -84,7 +84,7 @@ function EngineeringPage() {
           <div className="job-meta-header">
             <span className="meta-item">🎓 Internship</span>
             <span className="meta-item">🏢 Engineering</span>
-            <span className="meta-item">📍 Sibiu</span>
+            <span className="meta-item">📍 {BRAND_HQ_CITY_COUNTRY}</span>
           </div>
         </div>
 
@@ -101,7 +101,7 @@ function EngineeringPage() {
                 building practical skills that complement your university work and prepare you for data engineering and analytics roles.
               </p>
               <p>
-                This internship is conducted on-site in Sibiu.
+                This internship is conducted on-site at our {BRAND_HQ_CITY_COUNTRY} HQ while supporting projects delivered with our {BRAND_SECONDARY_OFFICE} office.
               </p>
             </section>
 

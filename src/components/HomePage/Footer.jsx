@@ -4,7 +4,13 @@ import React from 'react';
 import './Footer.css';
 import { FaInstagram, FaLinkedin, FaFacebook } from 'react-icons/fa';
 import { trackEvent } from '../../utils/amplitudeTracker'; // Importăm funcția de tracking
-import { BRAND_CONTACT_EMAIL, BRAND_NAME } from '../../constants/brand';
+import {
+  BRAND_CONTACT_EMAIL,
+  BRAND_HQ_CITY_COUNTRY,
+  BRAND_NAME,
+  BRAND_SECONDARY_OFFICE,
+} from '../../constants/brand';
+import { ICP_INDUSTRIES_SENTENCE } from '../../constants/icp';
 
 export default function Footer() {
   
@@ -23,7 +29,11 @@ export default function Footer() {
           <div className="footer-section footer-about">
             <h3 className="footer-title">{BRAND_NAME}</h3>
             <p className="footer-description">
-              Helping teams fix tracking, trust their funnels, and act faster on product growth.
+              Helping product, growth, and data teams fix tracking, trust their funnels, and act faster on product growth.
+              {' '}
+              Common industries: {ICP_INDUSTRIES_SENTENCE}.
+              {' '}
+              HQ: {BRAND_HQ_CITY_COUNTRY}. Office: {BRAND_SECONDARY_OFFICE}.
             </p>
           </div>
           <div className="footer-section footer-links">
@@ -33,6 +43,7 @@ export default function Footer() {
               <li><a href="/#about-section" className="footer-link">About us</a></li>
               <li><a href="/#podcast-section" className="footer-link">Podcasts</a></li>
               <li><a href="/tools" className="footer-link">Tools</a></li>
+              <li><a href="/privacy-policy" className="footer-link">Privacy Policy</a></li>
               <li><a href="/#contact-form" className="footer-link">Get Audit Plan</a></li>
             </ul>
           </div>
@@ -40,7 +51,8 @@ export default function Footer() {
             <h4 className="footer-links-title">Contact</h4>
             <p className="footer-contact-info">
               Email: {BRAND_CONTACT_EMAIL}<br />
-              Phone: +44 74757 37792
+              Phone: +44 74757 37792<br />
+              Locations: {BRAND_HQ_CITY_COUNTRY} | {BRAND_SECONDARY_OFFICE}
             </p>
           </div>
         </div>

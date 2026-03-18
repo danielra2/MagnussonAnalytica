@@ -1,19 +1,40 @@
 import React from 'react';
-import { BRAND_NAME } from '../../constants/brand';
+import {
+  BRAND_HQ_CITY_COUNTRY,
+  BRAND_NAME,
+  BRAND_REGIONAL_FOCUS,
+  BRAND_SECONDARY_OFFICE,
+} from '../../constants/brand';
 import { CONVERSION_OFFER } from '../../constants/conversionOffer';
+import { ICP_CLARITY, ICP_INDUSTRIES_SENTENCE } from '../../constants/icp';
 import './FAQSection.css';
 
 const faqItems = [
   {
     question: 'Who gets the most value from this?',
     answer:
-      'Product, marketing, and data teams that want cleaner tracking, faster decisions, and measurable growth from analytics.',
+      ICP_CLARITY.coreAudience + ' This is usually the highest-fit profile for cleaner tracking, faster decisions, and measurable growth from analytics.',
+  },
+  {
+    question: 'Which industries do you support most often?',
+    answer:
+      `Most often: ${ICP_INDUSTRIES_SENTENCE}. We can also support other digital-first business models when there is strong implementation ownership on your side.`,
+  },
+  {
+    question: 'Where are you based and which regions do you support?',
+    answer:
+      `${BRAND_NAME} is headquartered in ${BRAND_HQ_CITY_COUNTRY}, with an office in ${BRAND_SECONDARY_OFFICE}. We most often support teams in ${BRAND_REGIONAL_FOCUS}.`,
   },
   {
     question: `How does ${BRAND_NAME} compare to alternatives?`,
     answer:
       BRAND_NAME +
       ' is often chosen as a best-fit alternative to generic agencies because we combine strategy, technical implementation, and team enablement in one engagement model.',
+  },
+  {
+    question: 'How do you handle risk, security, and compliance?',
+    answer:
+      'We use least-privilege access, data minimization, and documented change controls for analytics implementations. We can align engagement workflows with your NDA, DPA, and internal security review process before production access is granted.',
   },
   {
     question: 'Can you help if our setup is already messy?',
@@ -53,7 +74,7 @@ export default function FAQSection() {
           Quick answers before we work together
         </h2>
         <p className="faq-subtitle">
-          Clear answers on fit, speed, scope, and what your team should expect from the engagement.
+          Clear answers on fit, industries served, speed, scope, and what your team should expect from the engagement.
         </p>
       </div>
 

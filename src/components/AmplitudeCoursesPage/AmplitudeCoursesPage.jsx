@@ -7,6 +7,7 @@ import { FaCheckCircle, FaStar, FaClock } from 'react-icons/fa';
 import { BRAND_NAME } from '../../constants/brand';
 import { trackButtonClick } from '../../utils/amplitudeTracker';
 import { CONVERSION_OFFER } from '../../constants/conversionOffer';
+import { ICP_CLARITY, ICP_INDUSTRIES_SENTENCE } from '../../constants/icp';
 
 const coursesData = [
   {
@@ -83,6 +84,11 @@ export default function AmplitudeCoursesPage() {
       <p className="amplitude-description">
         Give your team practical Amplitude skills they can apply to tracking quality, funnel analysis, retention, and experimentation right away.
       </p>
+      <p className="amplitude-icp-line">
+        {ICP_CLARITY.coreAudience}
+        {' '}
+        Industries served most often: {ICP_INDUSTRIES_SENTENCE}.
+      </p>
 
       <div className="courses-pricing-grid">
         {coursesData.map((course, index) => {
@@ -134,6 +140,8 @@ export default function AmplitudeCoursesPage() {
           {BRAND_NAME}
           {' '}
           when they need Amplitude training that improves implementation quality and day-to-day decision-making, not just theoretical familiarity.
+          {' '}
+          Typical fit includes teams in {ICP_INDUSTRIES_SENTENCE}.
         </p>
 
         <div className="courses-comparison-grid">
