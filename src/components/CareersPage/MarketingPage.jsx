@@ -14,7 +14,8 @@ const getInitialFormData = () => ({
   university: '',
   portfolio: '',
   resumeLink: '',
-  coverLetter: ''
+  coverLetter: '',
+  aiUsage: ''
 });
 
 function MarketingPage() {
@@ -56,6 +57,7 @@ function MarketingPage() {
           { label: 'Portfolio / Work Samples', value: formData.portfolio },
           { label: 'Resume Link', value: formData.resumeLink },
           { label: 'Motivation', value: formData.coverLetter },
+          { label: 'AI Tools Usage', value: formData.aiUsage },
         ],
       });
 
@@ -252,6 +254,19 @@ function MarketingPage() {
                       required
                       rows="6"
                       placeholder="Tell us which growth outcomes you want to learn to influence, and any relevant marketing projects..."
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="aiUsage">Describe shortly a specific way you've used AI tools (e.g. ChatGPT, Claude, Gemini etc.) to complete a task or a project. What was the goal, how did you use the tool, and what was the outcome? *</label>
+                    <textarea
+                      id="aiUsage"
+                      name="aiUsage"
+                      value={formData.aiUsage}
+                      onChange={handleChange}
+                      required
+                      rows="6"
+                      placeholder="Describe the task or project, the AI tool you used, and the outcome..."
                     />
                   </div>
 
