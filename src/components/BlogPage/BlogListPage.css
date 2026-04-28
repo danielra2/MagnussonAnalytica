@@ -29,7 +29,7 @@
 
 .blog-posts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 32px;
 }
 
@@ -87,4 +87,26 @@
 
 .read-more-link:hover .arrow-icon {
   transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .blog-list-page-container {
+    padding: 100px 16px;
+  }
+
+  .blog-list-description {
+    margin-bottom: 2.8rem;
+  }
+
+  .blog-posts-grid {
+    gap: 20px;
+  }
+
+  .blog-post-card {
+    padding: 28px 22px;
+  }
+
+  .blog-post-title {
+    font-size: 1.5rem;
+  }
 }

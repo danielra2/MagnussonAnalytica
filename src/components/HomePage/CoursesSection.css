@@ -106,6 +106,7 @@
 
 .training-primary-cta {
   min-width: 240px;
+  max-width: 100%;
 }
 
 .training-cta-proof {
@@ -136,12 +137,17 @@
   
   .card-container {
     flex-direction: column;
+    gap: 20px;
   }
   
   /* SOLUȚIE FINALĂ: Eliminăm min-height și creștem padding-ul de jos pentru a face loc butonului */
   .training-card {
     min-height: auto; 
     padding-bottom: 5rem; 
+  }
+
+  .training-primary-cta {
+    min-width: 0;
   }
 }
 

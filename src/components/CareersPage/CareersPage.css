@@ -83,7 +83,7 @@
 
 .jobs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: 30px;
   align-items: stretch;
 }
@@ -115,7 +115,7 @@
   align-items: flex-start;
   margin-bottom: 15px;
   gap: 15px;
-  height: 110px; 
+  min-height: 110px;
 }
 
 .job-header h3 {
@@ -152,7 +152,7 @@
   margin-bottom: 20px;
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.95rem;
-  height: 30px; 
+  min-height: 30px;
 }
 
 .job-separator {
@@ -163,7 +163,7 @@
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   margin-bottom: 20px;
-  height: 105px; 
+  min-height: 105px;
 }
 
 .job-requirements {

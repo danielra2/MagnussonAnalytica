@@ -38,7 +38,7 @@
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 32px;
 }
 
@@ -53,6 +53,7 @@
 
 .services-cta-button {
   min-width: 220px;
+  max-width: 100%;
 }
 
 .services-cta-secondary {
@@ -207,6 +208,14 @@
     padding-top: 60px;
   }
 
+  .services-grid {
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 28px 22px;
+  }
+
   .services-main-title {
     margin-bottom: 3rem;
   }
@@ -226,6 +235,7 @@
   .services-cta-button {
     width: 100%;
     max-width: 360px;
+    min-width: 0;
   }
 
   .services-cta-proof {

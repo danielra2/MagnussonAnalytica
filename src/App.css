@@ -424,13 +424,15 @@ body {
   }
   
   .hero-title {
-    margin-bottom: 2rem;
+    font-size: clamp(2rem, 10vw, 2.8rem);
+    line-height: 1.08;
+    margin-bottom: 1.3rem;
   }
 
   .hero-icp-line {
     margin-bottom: 1rem;
-    max-width: 400px;
-    font-size: 0.98rem;
+    max-width: 460px;
+    font-size: 0.96rem;
   }
   
   /* Stivuirea butoanelor pe mobil */
@@ -442,11 +444,13 @@ body {
 
   /* Mărirea butoanelor pe mobil */
   .hero-cta-buttons a {
-    width: 90%; /* Ocupă aproape toată lățimea disponibilă */
-    max-width: 380px; /* Limită maximă pentru a nu fi prea late pe tablete */
-    margin: 0 auto; /* Centrează butoanele */
-    padding: 1.3rem 2.5rem; /* Mărire padding (buton mai mare) */
-    font-size: 1.3rem; /* Font mai mare */
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.25;
+    white-space: normal;
   }
 
   .hero-proof-list {
@@ -476,6 +480,7 @@ body {
   
   .hero {
     padding: 1rem;
+    padding-top: calc(72px + 2rem);
   }
   
   .card-container {
@@ -495,7 +500,23 @@ body {
   }
   
   .hero-content {
-    padding: 0 1rem;
+    width: 100%;
+    padding: 0 0.25rem;
+  }
+
+  .hero {
+    padding-top: calc(72px + 1.4rem);
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 11vw, 2.35rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero-cta-buttons a {
+    max-width: 310px;
+    font-size: 1rem;
+    padding: 0.95rem 1.2rem;
   }
 }
 
